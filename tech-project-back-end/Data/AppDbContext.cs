@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Xml;
 using tech_project_back_end.Models;
 
 namespace tech_project_back_end.Data
@@ -7,7 +8,11 @@ namespace tech_project_back_end.Data
     {
         public AppDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Product> Products { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>().HasKey(c => c.category_id);
+        }
+
         public DbSet<Category> Category { get; set; }
     }
 }
