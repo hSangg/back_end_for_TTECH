@@ -11,8 +11,10 @@ namespace tech_project_back_end.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasKey(c => c.category_id);
+            modelBuilder.Entity<User>().HasKey(c => c.user_id);
         }
 
         public DbSet<Category> Category { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

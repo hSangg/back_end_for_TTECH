@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
@@ -7,6 +8,7 @@ using tech_project_back_end.Models;
 namespace tech_project_back_end.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize()]
     [ApiController]
     public class CategoryController : ControllerBase
     {
@@ -19,7 +21,7 @@ namespace tech_project_back_end.Controllers
         [HttpGet]
         public IActionResult GetAllCategory()
         {
-            var categoryList = _appDbContext.Category.ToListAsync();
+            var categoryList = _appDbContext.Category.ToList();
             return Ok(categoryList);
         }
 
@@ -31,6 +33,18 @@ namespace tech_project_back_end.Controllers
             _appDbContext.SaveChanges();
 
             return Ok(category);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateCategory(string id, string updatedCategoryName) {
+            var exitingCategory = _appDbContext.Category.FirstOrDefault(c => c.category_id == id);
+            if (exitingCategory == null) { return NotFound("Category not found"); }
+
+            exitingCategory.category_name = updatedCategoryName;
+            _appDbContext.SaveChanges();
+
+            return Ok(exitingCategory);
+
         }
 
         [HttpGet("{id}")]
@@ -54,6 +68,8 @@ namespace tech_project_back_end.Controllers
             
             return Ok("Category deleted successfully");
         }
+
+
 
        
 

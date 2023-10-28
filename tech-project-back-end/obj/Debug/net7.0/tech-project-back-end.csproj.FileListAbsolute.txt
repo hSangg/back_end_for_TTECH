@@ -42,3 +42,15 @@ C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\obj\Debu
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\obj\Debug\net7.0\tech-project-back-end.pdb
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\obj\Debug\net7.0\tech-project-back-end.genruntimeconfig.cache
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\obj\Debug\net7.0\ref\tech-project-back-end.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\BCrypt.Net-Next.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Scrutor.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
