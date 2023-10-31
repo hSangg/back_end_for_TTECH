@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
 using Microsoft.Extensions.Configuration;
 using System.Text;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,12 +62,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowSpecificOrigin");
 
+app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
 app.UseRouting();
+
+
+app.UseAuthorization();
+
 
 
 app.MapControllers();

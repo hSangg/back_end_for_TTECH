@@ -54,3 +54,5 @@ C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debu
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Scrutor.dll
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\tech-project-back-end.staticwebassets.runtime.json
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Newtonsoft.Json.dll

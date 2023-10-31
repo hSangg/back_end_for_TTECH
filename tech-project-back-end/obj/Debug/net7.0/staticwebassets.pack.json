@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\001\\001_638342601635207257.png",
+      "PackagePath": "staticwebassets\\Upload\\product\\001\\001_638342601635207257.png"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\001\\001_638342602579964288.png",
+      "PackagePath": "staticwebassets\\Upload\\product\\001\\001_638342602579964288.png"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\001\\001_638342603279045106.png",
+      "PackagePath": "staticwebassets\\Upload\\product\\001\\001_638342603279045106.png"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\21d1584a-7651-4f42-a2c1-b08f9f385538\\21d1584a-7651-4f42-a2c1-b08f9f385538_638342235083076461.png",
+      "PackagePath": "staticwebassets\\Upload\\product\\21d1584a-7651-4f42-a2c1-b08f9f385538\\21d1584a-7651-4f42-a2c1-b08f9f385538_638342235083076461.png"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\21d1584a-7651-4f42-a2c1-b08f9f385538\\21d1584a-7651-4f42-a2c1-b08f9f385538_638342235137177685.png",
+      "PackagePath": "staticwebassets\\Upload\\product\\21d1584a-7651-4f42-a2c1-b08f9f385538\\21d1584a-7651-4f42-a2c1-b08f9f385538_638342235137177685.png"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\awregweweew\\awregweweew_638342593088486772.png",
+      "PackagePath": "staticwebassets\\Upload\\product\\awregweweew\\awregweweew_638342593088486772.png"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\wefefw\\wefefw_638342595462665132.png",
+      "PackagePath": "staticwebassets\\Upload\\product\\wefefw\\wefefw_638342595462665132.png"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.tech-project-back-end.props",
+      "PackagePath": "build\\tech-project-back-end.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.tech-project-back-end.props",
+      "PackagePath": "buildMultiTargeting\\tech-project-back-end.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.tech-project-back-end.props",
+      "PackagePath": "buildTransitive\\tech-project-back-end.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.tech-project-back-end.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

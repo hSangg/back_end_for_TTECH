@@ -8,7 +8,6 @@ using tech_project_back_end.Models;
 namespace tech_project_back_end.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize()]
     [ApiController]
     public class CategoryController : ControllerBase
     {

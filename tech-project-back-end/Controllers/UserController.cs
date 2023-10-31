@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json.Serialization;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
 
@@ -31,12 +34,28 @@ namespace tech_project_back_end.Controllers
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
             _appDBContext.User.Add(user);
             _appDBContext.SaveChanges();
-            return Ok(user);
+
+            string token = CreateToken(user);
+            string userJson = JsonConvert.SerializeObject(user);
+
+
+            Response.Cookies.Append("token", token, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = DateTimeOffset.Now.AddHours(1)
+            });
+
             
+
+
+            return Ok(new { user, token });
+
         }
 
         [HttpPost("login")]
-        public ActionResult<User> Login(UserLogin user)
+        public IActionResult Login(UserLogin user)
         {
             var isExitUser = _appDBContext.User.FirstOrDefault(c => c.phone == user.phone);
             if (isExitUser == null) { return NotFound("User not found"); }
@@ -48,7 +67,11 @@ namespace tech_project_back_end.Controllers
 
             string token = CreateToken(isExitUser);
 
-            // Set the token as a cookie
+            string userJson = JsonConvert.SerializeObject(user);
+
+           
+
+
             Response.Cookies.Append("token", token, new CookieOptions
             {
                 HttpOnly = true, 
