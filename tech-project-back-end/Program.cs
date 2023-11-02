@@ -6,6 +6,7 @@ using Swashbuckle.AspNetCore.Filters;
 using Microsoft.Extensions.Configuration;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,15 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader()
         .AllowAnyMethod());
 });
+
+
+// Disable SSL/TLS verification
+var handler = new HttpClientHandler()
+{
+    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+};
+
+builder.Services.AddSingleton(new HttpClient(handler));
 
 
 var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
@@ -34,6 +44,8 @@ builder.Services.AddSwaggerGen(options => {
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
     ; });
+
+
 builder.Services.AddAuthentication().AddJwtBearer(
     options =>
     {
@@ -62,16 +74,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowSpecificOrigin");
 
+app.UseDefaultFiles();
+
 app.UseStaticFiles();
 
-app.UseHttpsRedirection();
+ app.UseHttpsRedirection();
 
 
 app.UseRouting();
 
 
 app.UseAuthorization();
-
 
 
 app.MapControllers();

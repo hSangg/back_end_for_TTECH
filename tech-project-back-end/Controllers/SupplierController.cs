@@ -20,6 +20,9 @@ namespace tech_project_back_end.Controllers
         
             supplier.supplier_id = Guid.NewGuid().ToString()[..36];
 
+            _appDbContext.Supplier.Add(supplier);
+            _appDbContext.SaveChanges();
+
             return Ok(supplier);
         }
 

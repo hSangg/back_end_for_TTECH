@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ku+HO8IPjBMLEOJSOQ8g11xdL+KQudsoxUnEfyULVUA=",
+  "Hash": "Qa4PQzcIlmIKyzbO8/JCjesoogpt6EsnYUZTSlu+g7c=",
   "Source": "tech-project-back-end",
   "BasePath": "_content/tech-project-back-end",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\001\\001_638342601635207257.png",
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ABC123\\ABC123_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/001/001_638342601635207257.png",
+      "RelativePath": "Upload/product/ABC123/ABC123_1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,15 +31,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\001\\001_638342601635207257.png"
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\ABC123\\ABC123_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\001\\001_638342602579964288.png",
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ABC123\\ABC123_2.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/001/001_638342602579964288.png",
+      "RelativePath": "Upload/product/ABC123/ABC123_2.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,15 +48,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\001\\001_638342602579964288.png"
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\ABC123\\ABC123_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\001\\001_638342603279045106.png",
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEF456\\DEF456_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/001/001_638342603279045106.png",
+      "RelativePath": "Upload/product/DEF456/DEF456_1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,15 +65,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\001\\001_638342603279045106.png"
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\DEF456\\DEF456_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\21d1584a-7651-4f42-a2c1-b08f9f385538\\21d1584a-7651-4f42-a2c1-b08f9f385538_638342235083076461.png",
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEF456\\DEF456_2.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/21d1584a-7651-4f42-a2c1-b08f9f385538/21d1584a-7651-4f42-a2c1-b08f9f385538_638342235083076461.png",
+      "RelativePath": "Upload/product/DEF456/DEF456_2.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,15 +82,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\21d1584a-7651-4f42-a2c1-b08f9f385538\\21d1584a-7651-4f42-a2c1-b08f9f385538_638342235083076461.png"
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\DEF456\\DEF456_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\21d1584a-7651-4f42-a2c1-b08f9f385538\\21d1584a-7651-4f42-a2c1-b08f9f385538_638342235137177685.png",
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\JKL012\\JKL012_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/21d1584a-7651-4f42-a2c1-b08f9f385538/21d1584a-7651-4f42-a2c1-b08f9f385538_638342235137177685.png",
+      "RelativePath": "Upload/product/JKL012/JKL012_1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,15 +99,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\21d1584a-7651-4f42-a2c1-b08f9f385538\\21d1584a-7651-4f42-a2c1-b08f9f385538_638342235137177685.png"
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\JKL012\\JKL012_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\awregweweew\\awregweweew_638342593088486772.png",
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PRD001\\PRD001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/awregweweew/awregweweew_638342593088486772.png",
+      "RelativePath": "Upload/product/PRD001/PRD001_1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,15 +116,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\awregweweew\\awregweweew_638342593088486772.png"
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\PRD001\\PRD001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\wefefw\\wefefw_638342595462665132.png",
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PRD005\\PRD005_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/wefefw/wefefw_638342595462665132.png",
+      "RelativePath": "Upload/product/PRD005/PRD005_1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -133,7 +133,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\wefefw\\wefefw_638342595462665132.png"
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\PRD005\\PRD005_1.jpg"
     }
   ]
 }
