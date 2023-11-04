@@ -16,10 +16,14 @@ namespace tech_project_back_end.Data
             modelBuilder.Entity<Supplier>().HasKey(c => c.supplier_id);
             modelBuilder.Entity<Product>().HasKey(c => c.product_id);
             modelBuilder.Entity<Image>().HasKey(c => c.image_id);
+            modelBuilder.Entity<Cart>().HasKey(c => new { c.user_id, c.product_id });
+            modelBuilder.Entity<Product_Category>()
+        .HasKey(pc => new { pc.ProductId, pc.CategoryId });
+
         }
 
 
-       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Other configurations...
             optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
@@ -30,6 +34,10 @@ namespace tech_project_back_end.Data
         public DbSet<User> User { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Image> Image { get; set; }
+        public DbSet<Product_Category> Product_Category { get; set; }
+
+        public DbSet<Cart> Cart{ get; set; }
+
 
     }
 }

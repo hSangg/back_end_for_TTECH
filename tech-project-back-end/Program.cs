@@ -66,11 +66,12 @@ builder.Services.AddAuthentication().AddJwtBearer(
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{i
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
+
 
 app.UseCors("AllowSpecificOrigin");
 
