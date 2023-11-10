@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace tech_project_back_end.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CartController : ControllerBase
@@ -22,7 +24,7 @@ namespace tech_project_back_end.Controllers
         [HttpPost("GetUserTotalProduct")]
         public IActionResult GetUserTotalProduct([FromBody] string user_id) {
         
-            var totalProduct = _appDbContext.Cart.Where(c => c.user_id == user_id).Count();
+            var totalProduct = _appDbContext.Cart.Where(c => c.user_id == user_id).Select(x => x.product_id).Distinct().Count();
             return Ok(totalProduct);
         }
 
@@ -63,6 +65,80 @@ namespace tech_project_back_end.Controllers
 
             return Ok(productsInCart);
         }
+        [HttpPut("UpdateQuantity")]
+        public IActionResult UpdateQuantity([FromBody] Cart cart)
+        {
+            var userId = cart.user_id; // replace this with your own method for getting the user ID
+            var cartItem = _appDbContext.Set<Cart>()
+                .FirstOrDefault(c => c.user_id == userId && c.product_id == cart.product_id);
+            if (cartItem == null)
+            {
+                return NotFound($"Cart item with product ID {cart.product_id} not found");
+            }
+
+            if (cart.quantity == 0)
+            {
+                _appDbContext.Set<Cart>().Remove(cartItem);
+            }
+            else
+            {
+                cartItem.quantity = cart.quantity;
+                _appDbContext.Set<Cart>().Update(cartItem);
+            }
+
+            _appDbContext.SaveChanges();
+            return Ok();
+        }
+
+        [HttpDelete("EmptyCart")]
+        public IActionResult EmptyCart(string user_id)
+        {
+            var cartItems = _appDbContext.Set<Cart>().Where(c => c.user_id == user_id);
+            _appDbContext.Set<Cart>().RemoveRange(cartItems);
+            _appDbContext.SaveChanges();
+            return Ok();
+        }
+
+
+        [HttpPost("AddToCart")]
+        public IActionResult AddToCart([FromBody] Cart cart) {
+
+            var userId = cart.user_id; // replace this with your own method for getting the user ID
+            var product = _appDbContext.Set<Product>().FirstOrDefault(p => p.product_id == cart.product_id);
+            if (product == null)
+            {
+                return NotFound($"Product with ID {cart.product_id} not found");
+            }
+
+            var existingCartItem = _appDbContext.Set<Cart>()
+                .FirstOrDefault(c => c.user_id == userId && c.product_id == cart.product_id);
+            if (existingCartItem != null)
+            {
+                existingCartItem.quantity += cart.quantity;
+                _appDbContext.Set<Cart>().Update(existingCartItem);
+            }
+            else
+            {
+                var cartItem = new Cart
+                {
+                    user_id = userId,
+                    product_id = cart.product_id,
+                    quantity = cart.quantity
+                };
+                _appDbContext.Set<Cart>().Add(cartItem);
+            }
+
+            _appDbContext.SaveChanges();
+            return Ok(true);
+
+
+        }
+
+
+
+
+
+
 
     }
 

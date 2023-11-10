@@ -17,6 +17,26 @@
       "PackagePath": "staticwebassets\\Upload\\product\\AKG001\\AKG001_1.jpg"
     },
     {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB001\\AKKB001_1.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\AKKB001\\AKKB001_1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB002\\AKKB002_1.jpeg",
+      "PackagePath": "staticwebassets\\Upload\\product\\AKKB002\\AKKB002_1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB003\\AKKB003_1.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\AKKB003\\AKKB003_1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB004\\AKKB004_1.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\AKKB004\\AKKB004_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01202311061151573921.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01202311061151573921.jpg"
+    },
+    {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ANKI001\\ANKI001_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\ANKI001\\ANKI001_1.jpg"
     },
@@ -51,6 +71,10 @@
     {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEL001\\DEL001_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\DEL001\\DEL001_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DYSA001\\DYSA001_1.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\DYSA001\\DYSA001_1.jpg"
     },
     {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\EFG123\\EFG123_1.jpeg",
@@ -93,6 +117,10 @@
       "PackagePath": "staticwebassets\\Upload\\product\\IPAD001\\IPAD001_3.jpg"
     },
     {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500\\IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500202311061151573384.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500\\IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500202311061151573384.jpg"
+    },
+    {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\JBL001\\JBL001_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\JBL001\\JBL001_1.jpg"
     },
@@ -113,6 +141,10 @@
       "PackagePath": "staticwebassets\\Upload\\product\\LG001\\LG001_1.jpg"
     },
     {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\LGWA001\\LGWA001_1.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\LGWA001\\LGWA001_1.webp"
+    },
+    {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\LOGI001\\LOGI001_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\LOGI001\\LOGI001_1.jpg"
     },
@@ -131,6 +163,18 @@
     {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\NOP012\\NOP012_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\NOP012\\NOP012_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PANA001\\PANA001_1.jpeg",
+      "PackagePath": "staticwebassets\\Upload\\product\\PANA001\\PANA001_1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PHLA001\\PHLA001_1.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\PHLA001\\PHLA001_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001\\PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001202311061151573683.png",
+      "PackagePath": "staticwebassets\\Upload\\product\\PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001\\PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001202311061151573683.png"
     },
     {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PQR678\\PQR678_1.jpg",
@@ -161,8 +205,16 @@
       "PackagePath": "staticwebassets\\Upload\\product\\SAMS002\\SAMS002_1.jpg"
     },
     {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SBPB001SSNGWRLSCHRGSTND2001QI0012500\\SBPB001SSNGWRLSCHRGSTND2001QI0012500202311061151563143.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\SBPB001SSNGWRLSCHRGSTND2001QI0012500\\SBPB001SSNGWRLSCHRGSTND2001QI0012500202311061151563143.webp"
+    },
+    {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SHP001\\SHP001_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\SHP001\\SHP001_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SMGA001\\SMGA001_1.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\SMGA001\\SMGA001_1.jpg"
     },
     {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SNY001\\SNY001_1.jpg",
@@ -189,6 +241,10 @@
       "PackagePath": "staticwebassets\\Upload\\product\\TUV678\\TUV678_1.jpg"
     },
     {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\VRHL001VHFLTLE2SFASHIONVRHDRST2001\\VRHL001VHFLTLE2SFASHIONVRHDRST2001202311061151573803.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\VRHL001VHFLTLE2SFASHIONVRHDRST2001\\VRHL001VHFLTLE2SFASHIONVRHDRST2001202311061151573803.webp"
+    },
+    {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\VWX234\\VWX234_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\VWX234\\VWX234_1.jpg"
     },
@@ -207,6 +263,14 @@
     {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ZAB234\\ZAB234_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\ZAB234\\ZAB234_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48_638351658479337141.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48_638351658479337141.webp"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d6988096-e126-413d-8be5-44d8c34a3b1f\\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\d6988096-e126-413d-8be5-44d8c34a3b1f\\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.tech-project-back-end.props",

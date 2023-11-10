@@ -84,6 +84,27 @@ namespace tech_project_back_end.Controllers
             return Ok(new { user = isExitUser, token });
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Update([FromBody] User updatedUser)
+        {
+            var user = _appDBContext.User.FirstOrDefault(c => c.user_id == updatedUser.user_id);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            // Update the values in the existing user record with the new values
+            user.name = updatedUser.name;
+            user.email = updatedUser.email;
+            user.phone = updatedUser.phone;
+
+            // Save changes to the database
+            _appDBContext.SaveChanges();
+
+            // Return the updated user and a message indicating success
+            return Ok(new { user, message = "User updated successfully" });
+        }
+
 
 
         private string CreateToken(User user)

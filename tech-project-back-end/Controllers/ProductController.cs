@@ -23,11 +23,12 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost("AddProduct")]
-        public async Task<IActionResult> AddProduct(IFormFile formFile, string product_id, int quantity_pr, string name_serial, string detail, string product_name, string supplier_id, int price, int guarantee_period)
+        public async Task<IActionResult> AddProduct(IFormFile formFile, int quantity_pr, string name_serial, string detail, string product_name, string supplier_id, ulong price, int guarantee_period)
         {
             try
             {
-                string imageUrl = await AddImage(formFile, product_id);
+                var product_id = Guid.NewGuid().ToString()[..36];
+
 
                 var product = new Product
                 {
@@ -41,9 +42,14 @@ namespace tech_project_back_end.Controllers
                     name_serial = name_serial,
                 };
 
+
                 _appDbContext.Product.Add(product);
 
+
                 await _appDbContext.SaveChangesAsync();
+
+                string imageUrl = await AddImage(formFile, product_id);
+
 
                 return Ok(new { product, imageUrl });
             }
@@ -107,14 +113,50 @@ namespace tech_project_back_end.Controllers
         [HttpPost("GetProductBySearchQuery")]
         public IActionResult GetProductBySearchQuery([FromBody] string searchQuery)
         {
-            var products = _appDbContext.Product
-                    .Where(p => p.name_pr.ToLower().Contains(searchQuery.ToLower()) ||
-                    p.name_serial.ToLower().Contains(searchQuery.ToLower()) || p.detail.ToLower().Contains(searchQuery.ToLower()))
-                    .Take(6).ToList();
+            var searchKeywords = searchQuery.ToLower().Split(' ');
 
+            var products = _appDbContext.Product
+    .Join(_appDbContext.Supplier,
+        p => p.supplier_id,
+        s => s.supplier_id,
+        (p, s) => new
+        {
+            Product = new
+            {
+                product_id = p.product_id,
+                name_pr = p.name_pr,
+                name_serial = p.name_serial,
+                detail = p.detail,
+                price = p.price,
+                quantity_pr = p.quantity_pr,
+                guarantee_period = p.guarantee_period
+            },
+            Category = _appDbContext.Product_Category
+                .Where(pc => pc.ProductId == p.product_id)
+                .Join(_appDbContext.Category,
+                    pc => pc.CategoryId,
+                    c => c.category_id,
+                    (pc, c) => new { c.category_id, c.category_name })
+                .SingleOrDefault(),
+            Supplier = new { s.supplier_id, s.supplier_name },
+            Image = _appDbContext.Image
+                .Where(i => i.product_id == p.product_id)
+                .FirstOrDefault()
+        })
+    .AsEnumerable() // Perform client-side evaluation from this point
+    .Where(x =>
+        searchKeywords.Any(keyword =>
+            x.Product.name_pr.ToLower().Contains(keyword.ToLower()) ||
+            x.Product.name_serial.ToLower().Contains(keyword.ToLower()) ||
+            x.Product.detail.ToLower().Contains(keyword.ToLower()) ||
+            x.Category?.category_name.ToLower().Contains(keyword.ToLower()) == true
+        )
+    )
+    .Distinct().Take(6).ToList();
 
             return Ok(products);
         }
+
 
         [HttpPost("GetProduct")]
         public IActionResult GetProduct([FromBody] Filter filter)
@@ -156,20 +198,24 @@ namespace tech_project_back_end.Controllers
             // Filter by minimum and maximum price
             if (filter.MinPrice.HasValue)
             {
-                productList = productList.Where(p => p.Product.price >= filter.MinPrice.Value);
+                productList = productList.Where(p => p.Product.price >=  (ulong)filter.MinPrice.Value);
             }
 
             if (!string.IsNullOrEmpty(filter.SearchKey))
             {
-                productList = productList.Where(p =>
-                    p.Product.name_pr.ToLower().Contains(filter.SearchKey.ToLower()) ||
-                    p.Product.name_serial.ToLower().Contains(filter.SearchKey.ToLower())
+                productList = productList
+                    .Where(x =>
+                        x.Product.name_pr.ToLower().Contains(filter.SearchKey.ToLower()) ||
+                        x.Product.name_serial.ToLower().Contains(filter.SearchKey.ToLower()) ||
+                        x.Product.detail.ToLower().Contains(filter.SearchKey.ToLower()) ||
+                        x.Category.category_name.ToLower().Contains(filter.SearchKey.ToLower()) == true
+                    
                 );
             }
 
             if (filter.MaxPrice.HasValue)
             {
-                productList = productList.Where(p => p.Product.price <= filter.MaxPrice.Value);
+                productList = productList.Where(p => p.Product.price <= (ulong)filter.MaxPrice.Value);
             }
 
             // Filter by supplier name
@@ -286,7 +332,6 @@ namespace tech_project_back_end.Controllers
             {
             }
             return Ok(Imageurl);
-
         }
 
         [HttpPost("UpaloadImage")]
@@ -303,7 +348,7 @@ namespace tech_project_back_end.Controllers
                 }
 
                 string fileExtension = Path.GetExtension(formFile.FileName);
-                string imageName = $"{productId}_1{fileExtension}";
+                string imageName = $"{productId}{DateTimeOffset.Now:yyyyMMddHHmmssffff}{fileExtension}";
                 string imagePath = Path.Combine(filePath, imageName);
 
                 using (FileStream stream = System.IO.File.Create(imagePath))

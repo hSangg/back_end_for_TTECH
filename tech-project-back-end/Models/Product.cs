@@ -26,7 +26,7 @@ namespace tech_project_back_end.Models
 
            
             [Column("price", TypeName = "int(11)")]
-            public int price { get; set; }
+            public ulong price { get; set; }
 
             
             [Column("quantity_pr", TypeName = "int(11)")]
