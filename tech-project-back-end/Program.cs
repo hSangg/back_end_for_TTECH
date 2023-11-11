@@ -56,7 +56,7 @@ builder.Services.AddAuthentication().AddJwtBearer(
             ValidateIssuer = false,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                 //  builder.Configuration.GetSection("Authentication:Schemes:Bearer:SigningKeys:0:Value").Value!))
-                 builder.Configuration.GetSection("AppSettins:Token").Value!))
+                 builder.Configuration.GetSection("AppSettings:Token").Value!))
 
 
         };
