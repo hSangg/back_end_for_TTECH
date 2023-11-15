@@ -20,6 +20,7 @@ namespace tech_project_back_end.Controllers
         public IActionResult AddNewOrder(Order order)
         {
             _appDbContext.Order.Add(order);
+            order.CreateOrderAt = DateTime.Now;
             _appDbContext.SaveChanges();
             return Ok(order);
 
