@@ -23,45 +23,27 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost("AddProduct")]
-        public async Task<IActionResult> AddProduct(IFormFile formFile, int quantity_pr, string name_serial, string detail, string product_name, string supplier_id, ulong price, int guarantee_period)
+        public async Task<IActionResult> AddProduct(Product product)
         {
             try
             {
-                var product_id = Guid.NewGuid().ToString()[..36];
-
-
-                var product = new Product
-                {
-                    product_id = product_id,
-                    name_pr = product_name,
-                    supplier_id = supplier_id,
-                    price = price,
-                    guarantee_period = guarantee_period,
-                    detail = detail,
-                    quantity_pr = quantity_pr,
-                    name_serial = name_serial,
-                };
-
-
                 _appDbContext.Product.Add(product);
 
 
                 await _appDbContext.SaveChangesAsync();
 
-                string imageUrl = await AddImage(formFile, product_id);
 
-
-                return Ok(new { product, imageUrl });
+                return Ok(new { product });
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return BadRequest("Failed to upload image.");
+                return BadRequest("Failed to add product.");
             }
         }
 
-        [HttpPost("getProductById")]
-        public IActionResult GetProductById([FromBody] string id)
+        [HttpGet("getProductById")]
+        public IActionResult GetProductById(string id)
         {
             try
             {
@@ -193,8 +175,6 @@ namespace tech_project_back_end.Controllers
             });
 
 
-
-
             // Filter by minimum and maximum price
             if (filter.MinPrice.HasValue)
             {
@@ -281,19 +261,40 @@ namespace tech_project_back_end.Controllers
             return Ok(response);
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProductById(string product_id)
+        {
+            try {
+                var result = await DeleteImageFolder(product_id);
+                var productsToDelete = _appDbContext.Product.Where(p => p.product_id == product_id);
+                _appDbContext.Product.RemoveRange(productsToDelete);
+                var productsImageToDelete = _appDbContext.Image.Where(i => i.product_id == product_id);
+                _appDbContext.Image.RemoveRange(productsImageToDelete);
+                _appDbContext.SaveChanges();
+
+                return Ok("Add oke");
 
 
+            } catch(Exception ex) {
+                return BadRequest("Failed to upload image.");
+            }
 
+        }
 
-
-        [HttpPut("AddMoreImageForProduct")]
-        public async Task<IActionResult> AddMoreImageForProduct(IFormFile formFile, string product_id)
+        [HttpPost("AddMoreImageForProduct")]
+        public async Task<IActionResult> AddMoreImageForProduct(IFormFileCollection formFileCollection, string product_id)
         {
             try
             {
-                string imageUrl = await AddImage(formFile, product_id);
+                    foreach (var formFile in formFileCollection)
+                {
+                
+                        string imageUrl = await AddImage(formFile, product_id);
 
-                return Ok(imageUrl);
+
+                }
+              return Ok("Add oke");
+
             }
             catch (Exception ex)
             {
@@ -302,36 +303,13 @@ namespace tech_project_back_end.Controllers
             }
         }
 
-        [HttpPost("GetAllImageOfProduct")]
-        public async Task<IActionResult> GetAllImageOfProduct([FromBody] string product_id)
+        [HttpGet("GetAllImageOfProduct")]
+        public IActionResult GetAllImageOfProduct(string product_id)
         {
-            List<string> Imageurl = new List<string>();
-            string hosturl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
-            try
-            {
-                string Filepath = GetFilePath(product_id);
 
-                if (System.IO.Directory.Exists(Filepath))
-                {
-                    DirectoryInfo directoryInfo = new DirectoryInfo(Filepath);
-                    FileInfo[] fileInfos = directoryInfo.GetFiles();
-                    foreach (FileInfo fileInfo in fileInfos)
-                    {
-                        string filename = fileInfo.Name;
-                        string imagepath = Filepath + "\\" + filename;
-                        if (System.IO.File.Exists(imagepath))
-                        {
-                            string _Imageurl = hosturl + "/Upload/product/" + product_id + "/" + filename;
-                            Imageurl.Add(_Imageurl);
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-            }
-            return Ok(Imageurl);
+            var result = _appDbContext.Image.Where(i => i.product_id == product_id);
+            return Ok(result);
+            
         }
 
         [HttpPost("UpaloadImage")]
@@ -372,6 +350,59 @@ namespace tech_project_back_end.Controllers
             return "oke";
         }
 
+        [HttpDelete("DeleteImageOfProduct")]
+        public async Task<IActionResult> DeleteImageOfProduct(string product_id, string file_name)
+        {
+            var imageExit = _appDbContext.Image.Where(i => i.product_id == product_id && i.file_name == file_name  );
+            _appDbContext.RemoveRange(imageExit);
+            _appDbContext.SaveChanges();
+            DeleteImage(product_id, file_name);
+
+            return Ok("");
+
+        }
+
+        [HttpPut("UpdateProduct")]
+        public async Task<IActionResult> UpdateProduct([FromBody] Product updatedProduct)
+        {
+            if (updatedProduct == null)
+            {
+                return BadRequest("Invalid request data");
+            }
+
+            try
+            {
+                // Check if the specified product exists
+                var existingProduct = await _appDbContext.Product
+                    .FirstOrDefaultAsync(p => p.product_id == updatedProduct.product_id);
+
+                if (existingProduct == null)
+                {
+                    return NotFound("Product not found");
+                }
+
+                // Update the existing product
+                existingProduct.name_pr = updatedProduct.name_pr;
+                existingProduct.name_serial = updatedProduct.name_serial;
+                existingProduct.detail = updatedProduct.detail;
+                existingProduct.price = updatedProduct.price;
+                existingProduct.quantity_pr = updatedProduct.quantity_pr;
+                existingProduct.guarantee_period = updatedProduct.guarantee_period;
+                existingProduct.supplier_id = updatedProduct.supplier_id;
+
+                await _appDbContext.SaveChangesAsync();
+
+                return Ok("Product updated successfully");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return StatusCode(409, "Concurrency conflict");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
 
 
         [NonAction]
@@ -401,7 +432,9 @@ namespace tech_project_back_end.Controllers
             {
                 image_id = Guid.NewGuid().ToString()[..36],
                 product_id = product_id,
-                image_href = imageUrl
+                image_href = imageUrl,
+                file_name = fileName,
+                
             });
 
             await _appDbContext.SaveChangesAsync();
@@ -414,6 +447,44 @@ namespace tech_project_back_end.Controllers
         private string GetFilePath(string product_id)
         {
             return this.eviroment.WebRootPath + "\\Upload\\product\\" + product_id;
+        }
+
+        [NonAction]
+        public async Task<string> DeleteImageFolder(string product_id)
+        {
+            string filePath = GetFilePath(product_id);
+
+            if (System.IO.Directory.Exists(filePath))
+            {
+                System.IO.Directory.Delete(filePath, true);
+            }
+
+            return "oke";
+        }
+
+        [NonAction]
+        public void DeleteImage(string product_id, string file_name)
+        {
+            string filePath = GetFilePath(product_id);
+            string imagePath = Path.Combine(filePath, file_name);
+
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+        }
+
+        [HttpDelete("RemoveImageFolder")]
+        public async Task<IActionResult> RemoveImageFolder(string product_id)
+        {
+            string filePath = GetFilePath(product_id);
+
+            if (System.IO.Directory.Exists(filePath))
+            {
+                System.IO.Directory.Delete(filePath, true);
+            }
+
+            return Ok("oke");
         }
 
     }

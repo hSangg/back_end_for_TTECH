@@ -16,5 +16,8 @@ namespace tech_project_back_end.Models
         [Column("image_href", TypeName = "varchar(250)")]
         public string image_href { get; set; }
 
+        [Column("file_name", TypeName = "varchar(250)")]
+        public string file_name { get; set; }
+
     }
 }

@@ -1,6 +1,26 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\36f6c797-f7f6-45c5-9c85-8c9c78ad8114\\36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356286304325928.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\36f6c797-f7f6-45c5-9c85-8c9c78ad8114\\36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356286304325928.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\36f6c797-f7f6-45c5-9c85-8c9c78ad8114\\36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356287179701775.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\36f6c797-f7f6-45c5-9c85-8c9c78ad8114\\36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356287179701775.webp"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\3e5d493a-2c14-482c-bab4-3513141d5ba4\\3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg",
+      "PackagePath": "staticwebassets\\Upload\\product\\3e5d493a-2c14-482c-bab4-3513141d5ba4\\3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\573e78ba-2cfa-4bac-b6a4-c10dc67d6007\\573e78ba-2cfa-4bac-b6a4-c10dc67d6007_638355677595152972.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\573e78ba-2cfa-4bac-b6a4-c10dc67d6007\\573e78ba-2cfa-4bac-b6a4-c10dc67d6007_638355677595152972.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\609bbadf-409f-48e0-9fff-4e2bea4b13f0\\609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\609bbadf-409f-48e0-9fff-4e2bea4b13f0\\609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg"
+    },
+    {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ABC123\\ABC123_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\ABC123\\ABC123_1.jpg"
     },
@@ -265,8 +285,24 @@
       "PackagePath": "staticwebassets\\Upload\\product\\ZAB234\\ZAB234_1.jpg"
     },
     {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\a0e4c7e6-df31-4779-8cfc-db3ba77771f5\\a0e4c7e6-df31-4779-8cfc-db3ba77771f5_638355677039693120.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\a0e4c7e6-df31-4779-8cfc-db3ba77771f5\\a0e4c7e6-df31-4779-8cfc-db3ba77771f5_638355677039693120.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ab30c9de-d763-40e4-a525-06bc3096bdcb\\ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg",
+      "PackagePath": "staticwebassets\\Upload\\product\\ab30c9de-d763-40e4-a525-06bc3096bdcb\\ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\c92088b2-44b0-4063-a74c-ff1947af92ab\\c92088b2-44b0-4063-a74c-ff1947af92ab_638355594470780641.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\c92088b2-44b0-4063-a74c-ff1947af92ab\\c92088b2-44b0-4063-a74c-ff1947af92ab_638355594470780641.webp"
+    },
+    {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48_638351658479337141.webp",
       "PackagePath": "staticwebassets\\Upload\\product\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48_638351658479337141.webp"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a\\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a_638355954881924417.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a\\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a_638355954881924417.webp"
     },
     {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d6988096-e126-413d-8be5-44d8c34a3b1f\\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp",

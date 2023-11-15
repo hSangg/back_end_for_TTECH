@@ -1,5 +1,117 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\36f6c797-f7f6-45c5-9c85-8c9c78ad8114\36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356286304325928.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/36f6c797-f7f6-45c5-9c85-8c9c78ad8114/36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356286304325928.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\36f6c797-f7f6-45c5-9c85-8c9c78ad8114\36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356286304325928.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\36f6c797-f7f6-45c5-9c85-8c9c78ad8114\36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356287179701775.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/36f6c797-f7f6-45c5-9c85-8c9c78ad8114/36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356287179701775.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\36f6c797-f7f6-45c5-9c85-8c9c78ad8114\36f6c797-f7f6-45c5-9c85-8c9c78ad8114_638356287179701775.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\3e5d493a-2c14-482c-bab4-3513141d5ba4\3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/3e5d493a-2c14-482c-bab4-3513141d5ba4/3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\3e5d493a-2c14-482c-bab4-3513141d5ba4\3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\573e78ba-2cfa-4bac-b6a4-c10dc67d6007\573e78ba-2cfa-4bac-b6a4-c10dc67d6007_638355677595152972.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/573e78ba-2cfa-4bac-b6a4-c10dc67d6007/573e78ba-2cfa-4bac-b6a4-c10dc67d6007_638355677595152972.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\573e78ba-2cfa-4bac-b6a4-c10dc67d6007\573e78ba-2cfa-4bac-b6a4-c10dc67d6007_638355677595152972.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\609bbadf-409f-48e0-9fff-4e2bea4b13f0\609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/609bbadf-409f-48e0-9fff-4e2bea4b13f0/609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\609bbadf-409f-48e0-9fff-4e2bea4b13f0\609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\a0e4c7e6-df31-4779-8cfc-db3ba77771f5\a0e4c7e6-df31-4779-8cfc-db3ba77771f5_638355677039693120.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/a0e4c7e6-df31-4779-8cfc-db3ba77771f5/a0e4c7e6-df31-4779-8cfc-db3ba77771f5_638355677039693120.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\a0e4c7e6-df31-4779-8cfc-db3ba77771f5\a0e4c7e6-df31-4779-8cfc-db3ba77771f5_638355677039693120.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\ab30c9de-d763-40e4-a525-06bc3096bdcb\ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/ab30c9de-d763-40e4-a525-06bc3096bdcb/ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\ab30c9de-d763-40e4-a525-06bc3096bdcb\ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\ABC123\ABC123_1.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>tech-project-back-end</SourceId>
@@ -224,6 +336,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\BELK001\BELK001_1.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\c92088b2-44b0-4063-a74c-ff1947af92ab\c92088b2-44b0-4063-a74c-ff1947af92ab_638355594470780641.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/c92088b2-44b0-4063-a74c-ff1947af92ab/c92088b2-44b0-4063-a74c-ff1947af92ab_638355594470780641.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\c92088b2-44b0-4063-a74c-ff1947af92ab\c92088b2-44b0-4063-a74c-ff1947af92ab_638355594470780641.webp))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\CDE567\CDE567_1.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>tech-project-back-end</SourceId>
@@ -255,6 +383,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48_638351658479337141.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a_638355954881924417.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/d0a3fc62-aa4d-456d-835e-371bdbe9dc8a/d0a3fc62-aa4d-456d-835e-371bdbe9dc8a_638355954881924417.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a_638355954881924417.webp))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\d6988096-e126-413d-8be5-44d8c34a3b1f\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp))">
       <SourceType>Package</SourceType>
