@@ -31,6 +31,26 @@ namespace tech_project_back_end.Controllers
         [HttpPost("register")]
         public IActionResult Register(User user)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Kiểm tra email đã tồn tại hay chưa
+            if (_appDBContext.User.Any(u => u.email == user.email))
+            {
+                ModelState.AddModelError("email", "Email already exists.");
+                return BadRequest(ModelState);
+            }
+
+            // Kiểm tra số điện thoại đã tồn tại hay chưa
+            if (_appDBContext.User.Any(u => u.phone == user.phone))
+            {
+                ModelState.AddModelError("phone", "Phone number already exists.");
+                return BadRequest(ModelState);
+            }
+
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
             _appDBContext.User.Add(user);
             _appDBContext.SaveChanges();
@@ -57,6 +77,11 @@ namespace tech_project_back_end.Controllers
         [HttpPost("login")]
         public IActionResult Login(UserLogin user)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var isExitUser = _appDBContext.User.FirstOrDefault(c => c.phone == user.phone);
             if (isExitUser == null) { return NotFound("User not found"); }
 
