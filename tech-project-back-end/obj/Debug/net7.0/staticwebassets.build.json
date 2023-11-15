@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wnySHqE69vWD0afbzOLhnUvRl1SiI9sLNWQ87gptkLs=",
+  "Hash": "C+1PilFBsTCuRcUUCGvFcOCulKfqpVDHtaKinirnV5A=",
   "Source": "tech-project-back-end",
   "BasePath": "_content/tech-project-back-end",
   "Mode": "Default",
@@ -10,102 +10,17 @@
     {
       "Name": "tech-project-back-end\\wwwroot",
       "Source": "tech-project-back-end",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\3e5d493a-2c14-482c-bab4-3513141d5ba4\\3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ABC123\\ABC123_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/3e5d493a-2c14-482c-bab4-3513141d5ba4/3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\3e5d493a-2c14-482c-bab4-3513141d5ba4\\3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\573e78ba-2cfa-4bac-b6a4-c10dc67d6007\\573e78ba-2cfa-4bac-b6a4-c10dc67d6007_638355677595152972.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/573e78ba-2cfa-4bac-b6a4-c10dc67d6007/573e78ba-2cfa-4bac-b6a4-c10dc67d6007_638355677595152972.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\573e78ba-2cfa-4bac-b6a4-c10dc67d6007\\573e78ba-2cfa-4bac-b6a4-c10dc67d6007_638355677595152972.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\609bbadf-409f-48e0-9fff-4e2bea4b13f0\\609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/609bbadf-409f-48e0-9fff-4e2bea4b13f0/609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\609bbadf-409f-48e0-9fff-4e2bea4b13f0\\609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\a0e4c7e6-df31-4779-8cfc-db3ba77771f5\\a0e4c7e6-df31-4779-8cfc-db3ba77771f5_638355677039693120.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/a0e4c7e6-df31-4779-8cfc-db3ba77771f5/a0e4c7e6-df31-4779-8cfc-db3ba77771f5_638355677039693120.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\a0e4c7e6-df31-4779-8cfc-db3ba77771f5\\a0e4c7e6-df31-4779-8cfc-db3ba77771f5_638355677039693120.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ab30c9de-d763-40e4-a525-06bc3096bdcb\\ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/ab30c9de-d763-40e4-a525-06bc3096bdcb/ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\ab30c9de-d763-40e4-a525-06bc3096bdcb\\ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ABC123\\ABC123_1.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/ABC123/ABC123_1.jpg",
       "AssetKind": "All",
@@ -119,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\ABC123\\ABC123_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ABC123\\ABC123_2.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ABC123\\ABC123_2.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/ABC123/ABC123_2.jpg",
       "AssetKind": "All",
@@ -136,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\ABC123\\ABC123_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ACER001\\ACER001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ACER001\\ACER001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/ACER001/ACER001_1.jpg",
       "AssetKind": "All",
@@ -153,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\ACER001\\ACER001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKG001\\AKG001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKG001\\AKG001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/AKG001/AKG001_1.jpg",
       "AssetKind": "All",
@@ -170,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\AKG001\\AKG001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB001\\AKKB001_1.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB001\\AKKB001_1.webp",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/AKKB001/AKKB001_1.webp",
       "AssetKind": "All",
@@ -187,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\AKKB001\\AKKB001_1.webp"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB002\\AKKB002_1.jpeg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB002\\AKKB002_1.jpeg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/AKKB002/AKKB002_1.jpeg",
       "AssetKind": "All",
@@ -204,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\AKKB002\\AKKB002_1.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB003\\AKKB003_1.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB003\\AKKB003_1.webp",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/AKKB003/AKKB003_1.webp",
       "AssetKind": "All",
@@ -221,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\AKKB003\\AKKB003_1.webp"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB004\\AKKB004_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AKKB004\\AKKB004_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/AKKB004/AKKB004_1.jpg",
       "AssetKind": "All",
@@ -238,27 +153,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\AKKB004\\AKKB004_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01202311061151573921.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ANKI001\\ANKI001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01/AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01202311061151573921.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01202311061151573921.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ANKI001\\ANKI001_1.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/ANKI001/ANKI001_1.jpg",
       "AssetKind": "All",
@@ -272,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\ANKI001\\ANKI001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ASUS001\\ASUS001_1.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ASUS001\\ASUS001_1.webp",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/ASUS001/ASUS001_1.webp",
       "AssetKind": "All",
@@ -289,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\ASUS001\\ASUS001_1.webp"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ASUS002\\ASUS002_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ASUS002\\ASUS002_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/ASUS002/ASUS002_1.jpg",
       "AssetKind": "All",
@@ -306,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\ASUS002\\ASUS002_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\BCD890\\BCD890_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\BCD890\\BCD890_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/BCD890/BCD890_1.jpg",
       "AssetKind": "All",
@@ -323,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\BCD890\\BCD890_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\BELK001\\BELK001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\BELK001\\BELK001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/BELK001/BELK001_1.jpg",
       "AssetKind": "All",
@@ -340,27 +238,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\BELK001\\BELK001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\c92088b2-44b0-4063-a74c-ff1947af92ab\\c92088b2-44b0-4063-a74c-ff1947af92ab_638355594470780641.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\CDE567\\CDE567_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/c92088b2-44b0-4063-a74c-ff1947af92ab/c92088b2-44b0-4063-a74c-ff1947af92ab_638355594470780641.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\c92088b2-44b0-4063-a74c-ff1947af92ab\\c92088b2-44b0-4063-a74c-ff1947af92ab_638355594470780641.webp"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\CDE567\\CDE567_1.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/CDE567/CDE567_1.jpg",
       "AssetKind": "All",
@@ -374,61 +255,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\CDE567\\CDE567_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48_638351658479337141.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEF456\\DEF456_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48/d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48_638351658479337141.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48\\d03fe02a-c8f4-499b-8c8e-7bf23b7e7e48_638351658479337141.webp"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a\\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a_638355954881924417.webp",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/d0a3fc62-aa4d-456d-835e-371bdbe9dc8a/d0a3fc62-aa4d-456d-835e-371bdbe9dc8a_638355954881924417.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a\\d0a3fc62-aa4d-456d-835e-371bdbe9dc8a_638355954881924417.webp"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d6988096-e126-413d-8be5-44d8c34a3b1f\\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/d6988096-e126-413d-8be5-44d8c34a3b1f/d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\d6988096-e126-413d-8be5-44d8c34a3b1f\\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEF456\\DEF456_1.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/DEF456/DEF456_1.jpg",
       "AssetKind": "All",
@@ -442,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\DEF456\\DEF456_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEF456\\DEF456_2.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEF456\\DEF456_2.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/DEF456/DEF456_2.jpg",
       "AssetKind": "All",
@@ -459,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\DEF456\\DEF456_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEL001\\DEL001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DEL001\\DEL001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/DEL001/DEL001_1.jpg",
       "AssetKind": "All",
@@ -476,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\DEL001\\DEL001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DYSA001\\DYSA001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\DYSA001\\DYSA001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/DYSA001/DYSA001_1.jpg",
       "AssetKind": "All",
@@ -493,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\DYSA001\\DYSA001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\EFG123\\EFG123_1.jpeg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\EFG123\\EFG123_1.jpeg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/EFG123/EFG123_1.jpeg",
       "AssetKind": "All",
@@ -510,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\EFG123\\EFG123_1.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\FGH890\\FGH890_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\FGH890\\FGH890_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/FGH890/FGH890_1.jpg",
       "AssetKind": "All",
@@ -527,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\FGH890\\FGH890_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\GHI789\\GHI789_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\GHI789\\GHI789_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/GHI789/GHI789_1.jpg",
       "AssetKind": "All",
@@ -544,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\GHI789\\GHI789_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\HIJ456\\HIJ456_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\HIJ456\\HIJ456_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/HIJ456/HIJ456_1.jpg",
       "AssetKind": "All",
@@ -561,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\HIJ456\\HIJ456_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\HP001\\HP001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\HP001\\HP001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/HP001/HP001_1.jpg",
       "AssetKind": "All",
@@ -578,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\HP001\\HP001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\HUAWEI001\\HUAWEI001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\HUAWEI001\\HUAWEI001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/HUAWEI001/HUAWEI001_1.jpg",
       "AssetKind": "All",
@@ -595,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\HUAWEI001\\HUAWEI001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\HYPE001\\HYPE001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\HYPE001\\HYPE001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/HYPE001/HYPE001_1.jpg",
       "AssetKind": "All",
@@ -612,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\HYPE001\\HYPE001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\IPAD001\\IPAD001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\IPAD001\\IPAD001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/IPAD001/IPAD001_1.jpg",
       "AssetKind": "All",
@@ -629,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\IPAD001\\IPAD001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\IPAD001\\IPAD001_2.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\IPAD001\\IPAD001_2.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/IPAD001/IPAD001_2.jpg",
       "AssetKind": "All",
@@ -646,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\IPAD001\\IPAD001_2.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\IPAD001\\IPAD001_3.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\IPAD001\\IPAD001_3.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/IPAD001/IPAD001_3.jpg",
       "AssetKind": "All",
@@ -663,27 +493,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\IPAD001\\IPAD001_3.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500\\IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500202311061151573384.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\JBL001\\JBL001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500/IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500202311061151573384.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500\\IXPC001IXPNDUSBDRVFRIPAD1001LGHT0012500202311061151573384.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\JBL001\\JBL001_1.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/JBL001/JBL001_1.jpg",
       "AssetKind": "All",
@@ -697,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\JBL001\\JBL001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\JBL002\\JBL002_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\JBL002\\JBL002_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/JBL002/JBL002_1.jpg",
       "AssetKind": "All",
@@ -714,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\JBL002\\JBL002_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\JKL012\\JKL012_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\JKL012\\JKL012_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/JKL012/JKL012_1.jpg",
       "AssetKind": "All",
@@ -731,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\JKL012\\JKL012_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\KLM789\\KLM789_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\KLM789\\KLM789_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/KLM789/KLM789_1.jpg",
       "AssetKind": "All",
@@ -748,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\KLM789\\KLM789_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\LG001\\LG001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\LG001\\LG001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/LG001/LG001_1.jpg",
       "AssetKind": "All",
@@ -765,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\LG001\\LG001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\LGWA001\\LGWA001_1.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\LGWA001\\LGWA001_1.webp",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/LGWA001/LGWA001_1.webp",
       "AssetKind": "All",
@@ -782,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\LGWA001\\LGWA001_1.webp"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\LOGI001\\LOGI001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\LOGI001\\LOGI001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/LOGI001/LOGI001_1.jpg",
       "AssetKind": "All",
@@ -799,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\LOGI001\\LOGI001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\MNO345\\MNO345_1.jpeg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\MNO345\\MNO345_1.jpeg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/MNO345/MNO345_1.jpeg",
       "AssetKind": "All",
@@ -816,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\MNO345\\MNO345_1.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\N8G02\\N8G02_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\N8G02\\N8G02_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/N8G02/N8G02_1.jpg",
       "AssetKind": "All",
@@ -833,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\N8G02\\N8G02_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\NETG001\\NETG001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\NETG001\\NETG001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/NETG001/NETG001_1.jpg",
       "AssetKind": "All",
@@ -850,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\NETG001\\NETG001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\NOP012\\NOP012_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\NOP012\\NOP012_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/NOP012/NOP012_1.jpg",
       "AssetKind": "All",
@@ -867,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\NOP012\\NOP012_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PANA001\\PANA001_1.jpeg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PANA001\\PANA001_1.jpeg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/PANA001/PANA001_1.jpeg",
       "AssetKind": "All",
@@ -884,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\PANA001\\PANA001_1.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PHLA001\\PHLA001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PHLA001\\PHLA001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/PHLA001/PHLA001_1.jpg",
       "AssetKind": "All",
@@ -901,27 +714,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\PHLA001\\PHLA001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001\\PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001202311061151573683.png",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PQR678\\PQR678_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001/PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001202311061151573683.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001\\PLCB001BLKNBSTCHRGEUSBPDGWNWLLCHRGR2001202311061151573683.png"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PQR678\\PQR678_1.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/PQR678/PQR678_1.jpg",
       "AssetKind": "All",
@@ -935,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\PQR678\\PQR678_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PRD001\\PRD001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PRD001\\PRD001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/PRD001/PRD001_1.jpg",
       "AssetKind": "All",
@@ -952,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\PRD001\\PRD001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PRD005\\PRD005_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\PRD005\\PRD005_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/PRD005/PRD005_1.jpg",
       "AssetKind": "All",
@@ -969,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\PRD005\\PRD005_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\QRS345\\QRS345_1.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\QRS345\\QRS345_1.webp",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/QRS345/QRS345_1.webp",
       "AssetKind": "All",
@@ -986,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\QRS345\\QRS345_1.webp"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\RAZE001\\RAZE001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\RAZE001\\RAZE001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/RAZE001/RAZE001_1.jpg",
       "AssetKind": "All",
@@ -1003,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\RAZE001\\RAZE001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SAMS001\\SAMS001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SAMS001\\SAMS001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/SAMS001/SAMS001_1.jpg",
       "AssetKind": "All",
@@ -1020,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\SAMS001\\SAMS001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SAMS002\\SAMS002_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SAMS002\\SAMS002_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/SAMS002/SAMS002_1.jpg",
       "AssetKind": "All",
@@ -1037,27 +833,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\SAMS002\\SAMS002_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SBPB001SSNGWRLSCHRGSTND2001QI0012500\\SBPB001SSNGWRLSCHRGSTND2001QI0012500202311061151563143.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SHP001\\SHP001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/SBPB001SSNGWRLSCHRGSTND2001QI0012500/SBPB001SSNGWRLSCHRGSTND2001QI0012500202311061151563143.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\SBPB001SSNGWRLSCHRGSTND2001QI0012500\\SBPB001SSNGWRLSCHRGSTND2001QI0012500202311061151563143.webp"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SHP001\\SHP001_1.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/SHP001/SHP001_1.jpg",
       "AssetKind": "All",
@@ -1071,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\SHP001\\SHP001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SMGA001\\SMGA001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SMGA001\\SMGA001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/SMGA001/SMGA001_1.jpg",
       "AssetKind": "All",
@@ -1088,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\SMGA001\\SMGA001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SNY001\\SNY001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\SNY001\\SNY001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/SNY001/SNY001_1.jpg",
       "AssetKind": "All",
@@ -1105,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\SNY001\\SNY001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\STU901\\STU901_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\STU901\\STU901_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/STU901/STU901_1.jpg",
       "AssetKind": "All",
@@ -1122,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\STU901\\STU901_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\TAB001\\TAB001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\TAB001\\TAB001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/TAB001/TAB001_1.jpg",
       "AssetKind": "All",
@@ -1139,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\TAB001\\TAB001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\TAB002\\TAB002_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\TAB002\\TAB002_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/TAB002/TAB002_1.jpg",
       "AssetKind": "All",
@@ -1156,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\TAB002\\TAB002_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\TPLI001\\TPLI001_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\TPLI001\\TPLI001_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/TPLI001/TPLI001_1.jpg",
       "AssetKind": "All",
@@ -1173,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\TPLI001\\TPLI001_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\TUV678\\TUV678_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\TUV678\\TUV678_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/TUV678/TUV678_1.jpg",
       "AssetKind": "All",
@@ -1190,27 +969,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\TUV678\\TUV678_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\VRHL001VHFLTLE2SFASHIONVRHDRST2001\\VRHL001VHFLTLE2SFASHIONVRHDRST2001202311061151573803.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\VWX234\\VWX234_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
-      "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/VRHL001VHFLTLE2SFASHIONVRHDRST2001/VRHL001VHFLTLE2SFASHIONVRHDRST2001202311061151573803.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\VRHL001VHFLTLE2SFASHIONVRHDRST2001\\VRHL001VHFLTLE2SFASHIONVRHDRST2001202311061151573803.webp"
-    },
-    {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\VWX234\\VWX234_1.jpg",
-      "SourceId": "tech-project-back-end",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/VWX234/VWX234_1.jpg",
       "AssetKind": "All",
@@ -1224,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\VWX234\\VWX234_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\VWX234\\VWX234_1.webp",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\VWX234\\VWX234_1.webp",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/VWX234/VWX234_1.webp",
       "AssetKind": "All",
@@ -1241,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\VWX234\\VWX234_1.webp"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\WXY901\\WXY901_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\WXY901\\WXY901_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/WXY901/WXY901_1.jpg",
       "AssetKind": "All",
@@ -1258,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\WXY901\\WXY901_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\YZA567\\YZA567_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\YZA567\\YZA567_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/YZA567/YZA567_1.jpg",
       "AssetKind": "All",
@@ -1275,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\YZA567\\YZA567_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ZAB234\\ZAB234_1.jpg",
+      "Identity": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ZAB234\\ZAB234_1.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "ContentRoot": "D:\\KIET's Folder\\CODE\\UIT\\Third_year\\Semester 1\\IS220_Buliding_application_on_frameworks\\Project\\Back-end\\tech-product-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
       "RelativePath": "Upload/product/ZAB234/ZAB234_1.jpg",
       "AssetKind": "All",
