@@ -130,7 +130,7 @@ namespace tech_project_back_end.Controllers
         searchKeywords.Any(keyword =>
             x.Product.name_pr.ToLower().Contains(keyword.ToLower()) ||
             x.Product.name_serial.ToLower().Contains(keyword.ToLower()) ||
-            x.Product.detail.ToLower().Contains(keyword.ToLower()) ||
+            x.Product.detail.ToLower().Contains(keyword.ToLower()) || x.Product.product_id.ToLower().Contains(keyword.ToLower()) ||
             x.Category?.category_name.ToLower().Contains(keyword.ToLower()) == true
         )
     )
@@ -187,7 +187,7 @@ namespace tech_project_back_end.Controllers
                     .Where(x =>
                         x.Product.name_pr.ToLower().Contains(filter.SearchKey.ToLower()) ||
                         x.Product.name_serial.ToLower().Contains(filter.SearchKey.ToLower()) ||
-                        x.Product.detail.ToLower().Contains(filter.SearchKey.ToLower()) ||
+                        x.Product.detail.ToLower().Contains(filter.SearchKey.ToLower()) || x.Product.product_id.ToLower().Contains(filter.SearchKey.ToLower()) ||
                         x.Category.category_name.ToLower().Contains(filter.SearchKey.ToLower()) == true
                     
                 );
@@ -416,7 +416,7 @@ namespace tech_project_back_end.Controllers
             }
 
             string fileExtension = Path.GetExtension(formFile.FileName);
-            string fileName = $"{product_id}_{DateTime.Now.Ticks}{fileExtension}";
+            string fileName = $"{DateTime.Now.Ticks}{fileExtension}";
             string ImagePath = Path.Combine(FilePath, fileName);
 
             using (FileStream stream = System.IO.File.Create(ImagePath))

@@ -27,6 +27,24 @@ namespace tech_project_back_end.Controllers
 
         }
 
+        [HttpGet("GetAllOrder")]
+        public IActionResult GetAllOrder()
+        {
+            var orders = _appDbContext.Order.Join(_appDbContext.User, o => o.UserId, u => u.user_id,
+                (o,u) => new
+                {
+                    CustomerInfor = u,
+                    OrderInfor = o,
+                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.Discount).FirstOrDefault()
+
+                }
+                );
+
+            return Ok(orders);
+
+
+        }
+
 
         [HttpPost("GetOrderByUserId")]
         public IActionResult GetOrderByUserId([FromBody] string userId)
