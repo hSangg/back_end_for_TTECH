@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.FileProviders;
+using tech_project_back_end.Helpter;
+using tech_project_back_end.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,6 +64,10 @@ builder.Services.AddAuthentication().AddJwtBearer(
     }
     
     );
+
+builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 
 var app = builder.Build();
 

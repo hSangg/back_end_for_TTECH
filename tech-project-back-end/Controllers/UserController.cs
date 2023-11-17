@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -9,7 +10,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json.Serialization;
 using tech_project_back_end.Data;
+using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
+using tech_project_back_end.Services;
 
 namespace tech_project_back_end.Controllers
 {
@@ -19,18 +22,40 @@ namespace tech_project_back_end.Controllers
     {
         private readonly AppDbContext _appDBContext;
         private readonly IConfiguration _iConfiguration;
+        private readonly IEmailService _iEmailService;
 
-        public UserController(AppDbContext appDBContext, IConfiguration configuration)
+        public UserController(AppDbContext appDBContext, IConfiguration configuration, IEmailService emailService)
         {
             this._appDBContext = appDBContext;
             this._iConfiguration = configuration;
+            this._iEmailService = emailService;
         }
 
-      
+
 
         [HttpPost("register")]
         public IActionResult Register(User user)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Kiểm tra email đã tồn tại hay chưa
+            if (_appDBContext.User.Any(u => u.email == user.email))
+            {
+                ModelState.AddModelError("email", "Email already exists.");
+                return BadRequest(ModelState);
+            }
+
+            // Kiểm tra số điện thoại đã tồn tại hay chưa
+            if (_appDBContext.User.Any(u => u.phone == user.phone))
+            {
+                ModelState.AddModelError("phone", "Phone number already exists.");
+                return BadRequest(ModelState);
+            }
+
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
             _appDBContext.User.Add(user);
             _appDBContext.SaveChanges();
@@ -47,16 +72,62 @@ namespace tech_project_back_end.Controllers
                 Expires = DateTimeOffset.Now.AddHours(1)
             });
 
-            
+
 
 
             return Ok(new { user, token });
 
         }
 
+        [HttpPost("ForgetPassword")]
+        public async Task<IActionResult> ForgetPassword(string email)
+        {
+            try
+            {
+                var existingUser = await _appDBContext.User.FirstOrDefaultAsync(u => u.email == email);
+
+                if (existingUser == null)
+                {
+                    return NotFound("User not found");
+                }
+
+                // Update the existing User
+                string newPassword = Guid.NewGuid().ToString()[..5];
+                existingUser.password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+
+                await _appDBContext.SaveChangesAsync();
+
+                MailRequest mailrequest = new MailRequest();
+                mailrequest.ToEmail = email;
+                mailrequest.Subject = "Đổi mật khẩu";
+                mailrequest.Body = "Mật khẩu mới được đổi là: "+ newPassword;
+                await _iEmailService.SendEmailAsync(mailrequest);
+                return Ok("Password changed");
+
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        [HttpGet("GetAllUser")]
+        public IActionResult GetAllUser()
+        {
+            var userList = _appDBContext.User.ToList();
+            return Ok(userList);
+
+        }
+
         [HttpPost("login")]
         public IActionResult Login(UserLogin user)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
             var isExitUser = _appDBContext.User.FirstOrDefault(c => c.phone == user.phone);
             if (isExitUser == null) { return NotFound("User not found"); }
 

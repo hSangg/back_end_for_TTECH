@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
+using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
+using tech_project_back_end.Services;
 
 namespace tech_project_back_end.Controllers
 {
@@ -11,9 +13,11 @@ namespace tech_project_back_end.Controllers
     public class OrderController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-        public OrderController(AppDbContext appDbContext)
+        private readonly IEmailService _emailService;
+        public OrderController(AppDbContext appDbContext, IEmailService emailService)
         {
             _appDbContext = appDbContext;
+            _emailService = emailService;
         }
 
         [HttpPost("AddNewOrder")]
@@ -23,6 +27,46 @@ namespace tech_project_back_end.Controllers
             order.CreateOrderAt = DateTime.Now;
             _appDbContext.SaveChanges();
             return Ok(order);
+
+
+        }
+
+        
+
+        [HttpPut("UpdateStateOrder")]
+        public async Task<IActionResult> UpdateStateOrder(string orderId, string state)
+        {
+            if (orderId == null || state == null)
+            {
+                return BadRequest("Invalid request data");
+            }
+
+            try
+            {
+                // Check if the specified product exists
+                var existingOrder = await _appDbContext.Order
+                    .FirstOrDefaultAsync(p => p.OrderId == orderId);
+
+                if (existingOrder == null)
+                {
+                    return NotFound("Product not found");
+                }
+
+                // Update the existing product
+                existingOrder.State = state;
+
+                 await _appDbContext.SaveChangesAsync();
+
+                return Ok("order updated successfully");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return StatusCode(409, "Concurrency conflict");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
 
 
         }
@@ -38,7 +82,7 @@ namespace tech_project_back_end.Controllers
                     DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.Discount).FirstOrDefault()
 
                 }
-                );
+                ).OrderByDescending(x => x.OrderInfor.CreateOrderAt);
 
             return Ok(orders);
 

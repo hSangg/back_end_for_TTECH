@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
 
@@ -14,6 +15,22 @@ namespace tech_project_back_end.Controllers
         public DetailOrderController(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
+        }
+
+        [HttpGet("GetOderDetailByOrderId")]
+        public IActionResult GetOderDetailByOrderId(string order_id)
+        {
+            var result = _appDbContext.Detail_Order.Where(od => od.OrderId == order_id).Select(x
+                => new
+                {
+                    Product = _appDbContext.Product.Where(p => p.product_id == x.ProductId).FirstOrDefault(),
+                    Image = _appDbContext.Image.Where(i => i.product_id == x.ProductId).FirstOrDefault(),
+                    Quantity = x.QuantityPr,
+                    Price = x.PricePr,
+                });
+
+            return Ok(result);
+
         }
 
         [HttpPost("AddNewDetailOrder")]
