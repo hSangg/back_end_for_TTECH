@@ -80,7 +80,7 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost("ForgetPassword")]
-        public async Task<IActionResult> ForgetPassword(string email)
+        public async Task<IActionResult> ForgetPassword([FromBody] string email)
         {
             try
             {
@@ -100,7 +100,56 @@ namespace tech_project_back_end.Controllers
                 MailRequest mailrequest = new MailRequest();
                 mailrequest.ToEmail = email;
                 mailrequest.Subject = "Đổi mật khẩu";
-                mailrequest.Body = "Mật khẩu mới được đổi là: "+ newPassword;
+                mailrequest.Body = @"
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+	                    <meta charset='UTF-8' />
+	                    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+	                    <title>Password Reset Email</title>
+	                    <style type='text/css'>
+		                    body {
+			                    margin: 0;
+			                    padding: 0;
+			                    font-family: Arial, sans-serif;
+			                    line-height: 1.6;
+			                    color: #333;
+		                    }
+		                    h1 {
+			                    text-align: center;
+			                    margin-top: 50px;
+		                    }
+		                    p {
+			                    text-align: center;
+			                    margin-top: 20px;
+		                    }
+		                    .btn {
+			                    background-color: #3b82f6;
+			                    color: white !important;
+			                    padding: 10px 20px;
+			                    border: none;
+			                    cursor: pointer;
+			                    width: 100%;
+			                    margin-top: 20px;
+			                    border-radius: 5px;
+                                text-decoration: none;
+		                    }
+		                    .btn:hover {
+			                    background-color: #60a5fa;
+		                    }
+	                    </style>
+                    </head>
+                    <body>
+	                    <h1>Đổi mật khẩu</h1>
+	                    <p>Xin chào, <strong>"+existingUser.phone+@"</strong></p>
+	                    <p>Chúng tôi đã đổi mật khẩu của tài khoản của bạn do yêu cầu đổi mật khẩu. Mật khẩu mới của bạn là: </p>
+	                    <p><strong>"+newPassword+ @"</strong></p>
+	                    <p>Vui lòng đăng nhập với mật khẩu mới để tiếp tục sử dụng dịch vụ của chúng tôi.</p>
+	                    <a href='https://github.com/hSangg' class='btn'>HSang</a>
+                    </body>
+                    </html>
+                    ";
+
                 await _iEmailService.SendEmailAsync(mailrequest);
                 return Ok("Password changed");
 
