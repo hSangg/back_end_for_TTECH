@@ -61,3 +61,10 @@ C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debu
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\MimeKit.dll
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\ClosedXML.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\DocumentFormat.OpenXml.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\ExcelNumberFormat.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\Irony.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\SixLabors.Fonts.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\System.IO.Packaging.dll
+C:\Users\Sangf\source\repos\tech-project-back-end\tech-project-back-end\bin\Debug\net7.0\XLParser.dll

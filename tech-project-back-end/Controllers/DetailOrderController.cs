@@ -39,6 +39,11 @@ namespace tech_project_back_end.Controllers
             foreach (var detailOrder in detailOrders)
             {
                 _appDbContext.Detail_Order.Add(detailOrder);
+                var product_id = detailOrder.ProductId;
+                var quantityDescrease = detailOrder.QuantityPr;
+
+
+
             }
             _appDbContext.SaveChanges();
             return Ok(detailOrders);

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ClosedXML.Excel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using tech_project_back_end.Data;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
@@ -67,8 +69,67 @@ namespace tech_project_back_end.Controllers
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
+        }
 
+        [HttpGet("GetExcelFileData")]
+        public IActionResult GetExcelFileData()
+        {
+            var orderList = GetOrderData();
 
+            using (XLWorkbook wb = new())
+            {
+                wb.AddWorksheet(orderList, "Order Record");
+                using (MemoryStream ms = new())
+                {
+                    wb.SaveAs(ms);
+
+                    // Set the Content-Disposition header to trigger file download
+                    Response.Headers.Add("Content-Disposition", "attachment; filename=OrderList.xlsx"); // Change the file extension to xlsx
+
+                    return File(ms.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                }
+            }
+        }
+        [NonAction]
+        private DataTable GetOrderData()
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "OrderTable";
+            dt.Columns.Add("orderId", typeof(string));
+            dt.Columns.Add("customerName", typeof(string));
+            dt.Columns.Add("customerEmail", typeof(string));
+            dt.Columns.Add("customerPhone", typeof(string));
+
+            dt.Columns.Add("customerNote", typeof(string));
+            dt.Columns.Add("deliveryFee", typeof(int));
+            dt.Columns.Add("discountId", typeof(string));
+            dt.Columns.Add("total", typeof(long));
+            dt.Columns.Add("createdAt", typeof(DateTime));
+
+            var orderList = _appDbContext.Order.Select(x => new
+            {
+                orderId = x.OrderId,
+                customerName = x.Name,
+                customerAddress = x.Address,
+                customerEmail = x.Email,
+                customerPhone = x.Phone,
+                customerNote = x.Note,
+
+                deliveryFee = x.DeliveryFee,
+                discountId = x.Discount,
+                total = x.Total,
+                createdAt = x.CreateOrderAt,
+
+            }).ToList();
+            if (orderList.Count > 0)
+            {
+                orderList.ForEach(item =>
+                {
+                    dt.Rows.Add(item.orderId, item.customerName, item.customerEmail, item.customerPhone, item.customerNote, item.deliveryFee, item.discountId, item.total, item.createdAt);
+                });
+            }
+
+            return dt;
         }
 
         [HttpGet("GetAllOrder")]

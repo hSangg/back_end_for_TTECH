@@ -31,6 +31,13 @@ namespace tech_project_back_end.Controllers
             this._iEmailService = emailService;
         }
 
+        [HttpGet("GetUserById")]
+        public IActionResult GetUserById(string userId)
+        {
+            var user = _appDBContext.User.Where(user => user.user_id == userId).FirstOrDefault();
+            if (user != null) return Ok(user);
+            return NotFound("User not found");
+        }
 
 
         [HttpPost("register")]
@@ -55,6 +62,7 @@ namespace tech_project_back_end.Controllers
                 ModelState.AddModelError("phone", "Phone number already exists.");
                 return BadRequest(ModelState);
             }
+
 
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
             _appDBContext.User.Add(user);
@@ -130,9 +138,10 @@ namespace tech_project_back_end.Controllers
 			                    border: none;
 			                    cursor: pointer;
 			                    width: 100%;
-			                    margin-top: 20px;
+			                    margin-top: 30px;
 			                    border-radius: 5px;
                                 text-decoration: none;
+                            
 		                    }
 		                    .btn:hover {
 			                    background-color: #60a5fa;
@@ -167,6 +176,7 @@ namespace tech_project_back_end.Controllers
             return Ok(userList);
 
         }
+
 
         [HttpPost("login")]
         public IActionResult Login(UserLogin user)
@@ -204,8 +214,8 @@ namespace tech_project_back_end.Controllers
             return Ok(new { user = isExitUser, token });
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update([FromBody] User updatedUser)
+        [HttpPut("UpdateUserInfor")]
+        public IActionResult UpdateUserInfor([FromBody] UpdatedUser updatedUser)
         {
             var user = _appDBContext.User.FirstOrDefault(c => c.user_id == updatedUser.user_id);
             if (user == null)

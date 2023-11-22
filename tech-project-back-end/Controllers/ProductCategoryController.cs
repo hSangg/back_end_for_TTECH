@@ -17,15 +17,21 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost("AddNewProductCategory")]
-        public IActionResult AddNewProductCategory([FromBody] Product_Category pc)
+        public IActionResult AddNewProductCategory(List<Product_Category> product_Categories)
         {
-            _appDbContext.Product_Category.Add(pc);
+            if (product_Categories == null) return BadRequest("Null");
+
+            foreach (var pc in product_Categories)
+            {
+                _appDbContext.Product_Category.Add(pc);
+            }
             _appDbContext.SaveChanges();
-            return Ok(pc);
+            return Ok(product_Categories);
         }
 
+
         [HttpPut("UpdateProductCategory")]
-        public async Task<IActionResult> UpdateProductCategory([FromBody] Product_Category pc)
+        public async Task<IActionResult> UpdateProductCategory([FromBody] Product_Category pc, string new_category_id)
         {
             if (pc == null)
             {
@@ -42,9 +48,16 @@ namespace tech_project_back_end.Controllers
                     return NotFound("Product_Category not found");
                 }
 
-                existingProductCategory.CategoryId = pc.CategoryId;
+                _appDbContext.Remove(existingProductCategory);
+                await _appDbContext.SaveChangesAsync();
 
+                var newProductCategory = new Product_Category
+                {
+                    ProductId = pc.ProductId,
+                    CategoryId = new_category_id
+                };
 
+                _appDbContext.Add(newProductCategory);
                 await _appDbContext.SaveChangesAsync();
 
                 return Ok("Product_Category updated successfully");

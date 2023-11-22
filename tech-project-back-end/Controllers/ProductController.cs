@@ -69,7 +69,7 @@ namespace tech_project_back_end.Controllers
                                                 pc => pc.CategoryId,
                                                 c => c.category_id,
                                                     (pc, c) => new { c.category_id, c.category_name })
-                                                    .SingleOrDefault(),
+                                                    .ToList(),
                             Supplier = new { s.supplier_id, s.supplier_name },
                             Image = _appDbContext.Image
                                 .Where(i => i.product_id == p.product_id)
@@ -119,7 +119,7 @@ namespace tech_project_back_end.Controllers
                     pc => pc.CategoryId,
                     c => c.category_id,
                     (pc, c) => new { c.category_id, c.category_name })
-                .SingleOrDefault(),
+                .ToList(),
             Supplier = new { s.supplier_id, s.supplier_name },
             Image = _appDbContext.Image
                 .Where(i => i.product_id == p.product_id)
@@ -131,7 +131,7 @@ namespace tech_project_back_end.Controllers
             x.Product.name_pr.ToLower().Contains(keyword.ToLower()) ||
             x.Product.name_serial.ToLower().Contains(keyword.ToLower()) ||
             x.Product.detail.ToLower().Contains(keyword.ToLower()) || x.Product.product_id.ToLower().Contains(keyword.ToLower()) ||
-            x.Category?.category_name.ToLower().Contains(keyword.ToLower()) == true
+            x.Category.Any(x => x.category_name.ToLower().Contains(keyword.ToLower())) == true
         )
     )
     .Distinct().Take(6).ToList();
@@ -166,7 +166,7 @@ namespace tech_project_back_end.Controllers
                             pc => pc.CategoryId,
                             c => c.category_id,
                             (pc, c) => new { c.category_id, c.category_name })
-                        .SingleOrDefault(),
+                        .ToList(),
 
                 Supplier = new { s.supplier_id, s.supplier_name },
                 Image = _appDbContext.Image
@@ -188,7 +188,7 @@ namespace tech_project_back_end.Controllers
                         x.Product.name_pr.ToLower().Contains(filter.SearchKey.ToLower()) ||
                         x.Product.name_serial.ToLower().Contains(filter.SearchKey.ToLower()) ||
                         x.Product.detail.ToLower().Contains(filter.SearchKey.ToLower()) || x.Product.product_id.ToLower().Contains(filter.SearchKey.ToLower()) ||
-                        x.Category.category_name.ToLower().Contains(filter.SearchKey.ToLower()) == true
+                        x.Category.Any(c => c.category_name.ToLower().Contains(filter.SearchKey.ToLower())) == true
                     
                 );
             }

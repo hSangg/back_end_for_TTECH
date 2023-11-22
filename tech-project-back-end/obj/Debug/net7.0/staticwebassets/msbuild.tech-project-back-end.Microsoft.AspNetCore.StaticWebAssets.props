@@ -176,6 +176,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\AKKB004\AKKB004_1.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\AMZD001KRNDLPAPRWHT6800640008GBWTRPR\638359083059108876.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/AMZD001KRNDLPAPRWHT6800640008GBWTRPR/638359083059108876.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\AMZD001KRNDLPAPRWHT6800640008GBWTRPR\638359083059108876.webp))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01202311061151573921.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>tech-project-back-end</SourceId>
@@ -383,6 +399,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\d6988096-e126-413d-8be5-44d8c34a3b1f\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\d8c5c15f-e97a-4e0c-8bf4-455e01a80cde\638359077656563354.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>tech-project-back-end</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/tech-project-back-end</BasePath>
+      <RelativePath>Upload/product/d8c5c15f-e97a-4e0c-8bf4-455e01a80cde/638359077656563354.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\d8c5c15f-e97a-4e0c-8bf4-455e01a80cde\638359077656563354.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Upload\product\DEF456\DEF456_1.jpg))">
       <SourceType>Package</SourceType>

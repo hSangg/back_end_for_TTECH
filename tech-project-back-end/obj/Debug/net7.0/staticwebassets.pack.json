@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets\\Upload\\product\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01\\AMZD001KRNDLPAPRWHT6800640008GBWTRPRF01202311061151573921.jpg"
     },
     {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\AMZD001KRNDLPAPRWHT6800640008GBWTRPR\\638359083059108876.webp",
+      "PackagePath": "staticwebassets\\Upload\\product\\AMZD001KRNDLPAPRWHT6800640008GBWTRPR\\638359083059108876.webp"
+    },
+    {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ANKI001\\ANKI001_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\product\\ANKI001\\ANKI001_1.jpg"
     },
@@ -315,6 +319,10 @@
     {
       "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d6988096-e126-413d-8be5-44d8c34a3b1f\\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp",
       "PackagePath": "staticwebassets\\Upload\\product\\d6988096-e126-413d-8be5-44d8c34a3b1f\\d6988096-e126-413d-8be5-44d8c34a3b1f_638351659703061259.webp"
+    },
+    {
+      "Id": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\d8c5c15f-e97a-4e0c-8bf4-455e01a80cde\\638359077656563354.jpg",
+      "PackagePath": "staticwebassets\\Upload\\product\\d8c5c15f-e97a-4e0c-8bf4-455e01a80cde\\638359077656563354.jpg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.tech-project-back-end.props",
