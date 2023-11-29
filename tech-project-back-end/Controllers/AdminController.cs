@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DocumentFormat.OpenXml.InkML;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using tech_project_back_end.Data;
+using tech_project_back_end.Models;
 
 namespace tech_project_back_end.Controllers
 {
@@ -13,6 +15,27 @@ namespace tech_project_back_end.Controllers
         private readonly AppDbContext _appDbContext;
         public AdminController(AppDbContext appDbContext) {
             _appDbContext = appDbContext;
+        }
+
+        [HttpGet("GetRevenue")]
+        public IActionResult GetRevenue ()
+        {
+            DateTime currentMonthStart = DateTime.Now.AddDays(-1 * DateTime.Now.Day + 1).Date;
+            DateTime currentMonthEnd = currentMonthStart.AddMonths(1).AddDays(-1);
+            DateTime lastMonthStart = currentMonthStart.AddMonths(-1).AddDays(-1 * DateTime.Now.Day + 1).Date;
+            DateTime lastMonthEnd = lastMonthStart.AddMonths(1).AddDays(-1);
+
+            List<Order> ordersThisMonth = _appDbContext.Order.Where(o => o.CreateOrderAt >= currentMonthStart && o.CreateOrderAt <= currentMonthEnd).ToList();
+            List<Order> ordersLastMonth = _appDbContext.Order.Where(o => o.CreateOrderAt >= lastMonthStart && o.CreateOrderAt <= lastMonthEnd).ToList();
+
+            decimal thisMonthRevenue = ordersThisMonth.Sum(o => o.Total - o.DeliveryFee - (decimal)Math.Round(Convert.ToDouble(o.Discount) * o.Total / 100));
+            decimal lastMonthRevenue = ordersLastMonth.Sum(o => o.Total - o.DeliveryFee - (decimal)Math.Round(Convert.ToDouble(o.Discount) * o.Total / 100));
+            decimal percentDifference;
+            if (lastMonthRevenue > 0)
+                percentDifference = (thisMonthRevenue - lastMonthRevenue) / lastMonthRevenue * 100;
+            else  percentDifference = 100;
+
+            return Ok(new { ThisMonthRevenue = thisMonthRevenue, LastMonthRevenue = lastMonthRevenue, PercentDifference = Math.Round(percentDifference, 2) });
         }
 
         [HttpGet("GetTopSellerProduct")]

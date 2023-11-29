@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
+using tech_project_back_end.Models;
 
 namespace tech_project_back_end.Controllers
 {
@@ -19,6 +20,40 @@ namespace tech_project_back_end.Controllers
         {
             var voucherList = _appDbContext.Discount.ToList();
             return Ok(voucherList);
+        }
+
+        [HttpPost]
+        public IActionResult AddNewDiscount(Discount discount) 
+        {
+            _appDbContext.Discount.Add(discount);
+            _appDbContext.SaveChanges();
+            
+            return Ok(discount); 
+        }
+
+        [HttpPut]
+        public IActionResult UpdateDiscount(Discount discount) {
+            var isExit = _appDbContext.Discount.FirstOrDefault(x => x.DiscountId == discount.DiscountId);
+            if (isExit == null) { return BadRequest("discount not found"); }
+
+            isExit = discount;
+            _appDbContext.SaveChanges();
+
+            return Ok(isExit);
+
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteDiscount(string discountId) {
+
+            var isExit = _appDbContext.Discount.FirstOrDefault(x => x.DiscountId == discountId);
+            if (isExit == null) { return BadRequest("discount not found"); }
+
+            _appDbContext.Remove(isExit);
+            _appDbContext.SaveChanges();
+
+            return Ok("Discount deleted.");
+        
         }
     }
 }
