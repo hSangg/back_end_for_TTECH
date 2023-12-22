@@ -370,6 +370,8 @@ namespace tech_project_back_end.Controllers
                 return BadRequest("Invalid request data");
             }
 
+           
+
             try
             {
                 // Check if the specified product exists
@@ -379,6 +381,14 @@ namespace tech_project_back_end.Controllers
                 if (existingProduct == null)
                 {
                     return NotFound("Product not found");
+                }
+
+                decimal temp;
+                if (!decimal.TryParse(updatedProduct.guarantee_period.ToString(), out temp) ||
+                    !decimal.TryParse(updatedProduct.quantity_pr.ToString(), out temp) ||
+                    !decimal.TryParse(updatedProduct.price.ToString(), out temp))
+                {
+                    return BadRequest(false);
                 }
 
                 // Update the existing product

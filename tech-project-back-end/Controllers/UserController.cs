@@ -63,7 +63,7 @@ namespace tech_project_back_end.Controllers
                 return BadRequest(ModelState);
             }
 
-
+            user.create_at = DateTime.Now;
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
             _appDBContext.User.Add(user);
             _appDBContext.SaveChanges();
@@ -250,7 +250,7 @@ namespace tech_project_back_end.Controllers
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddDays(99),
                 signingCredentials: creds
                 );
 

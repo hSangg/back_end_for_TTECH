@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zycdSo+jFsDus5ahmfUYaXzAeWzkZhUxfdvxZbC+G7A=",
+  "Hash": "HBl3AHdM5XTY7p/bJAp9IDbM/zhDDoqtt7B1DT3z1tA=",
   "Source": "tech-project-back-end",
   "BasePath": "_content/tech-project-back-end",
   "Mode": "Default",
@@ -34,12 +34,12 @@
       "OriginalItemSpec": "wwwroot\\Upload\\product\\3e5d493a-2c14-482c-bab4-3513141d5ba4\\3e5d493a-2c14-482c-bab4-3513141d5ba4_638355667144354149.jpeg"
     },
     {
-      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\609bbadf-409f-48e0-9fff-4e2bea4b13f0\\609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg",
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\88f00386-fda8-463e-955e-1e008cdaa14d\\638378484622924710.jpg",
       "SourceId": "tech-project-back-end",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
       "BasePath": "_content/tech-project-back-end",
-      "RelativePath": "Upload/product/609bbadf-409f-48e0-9fff-4e2bea4b13f0/609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg",
+      "RelativePath": "Upload/product/88f00386-fda8-463e-955e-1e008cdaa14d/638378484622924710.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,7 +48,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product\\609bbadf-409f-48e0-9fff-4e2bea4b13f0\\609bbadf-409f-48e0-9fff-4e2bea4b13f0_638355840397671020.jpg"
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\88f00386-fda8-463e-955e-1e008cdaa14d\\638378484622924710.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\88f00386-fda8-463e-955e-1e008cdaa14d\\638378489159308004.jpg",
+      "SourceId": "tech-project-back-end",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\",
+      "BasePath": "_content/tech-project-back-end",
+      "RelativePath": "Upload/product/88f00386-fda8-463e-955e-1e008cdaa14d/638378489159308004.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\product\\88f00386-fda8-463e-955e-1e008cdaa14d\\638378489159308004.jpg"
     },
     {
       "Identity": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\wwwroot\\Upload\\product\\ab30c9de-d763-40e4-a525-06bc3096bdcb\\ab30c9de-d763-40e4-a525-06bc3096bdcb_638355672685142363.jpeg",

@@ -150,6 +150,26 @@ namespace tech_project_back_end.Controllers
 
         }
 
+        [HttpGet("GetOrderById")]
+        public IActionResult GetOrderById(string order_id)
+        {
+            var isExit = _appDbContext.Order.FirstOrDefault(o => o.OrderId == order_id);
+            if (isExit != null) { return NotFound("Order not found"); }
+
+            var orders = _appDbContext.Order.Where(o => o.OrderId.ToLower().Contains(order_id.ToLower())).Join(_appDbContext.User, o => o.UserId, u => u.user_id,
+                (o, u) => new
+                {
+                    CustomerInfor = u,
+                    OrderInfor = o,
+                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.Discount).FirstOrDefault()
+
+                }
+                ).OrderByDescending(x => x.OrderInfor.CreateOrderAt);
+
+            return Ok(orders);
+
+        }
+
 
         [HttpPost("GetOrderByUserId")]
         public IActionResult GetOrderByUserId([FromBody] string userId)

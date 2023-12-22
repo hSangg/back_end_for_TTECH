@@ -27,7 +27,6 @@ namespace tech_project_back_end.Controllers
         [HttpPost]
         public IActionResult AddCategory(Category category)
         {
-            category.category_id = Guid.NewGuid().ToString()[..15];
             _appDbContext.Add(category);
             _appDbContext.SaveChanges();
 

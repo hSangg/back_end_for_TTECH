@@ -28,8 +28,8 @@ namespace tech_project_back_end.Controllers
             List<Order> ordersThisMonth = _appDbContext.Order.Where(o => o.CreateOrderAt >= currentMonthStart && o.CreateOrderAt <= currentMonthEnd).ToList();
             List<Order> ordersLastMonth = _appDbContext.Order.Where(o => o.CreateOrderAt >= lastMonthStart && o.CreateOrderAt <= lastMonthEnd).ToList();
 
-            decimal thisMonthRevenue = ordersThisMonth.Sum(o => o.Total - o.DeliveryFee - (decimal)Math.Round(Convert.ToDouble(o.Discount) * o.Total / 100));
-            decimal lastMonthRevenue = ordersLastMonth.Sum(o => o.Total - o.DeliveryFee - (decimal)Math.Round(Convert.ToDouble(o.Discount) * o.Total / 100));
+            decimal thisMonthRevenue = ordersThisMonth.Sum(o => o.Total - o.DeliveryFee);
+            decimal lastMonthRevenue = ordersLastMonth.Sum(o => o.Total - o.DeliveryFee);
             decimal percentDifference;
             if (lastMonthRevenue > 0)
                 percentDifference = (thisMonthRevenue - lastMonthRevenue) / lastMonthRevenue * 100;

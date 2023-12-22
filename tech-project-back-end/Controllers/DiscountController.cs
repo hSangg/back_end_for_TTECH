@@ -43,6 +43,14 @@ namespace tech_project_back_end.Controllers
 
         }
 
+        [HttpGet("GetCurrentDiscount")]
+        public IActionResult GetDiscount(DateTime currentDate) { 
+            var isExit = _appDbContext.Discount.FirstOrDefault(dis => dis.DiscountDateFrom < currentDate && dis.DiscountDateTo > currentDate);
+            if (isExit == null) return BadRequest("This date not cotain a discount");
+            return Ok(isExit);
+        
+        }
+
         [HttpDelete]
         public IActionResult DeleteDiscount(string discountId) {
 
