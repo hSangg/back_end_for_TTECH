@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
 
@@ -16,8 +15,9 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddSupplier(Supplier supplier) {
-        
+        public IActionResult AddSupplier(Supplier supplier)
+        {
+
             supplier.supplier_id = Guid.NewGuid().ToString()[..36];
 
             _appDbContext.Supplier.Add(supplier);
@@ -37,9 +37,10 @@ namespace tech_project_back_end.Controllers
 
 
         [HttpGet("{id}")]
-        public IActionResult GetById(string id) { 
-        
-            var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.supplier_id == id);   
+        public IActionResult GetById(string id)
+        {
+
+            var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.supplier_id == id);
             if (isExit == null) { return NotFound("Supplier not found"); }
             return Ok(isExit);
 
@@ -62,7 +63,7 @@ namespace tech_project_back_end.Controllers
             if (isExit == null) { return NotFound("Supplier not found"); }
             isExit.supplier_name = supplier.supplier_name;
             _appDbContext.SaveChanges();
-            
+
             return Ok(supplier);
         }
 

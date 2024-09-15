@@ -7,7 +7,7 @@ namespace tech_project_back_end.Models
     [Keyless]
     public class Category
     {
-        [Key] 
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string category_id { get; set; }
 

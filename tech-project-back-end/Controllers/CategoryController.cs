@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
 
@@ -34,7 +31,8 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateCategory(string id, string updatedCategoryName) {
+        public IActionResult UpdateCategory(string id, string updatedCategoryName)
+        {
             var exitingCategory = _appDbContext.Category.FirstOrDefault(c => c.category_id == id);
             if (exitingCategory == null) { return NotFound("Category not found"); }
 
@@ -46,32 +44,34 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCategory(string id) {
+        public IActionResult GetCategory(string id)
+        {
             var category = _appDbContext.Category.FirstOrDefault(c => c.category_id == id);
             if (category == null)
             {
                 return NotFound("Category not found");
-            } 
+            }
 
-            return Ok(category);    
+            return Ok(category);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteCategory(string id) {
+        public IActionResult DeleteCategory(string id)
+        {
             var category = _appDbContext.Category.FirstOrDefault(c => c.category_id == id);
             if (category == null) { return NotFound("Category not found"); }
 
             _appDbContext.Category.Remove(category);
             _appDbContext.SaveChanges();
-            
+
             return Ok("Category deleted successfully");
         }
 
 
 
-       
 
 
-        
+
+
     }
 }

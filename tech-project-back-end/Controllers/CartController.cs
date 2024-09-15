@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace tech_project_back_end.Controllers
 {
@@ -14,16 +11,17 @@ namespace tech_project_back_end.Controllers
     public class CartController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-        public CartController (AppDbContext appDbContext)
+        public CartController(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
 
-       
+
 
         [HttpPost("GetUserTotalProduct")]
-        public IActionResult GetUserTotalProduct([FromBody] string user_id) {
-        
+        public IActionResult GetUserTotalProduct([FromBody] string user_id)
+        {
+
             var totalProduct = _appDbContext.Cart.Where(c => c.user_id == user_id).Select(x => x.product_id).Distinct().Count();
             return Ok(totalProduct);
         }
@@ -37,9 +35,10 @@ namespace tech_project_back_end.Controllers
                                  join supplier in _appDbContext.Set<Supplier>()
                                  on product.supplier_id equals supplier.supplier_id
                                  where cart.user_id == user_id
-                                 select new 
+                                 select new
                                  {
-                                     Product = new {
+                                     Product = new
+                                     {
                                          product_id = product.product_id,
                                          name_pr = product.name_pr,
                                          name_serial = product.name_serial,
@@ -101,7 +100,8 @@ namespace tech_project_back_end.Controllers
 
 
         [HttpPost("AddToCart")]
-        public IActionResult AddToCart([FromBody] Cart cart) {
+        public IActionResult AddToCart([FromBody] Cart cart)
+        {
 
             var userId = cart.user_id; // replace this with your own method for getting the user ID
             var product = _appDbContext.Set<Product>().FirstOrDefault(p => p.product_id == cart.product_id);
@@ -143,5 +143,5 @@ namespace tech_project_back_end.Controllers
     }
 
 
-    
+
 }

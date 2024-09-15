@@ -1,12 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using tech_project_back_end.Data;
-using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
-using Microsoft.Extensions.Configuration;
 using System.Text;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.FileProviders;
+using tech_project_back_end.Data;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Services;
 
@@ -35,17 +32,19 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connecti
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => {
+builder.Services.AddSwaggerGen(options =>
+{
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
         Name = "Authorization",
-        Type=SecuritySchemeType.ApiKey,
+        Type = SecuritySchemeType.ApiKey,
 
 
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
-    ; });
+    ;
+});
 
 
 builder.Services.AddAuthentication().AddJwtBearer(
@@ -62,7 +61,7 @@ builder.Services.AddAuthentication().AddJwtBearer(
         };
 
     }
-    
+
     );
 
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
@@ -74,8 +73,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{i
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 //}
 
 
@@ -85,7 +84,7 @@ app.UseDefaultFiles();
 
 app.UseStaticFiles();
 
- app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 
 app.UseRouting();

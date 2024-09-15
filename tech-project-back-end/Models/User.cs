@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tech_project_back_end.Models
 {
     public class User
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)] 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(TypeName = "varchar(36)")]
         [StringLength(36)]
         public string user_id { get; set; }

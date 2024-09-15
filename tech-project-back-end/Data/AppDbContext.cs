@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Xml;
 using tech_project_back_end.Models;
 
 namespace tech_project_back_end.Data
@@ -43,7 +42,7 @@ namespace tech_project_back_end.Data
         public DbSet<Order> Order { get; set; }
         public DbSet<Discount> Discount { get; set; }
 
-        public DbSet<Cart> Cart{ get; set; }
+        public DbSet<Cart> Cart { get; set; }
 
 
     }
