@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\tech-project-back-end.csproj": {}
+    "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\tech-project-back-end.csproj": {
+    "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\tech-project-back-end.csproj",
+        "projectUniqueName": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
         "projectName": "tech-project-back-end",
-        "projectPath": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\tech-project-back-end.csproj",
+        "projectPath": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
         "packagesPath": "C:\\Users\\Sangf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\obj\\",
+        "outputPath": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sangf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -122,7 +128,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
