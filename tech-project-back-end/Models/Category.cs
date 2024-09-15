@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tech_project_back_end.Models
 {
-    [Keyless]
     public class Category
     {
         [Key]

@@ -25,7 +25,6 @@ namespace tech_project_back_end.Data
 
         }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Other configurations...
@@ -41,9 +40,6 @@ namespace tech_project_back_end.Data
         public DbSet<Detail_Order> Detail_Order { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Discount> Discount { get; set; }
-
         public DbSet<Cart> Cart { get; set; }
-
-
     }
 }
