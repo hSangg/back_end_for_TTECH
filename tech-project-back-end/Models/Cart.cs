@@ -11,9 +11,9 @@ namespace tech_project_back_end.Models
 
         [Key]
         [Column("product_id", TypeName = "varchar(36)")]
-        public string product_id { get; set;}
+        public string product_id { get; set; }
 
-        [Column("quantity", TypeName ="int(11)")]
-        public int quantity { get; set;}    
+        [Column("quantity", TypeName = "int(11)")]
+        public int quantity { get; set; }
     }
 }

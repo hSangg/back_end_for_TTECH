@@ -9,7 +9,7 @@ namespace tech_project_back_end.Controllers
     public class DiscountController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-        public DiscountController (AppDbContext appDbContext)
+        public DiscountController(AppDbContext appDbContext)
         {
             this._appDbContext = appDbContext;
         }
@@ -23,16 +23,17 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNewDiscount(Discount discount) 
+        public IActionResult AddNewDiscount(Discount discount)
         {
             _appDbContext.Discount.Add(discount);
             _appDbContext.SaveChanges();
-            
-            return Ok(discount); 
+
+            return Ok(discount);
         }
 
         [HttpPut]
-        public IActionResult UpdateDiscount(Discount discount) {
+        public IActionResult UpdateDiscount(Discount discount)
+        {
             var isExit = _appDbContext.Discount.FirstOrDefault(x => x.DiscountId == discount.DiscountId);
             if (isExit == null) { return BadRequest("discount not found"); }
 
@@ -44,15 +45,17 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpGet("GetCurrentDiscount")]
-        public IActionResult GetDiscount(DateTime currentDate) { 
+        public IActionResult GetDiscount(DateTime currentDate)
+        {
             var isExit = _appDbContext.Discount.FirstOrDefault(dis => dis.DiscountDateFrom < currentDate && dis.DiscountDateTo > currentDate);
             if (isExit == null) return BadRequest("This date not cotain a discount");
             return Ok(isExit);
-        
+
         }
 
         [HttpDelete]
-        public IActionResult DeleteDiscount(string discountId) {
+        public IActionResult DeleteDiscount(string discountId)
+        {
 
             var isExit = _appDbContext.Discount.FirstOrDefault(x => x.DiscountId == discountId);
             if (isExit == null) { return BadRequest("discount not found"); }
@@ -61,7 +64,7 @@ namespace tech_project_back_end.Controllers
             _appDbContext.SaveChanges();
 
             return Ok("Discount deleted.");
-        
+
         }
     }
 }

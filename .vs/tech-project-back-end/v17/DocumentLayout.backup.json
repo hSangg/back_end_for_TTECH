@@ -1,0 +1,364 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\helpter\\mailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\helpter\\mailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\productcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\productcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\detailordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\detailordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\discountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\discountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\models\\discount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\models\\discount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\models\\updateduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\models\\updateduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Program.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Program.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Program.cs",
+              "RelativeToolTip": "tech-project-back-end\\Program.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:45:16.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Services\\IEmailService.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Services\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Services\\IEmailService.cs",
+              "RelativeToolTip": "tech-project-back-end\\Services\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Services\\EmailService.cs",
+              "RelativeToolTip": "tech-project-back-end\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MailRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Helpter\\MailRequest.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Helpter\\MailRequest.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Helpter\\MailRequest.cs",
+              "RelativeToolTip": "tech-project-back-end\\Helpter\\MailRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAIcBAAAAAAAAAAAAAIgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\appsettings.json",
+              "RelativeDocumentMoniker": "tech-project-back-end\\appsettings.json",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\appsettings.json",
+              "RelativeToolTip": "tech-project-back-end\\appsettings.json",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwCEAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-15T12:43:04.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowB8AAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\UserController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAADwv2sAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductCategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\ProductCategoryController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\ProductCategoryController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\ProductCategoryController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\ProductCategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DetailOrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\DetailOrderController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\DetailOrderController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\DetailOrderController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\DetailOrderController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAowDMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DiscountController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\DiscountController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\DiscountController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\DiscountController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\DiscountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\User.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\User.cs",
+              "RelativeToolTip": "tech-project-back-end\\Models\\User.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAIwBUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Discount.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\Discount.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Models\\Discount.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\Discount.cs",
+              "RelativeToolTip": "tech-project-back-end\\Models\\Discount.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwBMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\Order.cs",
+              "RelativeToolTip": "tech-project-back-end\\Models\\Order.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SupplierController.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\SupplierController.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Controllers\\SupplierController.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Controllers\\SupplierController.cs",
+              "RelativeToolTip": "tech-project-back-end\\Controllers\\SupplierController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAsAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UpdatedUser.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\UpdatedUser.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Models\\UpdatedUser.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\UpdatedUser.cs",
+              "RelativeToolTip": "tech-project-back-end\\Models\\UpdatedUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\Product.cs",
+              "RelativeToolTip": "tech-project-back-end\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "tech-project-back-end\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAzwDIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.825Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

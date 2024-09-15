@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Text;
-using System.Text.Json.Serialization;
 using tech_project_back_end.Data;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
@@ -150,9 +146,9 @@ namespace tech_project_back_end.Controllers
                     </head>
                     <body>
 	                    <h1>Đổi mật khẩu</h1>
-	                    <p>Xin chào, <strong>"+existingUser.phone+@"</strong></p>
+	                    <p>Xin chào, <strong>" + existingUser.phone + @"</strong></p>
 	                    <p>Chúng tôi đã đổi mật khẩu của tài khoản của bạn do yêu cầu đổi mật khẩu. Mật khẩu mới của bạn là: </p>
-	                    <p><strong>"+newPassword+ @"</strong></p>
+	                    <p><strong>" + newPassword + @"</strong></p>
 	                    <p>Vui lòng đăng nhập với mật khẩu mới để tiếp tục sử dụng dịch vụ của chúng tôi.</p>
 	                    <a href='https://github.com/hSangg' class='btn'>HSang</a>
                     </body>
@@ -190,7 +186,7 @@ namespace tech_project_back_end.Controllers
             var isExitUser = _appDBContext.User.FirstOrDefault(c => c.phone == user.phone);
             if (isExitUser == null) { return NotFound("User not found"); }
 
-            if (!BCrypt.Net.BCrypt.Verify(user.password,isExitUser.password ))
+            if (!BCrypt.Net.BCrypt.Verify(user.password, isExitUser.password))
             {
                 return BadRequest("Wrong password.");
             }
@@ -199,15 +195,15 @@ namespace tech_project_back_end.Controllers
 
             string userJson = JsonConvert.SerializeObject(user);
 
-           
+
 
 
             Response.Cookies.Append("token", token, new CookieOptions
             {
-                HttpOnly = true, 
-                Secure = true,   
-                SameSite = SameSiteMode.Strict, 
-                Expires = DateTimeOffset.Now.AddHours(1) 
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = DateTimeOffset.Now.AddHours(1)
             });
 
 
@@ -239,7 +235,7 @@ namespace tech_project_back_end.Controllers
 
         private string CreateToken(User user)
         {
-            List<Claim>  claims = new List<Claim>(){
+            List<Claim> claims = new List<Claim>(){
             new Claim(ClaimTypes.Name, user.name),
             };
 

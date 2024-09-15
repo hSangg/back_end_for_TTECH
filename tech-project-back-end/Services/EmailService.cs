@@ -46,6 +46,6 @@ namespace tech_project_back_end.Services
             smtp.Disconnect(true);
         }
 
-       
+
     }
 }

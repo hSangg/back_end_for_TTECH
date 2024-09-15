@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "seastLGhUVljhZSpTAslCbAWTA0/ZEsbwbEFW9CaahmH1ZkS1K5Z4jyxPPgjKFG8KJFlZQ13ZUJdfUbJm9YAvQ==",
+  "dgSpecHash": "QECMOAAkr3g=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sangf\\source\\repos\\tech-project-back-end\\tech-project-back-end\\tech-project-back-end.csproj",
+  "projectFilePath": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sangf\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Sangf\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
@@ -136,5 +136,26 @@
     "C:\\Users\\Sangf\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Sangf\\.nuget\\packages\\xlparser\\1.5.2\\xlparser.1.5.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MimeKit' 4.3.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-gmc6-fwg3-75m5",
+      "libraryId": "MimeKit",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.IdentityModel.Tokens.Jwt' 7.0.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-59j7-ghrg-fj52",
+      "libraryId": "System.IdentityModel.Tokens.Jwt",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

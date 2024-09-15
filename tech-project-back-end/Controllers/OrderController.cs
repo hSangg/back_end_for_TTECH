@@ -1,10 +1,8 @@
 ﻿using ClosedXML.Excel;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using tech_project_back_end.Data;
-using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
 using tech_project_back_end.Services;
 
@@ -33,7 +31,7 @@ namespace tech_project_back_end.Controllers
 
         }
 
-        
+
 
         [HttpPut("UpdateStateOrder")]
         public async Task<IActionResult> UpdateStateOrder(string orderId, string state)
@@ -57,7 +55,7 @@ namespace tech_project_back_end.Controllers
                 // Update the existing product
                 existingOrder.State = state;
 
-                 await _appDbContext.SaveChangesAsync();
+                await _appDbContext.SaveChangesAsync();
 
                 return Ok("order updated successfully");
             }
@@ -136,7 +134,7 @@ namespace tech_project_back_end.Controllers
         public IActionResult GetAllOrder()
         {
             var orders = _appDbContext.Order.Join(_appDbContext.User, o => o.UserId, u => u.user_id,
-                (o,u) => new
+                (o, u) => new
                 {
                     CustomerInfor = u,
                     OrderInfor = o,
@@ -188,7 +186,7 @@ namespace tech_project_back_end.Controllers
                         QuantityPr = od.QuantityPr,
                         PricePr = od.PricePr,
                         Total = o.Total + o.DeliveryFee
-                        
+
                     })
                 .Where(x => x.UserId == userId)
                 .GroupBy(o => new
@@ -196,7 +194,7 @@ namespace tech_project_back_end.Controllers
                     o.OrderId,
                     o.CreateOrderAt,
                     o.UserId,
-                    o.Total 
+                    o.Total
 
                 })
                 .Select(g => new
@@ -207,7 +205,7 @@ namespace tech_project_back_end.Controllers
                         g.Key.CreateOrderAt,
                         g.Key.UserId,
                         g.Key.Total,
-                    
+
                     },
                     OrderDetails = g.Select(x => new
                     {

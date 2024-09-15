@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MySqlConnector;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace tech_project_back_end.Controllers
 {
@@ -178,7 +173,7 @@ namespace tech_project_back_end.Controllers
             // Filter by minimum and maximum price
             if (filter.MinPrice.HasValue)
             {
-                productList = productList.Where(p => p.Product.price >=  (ulong)filter.MinPrice.Value);
+                productList = productList.Where(p => p.Product.price >= (ulong)filter.MinPrice.Value);
             }
 
             if (!string.IsNullOrEmpty(filter.SearchKey))
@@ -189,7 +184,7 @@ namespace tech_project_back_end.Controllers
                         x.Product.name_serial.ToLower().Contains(filter.SearchKey.ToLower()) ||
                         x.Product.detail.ToLower().Contains(filter.SearchKey.ToLower()) || x.Product.product_id.ToLower().Contains(filter.SearchKey.ToLower()) ||
                         x.Category.Any(c => c.category_name.ToLower().Contains(filter.SearchKey.ToLower())) == true
-                    
+
                 );
             }
 
@@ -264,7 +259,8 @@ namespace tech_project_back_end.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteProductById(string product_id)
         {
-            try {
+            try
+            {
                 var result = await DeleteImageFolder(product_id);
                 var productsToDelete = _appDbContext.Product.Where(p => p.product_id == product_id);
                 _appDbContext.Product.RemoveRange(productsToDelete);
@@ -275,7 +271,9 @@ namespace tech_project_back_end.Controllers
                 return Ok("Add oke");
 
 
-            } catch(Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 return BadRequest("Failed to upload image.");
             }
 
@@ -286,14 +284,14 @@ namespace tech_project_back_end.Controllers
         {
             try
             {
-                    foreach (var formFile in formFileCollection)
+                foreach (var formFile in formFileCollection)
                 {
-                
-                        string imageUrl = await AddImage(formFile, product_id);
+
+                    string imageUrl = await AddImage(formFile, product_id);
 
 
                 }
-              return Ok("Add oke");
+                return Ok("Add oke");
 
             }
             catch (Exception ex)
@@ -309,7 +307,7 @@ namespace tech_project_back_end.Controllers
 
             var result = _appDbContext.Image.Where(i => i.product_id == product_id);
             return Ok(result);
-            
+
         }
 
         [HttpPost("UpaloadImage")]
@@ -353,7 +351,7 @@ namespace tech_project_back_end.Controllers
         [HttpDelete("DeleteImageOfProduct")]
         public async Task<IActionResult> DeleteImageOfProduct(string product_id, string file_name)
         {
-            var imageExit = _appDbContext.Image.Where(i => i.product_id == product_id && i.file_name == file_name  );
+            var imageExit = _appDbContext.Image.Where(i => i.product_id == product_id && i.file_name == file_name);
             _appDbContext.RemoveRange(imageExit);
             _appDbContext.SaveChanges();
             DeleteImage(product_id, file_name);
@@ -370,7 +368,7 @@ namespace tech_project_back_end.Controllers
                 return BadRequest("Invalid request data");
             }
 
-           
+
 
             try
             {
@@ -444,7 +442,7 @@ namespace tech_project_back_end.Controllers
                 product_id = product_id,
                 image_href = imageUrl,
                 file_name = fileName,
-                
+
             });
 
             await _appDbContext.SaveChangesAsync();

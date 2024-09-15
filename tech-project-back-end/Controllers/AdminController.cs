@@ -1,8 +1,4 @@
-﻿using DocumentFormat.OpenXml.InkML;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
+﻿using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
 
@@ -13,12 +9,13 @@ namespace tech_project_back_end.Controllers
     public class AdminController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-        public AdminController(AppDbContext appDbContext) {
+        public AdminController(AppDbContext appDbContext)
+        {
             _appDbContext = appDbContext;
         }
 
         [HttpGet("GetRevenue")]
-        public IActionResult GetRevenue ()
+        public IActionResult GetRevenue()
         {
             DateTime currentMonthStart = DateTime.Now.AddDays(-1 * DateTime.Now.Day + 1).Date;
             DateTime currentMonthEnd = currentMonthStart.AddMonths(1).AddDays(-1);
@@ -33,13 +30,14 @@ namespace tech_project_back_end.Controllers
             decimal percentDifference;
             if (lastMonthRevenue > 0)
                 percentDifference = (thisMonthRevenue - lastMonthRevenue) / lastMonthRevenue * 100;
-            else  percentDifference = 100;
+            else percentDifference = 100;
 
             return Ok(new { ThisMonthRevenue = thisMonthRevenue, LastMonthRevenue = lastMonthRevenue, PercentDifference = Math.Round(percentDifference, 2) });
         }
 
         [HttpGet("GetTopSellerProduct")]
-        public IActionResult GetTopSellerProduct(int count) {
+        public IActionResult GetTopSellerProduct(int count)
+        {
             var subquery = _appDbContext.Detail_Order
                             .GroupBy(dt => dt.ProductId)
                             .Select(g => new

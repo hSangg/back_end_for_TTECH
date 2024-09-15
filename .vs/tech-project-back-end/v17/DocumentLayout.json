@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\models\\updateduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\models\\updateduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdatedUser.cs",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\UpdatedUser.cs",
+              "RelativeDocumentMoniker": "tech-project-back-end\\Models\\UpdatedUser.cs",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\UpdatedUser.cs",
+              "RelativeToolTip": "tech-project-back-end\\Models\\UpdatedUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-15T12:43:04.821Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
