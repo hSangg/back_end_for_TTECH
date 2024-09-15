@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\tech-project-back-end.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\tech-project-back-end.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|c:\\users\\sangf\\source\\repos\\back_end_for_ttech\\tech-project-back-end\\models\\updateduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B3CF084-F72D-4AF8-BB33-BE0757FA529C}|tech-project-back-end\\tech-project-back-end.csproj|solutionrelative:tech-project-back-end\\models\\updateduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,15 +26,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "tech-project-back-end",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
+              "RelativeDocumentMoniker": "tech-project-back-end\\tech-project-back-end.csproj",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
+              "RelativeToolTip": "tech-project-back-end\\tech-project-back-end.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-15T13:13:38.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\appsettings.json",
+              "RelativeDocumentMoniker": "tech-project-back-end\\appsettings.json",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\appsettings.json",
+              "RelativeToolTip": "tech-project-back-end\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-15T13:09:00.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "tech-project-back-end\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\appsettings.Development.json",
+              "RelativeToolTip": "tech-project-back-end\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-15T13:08:41.436Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "UpdatedUser.cs",
               "DocumentMoniker": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\Models\\UpdatedUser.cs",
               "RelativeDocumentMoniker": "tech-project-back-end\\Models\\UpdatedUser.cs",

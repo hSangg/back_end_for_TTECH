@@ -7094,11 +7094,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
+      "projectUniqueName": "C:\\Users\\Sangf\\Source\\Repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
       "projectName": "tech-project-back-end",
-      "projectPath": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
+      "projectPath": "C:\\Users\\Sangf\\Source\\Repos\\back_end_for_TTECH\\tech-project-back-end\\tech-project-back-end.csproj",
       "packagesPath": "C:\\Users\\Sangf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sangf\\source\\repos\\back_end_for_TTECH\\tech-project-back-end\\obj\\",
+      "outputPath": "C:\\Users\\Sangf\\Source\\Repos\\back_end_for_TTECH\\tech-project-back-end\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sangf\\AppData\\Roaming\\NuGet\\NuGet.Config",
