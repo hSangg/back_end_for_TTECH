@@ -59,9 +59,9 @@ namespace tech_project_back_end.Controllers
                                 guarantee_period = p.guarantee_period
                             },
                             Category = _appDbContext.Product_Category
-                                        .Where(pc => pc.ProductId == p.product_id)
+                                        .Where(pc => pc.product_id == p.product_id)
                                         .Join(_appDbContext.Category,
-                                                pc => pc.CategoryId,
+                                                pc => pc.category_id,
                                                 c => c.category_id,
                                                     (pc, c) => new { c.category_id, c.category_name })
                                                     .ToList(),
@@ -109,9 +109,9 @@ namespace tech_project_back_end.Controllers
                 guarantee_period = p.guarantee_period
             },
             Category = _appDbContext.Product_Category
-                .Where(pc => pc.ProductId == p.product_id)
+                .Where(pc => pc.product_id == p.product_id)
                 .Join(_appDbContext.Category,
-                    pc => pc.CategoryId,
+                    pc => pc.category_id,
                     c => c.category_id,
                     (pc, c) => new { c.category_id, c.category_name })
                 .ToList(),
@@ -156,9 +156,9 @@ namespace tech_project_back_end.Controllers
 
                 },
                 Category = _appDbContext.Product_Category
-                        .Where(pc => pc.ProductId == p.product_id)
+                        .Where(pc => pc.product_id == p.product_id)
                         .Join(_appDbContext.Category,
-                            pc => pc.CategoryId,
+                            pc => pc.category_id,
                             c => c.category_id,
                             (pc, c) => new { c.category_id, c.category_name })
                         .ToList(),
@@ -205,9 +205,9 @@ namespace tech_project_back_end.Controllers
                 productList = productList
                     .Join(_appDbContext.Product_Category,
                         p => p.Product.product_id,
-                        pc => pc.ProductId,
+                        pc => pc.product_id,
                         (p, pc) => new { p, pc })
-                    .Where(x => x.pc.CategoryId == filter.CategoryId)
+                    .Where(x => x.pc.category_id == filter.CategoryId)
                     .Select(x => x.p);
             }
 

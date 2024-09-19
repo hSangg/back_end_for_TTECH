@@ -50,9 +50,9 @@ namespace tech_project_back_end.Controllers
                                      },
                                      quantity = cart.quantity,
                                      Category = _appDbContext.Product_Category
-                                        .Where(pc => pc.ProductId == cart.product_id)
+                                        .Where(pc => pc.product_id == cart.product_id)
                                         .Join(_appDbContext.Category,
-                                                pc => pc.CategoryId,
+                                                pc => pc.category_id,
                                                 c => c.category_id,
                                                     (pc, c) => new { c.category_id, c.category_name })
                                                     .SingleOrDefault(),

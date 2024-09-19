@@ -7,16 +7,16 @@ namespace tech_project_back_end.Models
     {
         [Key]
         [Column("order_id", TypeName = "varchar(36)")]
-        public string OrderId { get; set; }
+        public string order_id { get; set; }
 
         [Key]
         [Column("product_id", TypeName = "varchar(36)")]
-        public string ProductId { get; set; }
+        public string product_id { get; set; }
 
-        [Column("price_pr", TypeName = "bigint(20) UNSIGNED")]
-        public long PricePr { get; set; }
+        [Column("price", TypeName = "bigint(20) UNSIGNED")]
+        public long price { get; set; }
 
-        [Column("quantity_pr", TypeName = "int(11)")]
-        public int QuantityPr { get; set; }
+        [Column("quality", TypeName = "int(11)")]
+        public int quality { get; set; }
     }
 }

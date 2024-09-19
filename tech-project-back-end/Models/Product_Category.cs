@@ -7,11 +7,10 @@ namespace tech_project_back_end.Models
     {
         [Key]
         [Column("product_id", TypeName = "varchar(36)")]
-        public string ProductId { get; set; }
+        public string product_id { get; set; }
 
         [Key]
         [Column("category_id", TypeName = "varchar(36)")]
-        public string CategoryId { get; set; }
-
+        public string category_id { get; set; }
     }
 }
