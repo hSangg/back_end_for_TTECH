@@ -22,11 +22,11 @@ namespace tech_project_back_end.Controllers
             DateTime lastMonthStart = currentMonthStart.AddMonths(-1).AddDays(-1 * DateTime.Now.Day + 1).Date;
             DateTime lastMonthEnd = lastMonthStart.AddMonths(1).AddDays(-1);
 
-            List<Order> ordersThisMonth = _appDbContext.Order.Where(o => o.CreateOrderAt >= currentMonthStart && o.CreateOrderAt <= currentMonthEnd).ToList();
-            List<Order> ordersLastMonth = _appDbContext.Order.Where(o => o.CreateOrderAt >= lastMonthStart && o.CreateOrderAt <= lastMonthEnd).ToList();
+            List<Order> ordersThisMonth = _appDbContext.Order.Where(o => o.createdAt >= currentMonthStart && o.createdAt <= currentMonthEnd).ToList();
+            List<Order> ordersLastMonth = _appDbContext.Order.Where(o => o.createdAt >= lastMonthStart && o.createdAt <= lastMonthEnd).ToList();
 
-            decimal thisMonthRevenue = ordersThisMonth.Sum(o => o.Total - o.DeliveryFee);
-            decimal lastMonthRevenue = ordersLastMonth.Sum(o => o.Total - o.DeliveryFee);
+            decimal thisMonthRevenue = ordersThisMonth.Sum(o => o.total - o.delivery_fee);
+            decimal lastMonthRevenue = ordersLastMonth.Sum(o => o.total - o.delivery_fee);
             decimal percentDifference;
             if (lastMonthRevenue > 0)
                 percentDifference = (thisMonthRevenue - lastMonthRevenue) / lastMonthRevenue * 100;
@@ -39,11 +39,11 @@ namespace tech_project_back_end.Controllers
         public IActionResult GetTopSellerProduct(int count)
         {
             var subquery = _appDbContext.Detail_Order
-                            .GroupBy(dt => dt.ProductId)
+                            .GroupBy(dt => dt.product_id)
                             .Select(g => new
                             {
                                 ProductId = g.Key,
-                                TotalQuantitySold = g.Sum(dt => dt.QuantityPr)
+                                TotalQuantitySold = g.Sum(dt => dt.quality)
                             });
 
             var result = subquery
@@ -78,8 +78,8 @@ namespace tech_project_back_end.Controllers
                 var endDateOfMonth = new DateTime(year, month, DateTime.DaysInMonth(year, month), 23, 59, 59);
 
                 var revenue = _appDbContext.Order
-                    .Where(o => o.CreateOrderAt >= startDateOfMonth && o.CreateOrderAt <= endDateOfMonth)
-                    .Sum(o => o.Total);
+                    .Where(o => o.createdAt >= startDateOfMonth && o.createdAt <= endDateOfMonth)
+                    .Sum(o => o.total);
 
                 labels.Add(startDateOfMonth.ToString("MMMM"));
                 revenues.Add(revenue);
@@ -105,8 +105,8 @@ namespace tech_project_back_end.Controllers
             for (var date = startDate.Date; date <= endDate.Date; date = date.AddDays(1))
             {
                 var revenue = _appDbContext.Order
-                    .Where(o => o.CreateOrderAt.Date == date.Date)
-                    .Sum(o => o.Total);
+                    .Where(o => o.createdAt.Date == date.Date)
+                    .Sum(o => o.total);
 
                 var label = date.ToString("dddd");
 

@@ -24,7 +24,7 @@ namespace tech_project_back_end.Controllers
         public IActionResult AddNewOrder(Order order)
         {
             _appDbContext.Order.Add(order);
-            order.CreateOrderAt = DateTime.Now;
+            order.createdAt = DateTime.Now;
             _appDbContext.SaveChanges();
             return Ok(order);
 
@@ -45,7 +45,7 @@ namespace tech_project_back_end.Controllers
             {
                 // Check if the specified product exists
                 var existingOrder = await _appDbContext.Order
-                    .FirstOrDefaultAsync(p => p.OrderId == orderId);
+                    .FirstOrDefaultAsync(p => p.order_id == orderId);
 
                 if (existingOrder == null)
                 {
@@ -53,7 +53,7 @@ namespace tech_project_back_end.Controllers
                 }
 
                 // Update the existing product
-                existingOrder.State = state;
+                existingOrder.state = state;
 
                 await _appDbContext.SaveChangesAsync();
 
@@ -106,17 +106,17 @@ namespace tech_project_back_end.Controllers
 
             var orderList = _appDbContext.Order.Select(x => new
             {
-                orderId = x.OrderId,
-                customerName = x.Name,
-                customerAddress = x.Address,
-                customerEmail = x.Email,
-                customerPhone = x.Phone,
-                customerNote = x.Note,
+                orderId = x.order_id,
+                customerName = x.name,
+                customerAddress = x.address,
+                customerEmail = x.email,
+                customerPhone = x.phone,
+                customerNote = x.note,
 
-                deliveryFee = x.DeliveryFee,
-                discountId = x.Discount,
-                total = x.Total,
-                createdAt = x.CreateOrderAt,
+                deliveryFee = x.delivery_fee,
+                discountId = x.discount,
+                total = x.total,
+                createdAt = x.createdAt,
 
             }).ToList();
             if (orderList.Count > 0)
@@ -133,15 +133,15 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetAllOrder")]
         public IActionResult GetAllOrder()
         {
-            var orders = _appDbContext.Order.Join(_appDbContext.User, o => o.UserId, u => u.user_id,
+            var orders = _appDbContext.Order.Join(_appDbContext.User, o => o.user_id, u => u.user_id,
                 (o, u) => new
                 {
                     CustomerInfor = u,
                     OrderInfor = o,
-                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.Discount).FirstOrDefault()
+                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount).FirstOrDefault()
 
                 }
-                ).OrderByDescending(x => x.OrderInfor.CreateOrderAt);
+                ).OrderByDescending(x => x.OrderInfor.createdAt);
 
             return Ok(orders);
 
@@ -151,18 +151,18 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetOrderById")]
         public IActionResult GetOrderById(string order_id)
         {
-            var isExit = _appDbContext.Order.FirstOrDefault(o => o.OrderId == order_id);
+            var isExit = _appDbContext.Order.FirstOrDefault(o => o.order_id == order_id);
             if (isExit != null) { return NotFound("Order not found"); }
 
-            var orders = _appDbContext.Order.Where(o => o.OrderId.ToLower().Contains(order_id.ToLower())).Join(_appDbContext.User, o => o.UserId, u => u.user_id,
+            var orders = _appDbContext.Order.Where(o => o.order_id.ToLower().Contains(order_id.ToLower())).Join(_appDbContext.User, o => o.user_id, u => u.user_id,
                 (o, u) => new
                 {
                     CustomerInfor = u,
                     OrderInfor = o,
-                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.Discount).FirstOrDefault()
+                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount).FirstOrDefault()
 
                 }
-                ).OrderByDescending(x => x.OrderInfor.CreateOrderAt);
+                ).OrderByDescending(x => x.OrderInfor.createdAt);
 
             return Ok(orders);
 
@@ -175,17 +175,17 @@ namespace tech_project_back_end.Controllers
             var orders = _appDbContext.Order
                 .Join(
                     _appDbContext.Detail_Order,
-                    o => o.OrderId,
-                    od => od.OrderId,
+                    o => o.order_id,
+                    od => od.order_id,
                     (o, od) => new
                     {
-                        OrderId = o.OrderId,
-                        CreateOrderAt = o.CreateOrderAt,
-                        UserId = o.UserId,
-                        ProductId = od.ProductId,
-                        QuantityPr = od.QuantityPr,
-                        PricePr = od.PricePr,
-                        Total = o.Total + o.DeliveryFee
+                        OrderId = o.order_id,
+                        CreateOrderAt = o.createdAt,
+                        UserId = o.user_id,
+                        ProductId = od.product_id,
+                        QuantityPr = od.quality,
+                        PricePr = od.price,
+                        Total = o.total + o.delivery_fee
 
                     })
                 .Where(x => x.UserId == userId)

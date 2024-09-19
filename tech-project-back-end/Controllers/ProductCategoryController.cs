@@ -40,7 +40,7 @@ namespace tech_project_back_end.Controllers
             try
             {
                 var existingProductCategory = await _appDbContext.Product_Category
-                    .FirstOrDefaultAsync(p => p.ProductId == pc.ProductId && p.CategoryId == pc.CategoryId);
+                    .FirstOrDefaultAsync(p => p.product_id == pc.product_id && p.category_id == pc.category_id);
 
                 if (existingProductCategory == null)
                 {
@@ -52,8 +52,8 @@ namespace tech_project_back_end.Controllers
 
                 var newProductCategory = new Product_Category
                 {
-                    ProductId = pc.ProductId,
-                    CategoryId = new_category_id
+                    product_id = pc.product_id,
+                    category_id = new_category_id
                 };
 
                 _appDbContext.Add(newProductCategory);
@@ -70,7 +70,7 @@ namespace tech_project_back_end.Controllers
         [HttpDelete("RemoveProductCategory")]
         public IActionResult AddNewProductCategory(string product_id)
         {
-            var result = _appDbContext.Product_Category.Where(pc => pc.ProductId == product_id);
+            var result = _appDbContext.Product_Category.Where(pc => pc.product_id == product_id);
             _appDbContext.Product_Category.RemoveRange(result);
             _appDbContext.SaveChanges();
             return Ok("Deleted product_category by product_id");
