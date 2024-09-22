@@ -23,7 +23,7 @@ namespace tech_project_back_end.Data
             modelBuilder.Entity<Order>().HasKey(c => c.order_id);
             modelBuilder.Entity<Image>().HasKey(c => c.image_id);
             modelBuilder.Entity<Cart>().HasKey(c => new { c.user_id, c.product_id });
-            modelBuilder.Entity<DetailOrder>().HasKey(c => new { c.order_id, c.product_id });
+            modelBuilder.Entity<DetailOrder>().HasKey(c => new { c.OrderId, c.product_id });
             modelBuilder.Entity<Discount>().HasKey(c => c.DiscountId);
             modelBuilder.Entity<ProductCategory>().HasKey(pc => new { pc.product_id, pc.category_id });  
         }

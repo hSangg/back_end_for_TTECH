@@ -176,7 +176,7 @@ namespace tech_project_back_end.Controllers
                 .Join(
                     _appDbContext.DetailOrder,
                     o => o.order_id,
-                    od => od.order_id,
+                    od => od.OrderId,
                     (o, od) => new
                     {
                         OrderId = o.order_id,

@@ -7,7 +7,7 @@ namespace tech_project_back_end.Models
     {
         [Key]
         [Column("order_id", TypeName = "varchar(36)")]
-        public string order_id { get; set; }
+        public string OrderId { get; set; }
 
         [Key]
         [Column("product_id", TypeName = "varchar(36)")]

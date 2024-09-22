@@ -18,7 +18,7 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetOderDetailByOrderId")]
         public IActionResult GetOderDetailByOrderId(string order_id)
         {
-            var result = _appDbContext.DetailOrder.Where(od => od.order_id == order_id).Select(x
+            var result = _appDbContext.DetailOrder.Where(od => od.OrderId == order_id).Select(x
                 => new
                 {
                     Product = _appDbContext.Product.Where(p => p.product_id == x.product_id).FirstOrDefault(),
