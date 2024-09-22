@@ -58,7 +58,7 @@ namespace tech_project_back_end.Controllers
                                 quantity_pr = p.quantity_pr,
                                 guarantee_period = p.guarantee_period
                             },
-                            Category = _appDbContext.Product_Category
+                            Category = _appDbContext.ProductCategory
                                         .Where(pc => pc.product_id == p.product_id)
                                         .Join(_appDbContext.Category,
                                                 pc => pc.category_id,
@@ -108,7 +108,7 @@ namespace tech_project_back_end.Controllers
                 quantity_pr = p.quantity_pr,
                 guarantee_period = p.guarantee_period
             },
-            Category = _appDbContext.Product_Category
+            Category = _appDbContext.ProductCategory
                 .Where(pc => pc.product_id == p.product_id)
                 .Join(_appDbContext.Category,
                     pc => pc.category_id,
@@ -155,7 +155,7 @@ namespace tech_project_back_end.Controllers
                     guarantee_period = p.guarantee_period,
 
                 },
-                Category = _appDbContext.Product_Category
+                Category = _appDbContext.ProductCategory
                         .Where(pc => pc.product_id == p.product_id)
                         .Join(_appDbContext.Category,
                             pc => pc.category_id,
@@ -203,7 +203,7 @@ namespace tech_project_back_end.Controllers
             if (!string.IsNullOrEmpty(filter.CategoryId))
             {
                 productList = productList
-                    .Join(_appDbContext.Product_Category,
+                    .Join(_appDbContext.ProductCategory,
                         p => p.Product.product_id,
                         pc => pc.product_id,
                         (p, pc) => new { p, pc })

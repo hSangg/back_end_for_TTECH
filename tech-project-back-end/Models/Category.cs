@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tech_project_back_end.Models
@@ -15,4 +14,3 @@ namespace tech_project_back_end.Models
         public string category_name { get; set; }
     }
 }
-  

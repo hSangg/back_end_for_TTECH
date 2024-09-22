@@ -18,7 +18,7 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetOderDetailByOrderId")]
         public IActionResult GetOderDetailByOrderId(string order_id)
         {
-            var result = _appDbContext.Detail_Order.Where(od => od.order_id == order_id).Select(x
+            var result = _appDbContext.DetailOrder.Where(od => od.order_id == order_id).Select(x
                 => new
                 {
                     Product = _appDbContext.Product.Where(p => p.product_id == x.product_id).FirstOrDefault(),
@@ -32,11 +32,11 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost("AddNewDetailOrder")]
-        public IActionResult AddNewOrderDetail(List<Detail_Order> detailOrders)
+        public IActionResult AddNewOrderDetail(List<DetailOrder> detailOrders)
         {
             foreach (var detailOrder in detailOrders)
             {
-                _appDbContext.Detail_Order.Add(detailOrder);
+                _appDbContext.DetailOrder.Add(detailOrder);
                 var product_id = detailOrder.product_id;
                 var quantityDescrease = detailOrder.quality;
 

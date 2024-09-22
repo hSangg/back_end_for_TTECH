@@ -30,14 +30,14 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetUserById")]
         public IActionResult GetUserById(string userId)
         {
-            var user = _appDBContext.User.Where(user => user.user_id == userId).FirstOrDefault();
+            var user = _appDBContext.User.Where(user => user.UserId == userId).FirstOrDefault();
             if (user != null) return Ok(user);
             return NotFound("User not found");
         }
 
 
         [HttpPost("register")]
-        public IActionResult Register(User user)
+        public async Task<IActionResult> Register(User user)
         {
 
             if (!ModelState.IsValid)
@@ -45,24 +45,22 @@ namespace tech_project_back_end.Controllers
                 return BadRequest(ModelState);
             }
 
-            // Kiểm tra email đã tồn tại hay chưa
-            if (_appDBContext.User.Any(u => u.email == user.email))
+            if (_appDBContext.User.Any(u => u.Email == user.Email))
             {
                 ModelState.AddModelError("email", "Email already exists.");
                 return BadRequest(ModelState);
             }
 
-            // Kiểm tra số điện thoại đã tồn tại hay chưa
-            if (_appDBContext.User.Any(u => u.phone == user.phone))
+            if (_appDBContext.User.Any(u => u.Phone == user.Phone))
             {
                 ModelState.AddModelError("phone", "Phone number already exists.");
                 return BadRequest(ModelState);
             }
 
-            user.create_at = DateTime.Now;
-            user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
+            user.CreatedAt = DateTime.Now;
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             _appDBContext.User.Add(user);
-            _appDBContext.SaveChanges();
+            await _appDBContext.SaveChangesAsync();
 
             string token = CreateToken(user);
             string userJson = JsonConvert.SerializeObject(user);
@@ -76,8 +74,7 @@ namespace tech_project_back_end.Controllers
                 Expires = DateTimeOffset.Now.AddHours(1)
             });
 
-            return Ok(new { user, token });
-
+            return CreatedAtAction("AddUser", new { id = user.UserId }, new { user, token });
         }
 
         [HttpPost("ForgetPassword")]
@@ -85,7 +82,7 @@ namespace tech_project_back_end.Controllers
         {
             try
             {
-                var existingUser = await _appDBContext.User.FirstOrDefaultAsync(u => u.email == email);
+                var existingUser = await _appDBContext.User.FirstOrDefaultAsync(u => u.Email == email);
 
                 if (existingUser == null)
                 {
@@ -94,7 +91,7 @@ namespace tech_project_back_end.Controllers
 
                 // Update the existing User
                 string newPassword = Guid.NewGuid().ToString()[..5];
-                existingUser.password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+                existingUser.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
 
                 await _appDBContext.SaveChangesAsync();
 
@@ -143,7 +140,7 @@ namespace tech_project_back_end.Controllers
                     </head>
                     <body>
 	                    <h1>Đổi mật khẩu</h1>
-	                    <p>Xin chào, <strong>" + existingUser.phone + @"</strong></p>
+	                    <p>Xin chào, <strong>" + existingUser.Phone + @"</strong></p>
 	                    <p>Chúng tôi đã đổi mật khẩu của tài khoản của bạn do yêu cầu đổi mật khẩu. Mật khẩu mới của bạn là: </p>
 	                    <p><strong>" + newPassword + @"</strong></p>
 	                    <p>Vui lòng đăng nhập với mật khẩu mới để tiếp tục sử dụng dịch vụ của chúng tôi.</p>
@@ -178,17 +175,15 @@ namespace tech_project_back_end.Controllers
                 return BadRequest(ModelState);
             }
 
-            var isExitUser = _appDBContext.User.FirstOrDefault(c => c.phone == user.phone);
+            var isExitUser = _appDBContext.User.FirstOrDefault(c => c.Phone == user.phone);
             if (isExitUser == null) { return NotFound("User not found"); }
 
-            if (!BCrypt.Net.BCrypt.Verify(user.password, isExitUser.password))
+            if (!BCrypt.Net.BCrypt.Verify(user.password, isExitUser.Password))
             {
                 return BadRequest("Wrong password.");
             }
 
             string token = CreateToken(isExitUser);
-
-            string userJson = JsonConvert.SerializeObject(user);
 
             Response.Cookies.Append("token", token, new CookieOptions
             {
@@ -205,31 +200,28 @@ namespace tech_project_back_end.Controllers
         [HttpPut("UpdateUserInfor")]
         public IActionResult UpdateUserInfor([FromBody] UpdatedUser updatedUser)
         {
-            var user = _appDBContext.User.FirstOrDefault(c => c.user_id == updatedUser.user_id);
+            var user = _appDBContext.User.FirstOrDefault(c => c.UserId == updatedUser.user_id);
             if (user == null)
             {
                 return NotFound("User not found");
             }
 
-            // Update the values in the existing user record with the new values
-            user.name = updatedUser.name;
-            user.email = updatedUser.email;
-            user.phone = updatedUser.phone;
+            user.Name = updatedUser.name;
+            user.Email = updatedUser.email;
+            user.Phone = updatedUser.phone;
 
-            // Save changes to the database
             _appDBContext.SaveChanges();
 
-            // Return the updated user and a message indicating success
             return Ok(new { user, message = "User updated successfully" });
         }
-
-
 
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>(){
-            new Claim(ClaimTypes.Name, user.name),
-            };
+            new Claim(ClaimTypes.Name, user.Name),
+            new Claim(ClaimTypes.NameIdentifier, user.UserId),
+            new Claim(ClaimTypes.Role, user.Role)
+        };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                  _iConfiguration.GetSection("Authentication:Schemes:Bearer:SigningKeys:0:Value").Value!));

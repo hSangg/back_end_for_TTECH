@@ -133,7 +133,7 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetAllOrder")]
         public IActionResult GetAllOrder()
         {
-            var orders = _appDbContext.Order.Join(_appDbContext.User, o => o.user_id, u => u.user_id,
+            var orders = _appDbContext.Order.Join(_appDbContext.User, o => o.user_id, u => u.UserId,
                 (o, u) => new
                 {
                     CustomerInfor = u,
@@ -154,7 +154,7 @@ namespace tech_project_back_end.Controllers
             var isExit = _appDbContext.Order.FirstOrDefault(o => o.order_id == order_id);
             if (isExit != null) { return NotFound("Order not found"); }
 
-            var orders = _appDbContext.Order.Where(o => o.order_id.ToLower().Contains(order_id.ToLower())).Join(_appDbContext.User, o => o.user_id, u => u.user_id,
+            var orders = _appDbContext.Order.Where(o => o.order_id.ToLower().Contains(order_id.ToLower())).Join(_appDbContext.User, o => o.user_id, u => u.UserId,
                 (o, u) => new
                 {
                     CustomerInfor = u,
@@ -174,7 +174,7 @@ namespace tech_project_back_end.Controllers
         {
             var orders = _appDbContext.Order
                 .Join(
-                    _appDbContext.Detail_Order,
+                    _appDbContext.DetailOrder,
                     o => o.order_id,
                     od => od.order_id,
                     (o, od) => new

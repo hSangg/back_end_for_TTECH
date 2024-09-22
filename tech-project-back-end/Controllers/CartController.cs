@@ -49,7 +49,7 @@ namespace tech_project_back_end.Controllers
                                          supplier_id = product.supplier_id,
                                      },
                                      quantity = cart.quantity,
-                                     Category = _appDbContext.Product_Category
+                                     Category = _appDbContext.ProductCategory
                                         .Where(pc => pc.product_id == cart.product_id)
                                         .Join(_appDbContext.Category,
                                                 pc => pc.category_id,
