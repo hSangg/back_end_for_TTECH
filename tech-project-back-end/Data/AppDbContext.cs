@@ -25,7 +25,7 @@ namespace tech_project_back_end.Data
             modelBuilder.Entity<Cart>().HasKey(c => new { c.user_id, c.product_id });
             modelBuilder.Entity<DetailOrder>().HasKey(c => new { c.order_id, c.product_id });
             modelBuilder.Entity<Discount>().HasKey(c => c.DiscountId);
-            modelBuilder.Entity<ProductCategory>().HasKey(pc => new { pc.product_id, pc.category_id });
+            modelBuilder.Entity<ProductCategory>().HasKey(pc => new { pc.product_id, pc.category_id });  
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -87,6 +87,6 @@ namespace tech_project_back_end.Data
         public DbSet<Order> Order { get; set; }
         public DbSet<Discount> Discount { get; set; }
         public DbSet<Cart> Cart { get; set; }
-        public DbSet<AuditLogs> AuditLogs { get; set; }
+        public DbSet<AuditLogs> AuditLogs { get; set; } 
     }
 }
