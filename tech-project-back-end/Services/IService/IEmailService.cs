@@ -1,6 +1,6 @@
 ﻿using tech_project_back_end.Helpter;
 
-namespace tech_project_back_end.Services
+namespace tech_project_back_end.Services.IService
 {
     public interface IEmailService
     {
