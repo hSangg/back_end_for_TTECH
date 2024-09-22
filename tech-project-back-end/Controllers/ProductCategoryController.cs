@@ -16,13 +16,13 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost("AddNewProductCategory")]
-        public IActionResult AddNewProductCategory(List<Product_Category> product_Categories)
+        public IActionResult AddNewProductCategory(List<ProductCategory> product_Categories)
         {
             if (product_Categories == null) return BadRequest("Null");
 
             foreach (var pc in product_Categories)
             {
-                _appDbContext.Product_Category.Add(pc);
+                _appDbContext.ProductCategory.Add(pc);
             }
             _appDbContext.SaveChanges();
             return Ok(product_Categories);
@@ -30,7 +30,7 @@ namespace tech_project_back_end.Controllers
 
 
         [HttpPut("UpdateProductCategory")]
-        public async Task<IActionResult> UpdateProductCategory([FromBody] Product_Category pc, string new_category_id)
+        public async Task<IActionResult> UpdateProductCategory([FromBody] ProductCategory pc, string new_category_id)
         {
             if (pc == null)
             {
@@ -39,7 +39,7 @@ namespace tech_project_back_end.Controllers
 
             try
             {
-                var existingProductCategory = await _appDbContext.Product_Category
+                var existingProductCategory = await _appDbContext.ProductCategory
                     .FirstOrDefaultAsync(p => p.product_id == pc.product_id && p.category_id == pc.category_id);
 
                 if (existingProductCategory == null)
@@ -50,7 +50,7 @@ namespace tech_project_back_end.Controllers
                 _appDbContext.Remove(existingProductCategory);
                 await _appDbContext.SaveChangesAsync();
 
-                var newProductCategory = new Product_Category
+                var newProductCategory = new ProductCategory
                 {
                     product_id = pc.product_id,
                     category_id = new_category_id
@@ -70,8 +70,8 @@ namespace tech_project_back_end.Controllers
         [HttpDelete("RemoveProductCategory")]
         public IActionResult AddNewProductCategory(string product_id)
         {
-            var result = _appDbContext.Product_Category.Where(pc => pc.product_id == product_id);
-            _appDbContext.Product_Category.RemoveRange(result);
+            var result = _appDbContext.ProductCategory.Where(pc => pc.product_id == product_id);
+            _appDbContext.ProductCategory.RemoveRange(result);
             _appDbContext.SaveChanges();
             return Ok("Deleted product_category by product_id");
         }

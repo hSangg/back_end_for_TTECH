@@ -38,7 +38,7 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetTopSellerProduct")]
         public IActionResult GetTopSellerProduct(int count)
         {
-            var subquery = _appDbContext.Detail_Order
+            var subquery = _appDbContext.DetailOrder
                             .GroupBy(dt => dt.product_id)
                             .Select(g => new
                             {

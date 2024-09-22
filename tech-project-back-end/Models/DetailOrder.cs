@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tech_project_back_end.Models
 {
-    public class Detail_Order
+    public class DetailOrder
     {
         [Key]
         [Column("order_id", TypeName = "varchar(36)")]

@@ -9,34 +9,34 @@ namespace tech_project_back_end.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(TypeName = "varchar(36)")]
         [StringLength(36)]
-        public string user_id { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(100)")]
         [StringLength(100)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(100)")]
         [StringLength(100)]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(11)")]
         [StringLength(11 | 10)]
-        public string phone { get; set; }
+        public string Phone { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(100)")]
         [StringLength(100)]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar(1)")]
-        [StringLength(1)]
-        public string isAdmin { get; set; }
+        [Column(TypeName = "varchar(50)")]
+        [StringLength(50)]
+        public string Role { get; set; }
 
         [Required]
-        public DateTime create_at { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

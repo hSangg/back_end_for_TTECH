@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
 
 namespace tech_project_back_end.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+
     public class SupplierController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
@@ -15,18 +18,20 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddSupplier(Supplier supplier)
+        [Authorize]
+        public async Task<ActionResult<Supplier>> AddSupplier(Supplier supplier)
         {
 
             supplier.supplier_id = Guid.NewGuid().ToString()[..36];
 
             _appDbContext.Supplier.Add(supplier);
-            _appDbContext.SaveChanges();
+            await _appDbContext.SaveChangesAsync();
 
-            return Ok(supplier);
+            return CreatedAtAction("AddSupplier", new { id = supplier.supplier_id }, supplier);
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult GetAll()
         {
             var supplierList = _appDbContext.Supplier.ToList();

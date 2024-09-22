@@ -6,6 +6,7 @@ using System.Text;
 using tech_project_back_end.Data;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Services;
+using tech_project_back_end.Services.IService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +18,6 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod());
 });
 
-
-// Disable SSL/TLS verification
 var handler = new HttpClientHandler()
 {
     ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
@@ -26,12 +25,15 @@ var handler = new HttpClientHandler()
 
 builder.Services.AddSingleton(new HttpClient(handler));
 
-
 var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
@@ -39,13 +41,10 @@ builder.Services.AddSwaggerGen(options =>
         In = ParameterLocation.Header,
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey,
-
-
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
     ;
 });
-
 
 builder.Services.AddAuthentication().AddJwtBearer(
     options =>
@@ -57,26 +56,18 @@ builder.Services.AddAuthentication().AddJwtBearer(
             ValidateIssuer = false,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                  builder.Configuration.GetSection("Authentication:Schemes:Bearer:SigningKeys:0:Value").Value!))
-
         };
-
     }
-
-    );
+);
 
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
 
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{i
 app.UseSwagger();
-app.UseSwaggerUI();
-//}
 
+app.UseSwaggerUI();
 
 app.UseCors("AllowSpecificOrigin");
 
@@ -86,16 +77,12 @@ app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
-
 app.UseRouting();
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
-
 app.MapControllers();
-
-
 
 app.Run();
 
