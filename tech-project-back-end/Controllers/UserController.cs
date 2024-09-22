@@ -8,7 +8,7 @@ using System.Text;
 using tech_project_back_end.Data;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
-using tech_project_back_end.Services;
+using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
 {
@@ -75,9 +75,6 @@ namespace tech_project_back_end.Controllers
                 SameSite = SameSiteMode.Strict,
                 Expires = DateTimeOffset.Now.AddHours(1)
             });
-
-
-
 
             return Ok(new { user, token });
 
@@ -173,7 +170,6 @@ namespace tech_project_back_end.Controllers
 
         }
 
-
         [HttpPost("login")]
         public IActionResult Login(UserLogin user)
         {
@@ -181,7 +177,6 @@ namespace tech_project_back_end.Controllers
             {
                 return BadRequest(ModelState);
             }
-
 
             var isExitUser = _appDBContext.User.FirstOrDefault(c => c.phone == user.phone);
             if (isExitUser == null) { return NotFound("User not found"); }
@@ -194,9 +189,6 @@ namespace tech_project_back_end.Controllers
             string token = CreateToken(isExitUser);
 
             string userJson = JsonConvert.SerializeObject(user);
-
-
-
 
             Response.Cookies.Append("token", token, new CookieOptions
             {

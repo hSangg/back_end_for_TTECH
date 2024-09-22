@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
-using tech_project_back_end.Services;
+using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
 {

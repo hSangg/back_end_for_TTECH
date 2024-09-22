@@ -19,7 +19,6 @@ namespace tech_project_back_end.Models
         public string name_serial { get; set; }
 
 
-
         [Column("detail", TypeName = "longtext")]
         public string detail { get; set; }
 
