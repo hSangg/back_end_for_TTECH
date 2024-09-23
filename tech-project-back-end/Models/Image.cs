@@ -7,16 +7,16 @@ namespace tech_project_back_end.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string image_id { get; set; }
+        public string ImageId { get; set; }
 
         [Column(TypeName = "varchar(36)")]
-        public string product_id { get; set; }
+        public string ProductId { get; set; }
 
         [Column("image_href", TypeName = "varchar(250)")]
-        public string image_href { get; set; }
+        public string ImageHref { get; set; }
 
         [Column("file_name", TypeName = "varchar(250)")]
-        public string file_name { get; set; }
+        public string FileName { get; set; }
 
     }
 }

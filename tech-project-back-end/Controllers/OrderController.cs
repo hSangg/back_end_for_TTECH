@@ -218,8 +218,8 @@ namespace tech_project_back_end.Controllers
                                 p.detail,
                                 p.price,
                                 Images = _appDbContext.Image
-                                    .Where(i => i.product_id == p.product_id)
-                                    .Select(i => i.image_href)
+                                    .Where(i => i.ProductId == p.product_id)
+                                    .Select(i => i.ImageHref)
                                     .ToList()
                             })
                             .FirstOrDefault(),
