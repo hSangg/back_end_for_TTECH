@@ -33,7 +33,7 @@ namespace tech_project_back_end.Controllers
                                  join product in _appDbContext.Set<Product>()
                                  on cart.product_id equals product.product_id
                                  join supplier in _appDbContext.Set<Supplier>()
-                                 on product.supplier_id equals supplier.supplier_id
+                                 on product.supplier_id equals supplier.SupplierId
                                  where cart.user_id == user_id
                                  select new
                                  {

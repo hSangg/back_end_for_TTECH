@@ -45,7 +45,7 @@ namespace tech_project_back_end.Controllers
                 var product = _appDbContext.Product
                     .Join(_appDbContext.Supplier,
                         p => p.supplier_id,
-                        s => s.supplier_id,
+                        s => s.SupplierId,
                         (p, s) => new
                         {
                             Product = new
@@ -65,7 +65,7 @@ namespace tech_project_back_end.Controllers
                                                 c => c.category_id,
                                                     (pc, c) => new { c.category_id, c.category_name })
                                                     .ToList(),
-                            Supplier = new { s.supplier_id, s.supplier_name },
+                            Supplier = new { s.SupplierId, s.SupplierName },
                             Image = _appDbContext.Image
                                 .Where(i => i.ProductId == p.product_id)
                                 .FirstOrDefault()
@@ -95,7 +95,7 @@ namespace tech_project_back_end.Controllers
             var products = _appDbContext.Product
     .Join(_appDbContext.Supplier,
         p => p.supplier_id,
-        s => s.supplier_id,
+        s => s.SupplierId,
         (p, s) => new
         {
             Product = new
@@ -115,7 +115,7 @@ namespace tech_project_back_end.Controllers
                     c => c.category_id,
                     (pc, c) => new { c.category_id, c.category_name })
                 .ToList(),
-            Supplier = new { s.supplier_id, s.supplier_name },
+            Supplier = new { s.SupplierId, s.SupplierName },
             Image = _appDbContext.Image
                 .Where(i => i.ProductId == p.product_id)
                 .FirstOrDefault()
@@ -141,7 +141,7 @@ namespace tech_project_back_end.Controllers
             var productList = _appDbContext.Product
         .Join(_appDbContext.Supplier,
             p => p.supplier_id,
-            s => s.supplier_id,
+            s => s.SupplierId,
             (p, s) => new
             {
                 Product = new
@@ -163,7 +163,7 @@ namespace tech_project_back_end.Controllers
                             (pc, c) => new { c.category_id, c.category_name })
                         .ToList(),
 
-                Supplier = new { s.supplier_id, s.supplier_name },
+                Supplier = new { s.SupplierId, s.SupplierName },
                 Image = _appDbContext.Image
                     .Where(i => i.ProductId == p.product_id)
                     .FirstOrDefault()

@@ -46,6 +46,9 @@ builder.Services.AddSwaggerGen(options =>
     ;
 });
 
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+
 builder.Services.AddAuthentication().AddJwtBearer(
     options =>
     {

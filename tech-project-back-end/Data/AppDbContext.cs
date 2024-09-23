@@ -18,7 +18,7 @@ namespace tech_project_back_end.Data
         {
             modelBuilder.Entity<Category>().HasKey(c => c.category_id);
             modelBuilder.Entity<User>().HasKey(c => c.UserId);
-            modelBuilder.Entity<Supplier>().HasKey(c => c.supplier_id);
+            modelBuilder.Entity<Supplier>().HasKey(c => c.SupplierId);
             modelBuilder.Entity<Product>().HasKey(c => c.product_id);
             modelBuilder.Entity<Order>().HasKey(c => c.order_id);
             modelBuilder.Entity<Image>().HasKey(c => c.ImageId);
