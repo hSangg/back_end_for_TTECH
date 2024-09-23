@@ -22,12 +22,12 @@ namespace tech_project_back_end.Controllers
         public async Task<ActionResult<Supplier>> AddSupplier(Supplier supplier)
         {
 
-            supplier.supplier_id = Guid.NewGuid().ToString()[..36];
+            supplier.SupplierId = Guid.NewGuid().ToString()[..36];
 
             _appDbContext.Supplier.Add(supplier);
             await _appDbContext.SaveChangesAsync();
 
-            return CreatedAtAction("AddSupplier", new { id = supplier.supplier_id }, supplier);
+            return CreatedAtAction("AddSupplier", new { id = supplier.SupplierId }, supplier);
         }
 
         [HttpGet]
@@ -45,7 +45,7 @@ namespace tech_project_back_end.Controllers
         public IActionResult GetById(string id)
         {
 
-            var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.supplier_id == id);
+            var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.SupplierId == id);
             if (isExit == null) { return NotFound("Supplier not found"); }
             return Ok(isExit);
 
@@ -54,7 +54,7 @@ namespace tech_project_back_end.Controllers
         [HttpDelete("DeleteSupplier")]
         public IActionResult DeleteById(string id)
         {
-            var isExit = _appDbContext.Supplier.FirstOrDefault(x => x.supplier_id == id);
+            var isExit = _appDbContext.Supplier.FirstOrDefault(x => x.SupplierId == id);
             if (isExit == null) { return NotFound("Supplier not found"); }
             _appDbContext.Supplier.RemoveRange(isExit);
             _appDbContext.SaveChanges();
@@ -64,9 +64,9 @@ namespace tech_project_back_end.Controllers
         [HttpPut("Update")]
         public IActionResult Update(Supplier supplier)
         {
-            var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.supplier_id == supplier.supplier_id);
+            var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.SupplierId == supplier.SupplierId);
             if (isExit == null) { return NotFound("Supplier not found"); }
-            isExit.supplier_name = supplier.supplier_name;
+            isExit.SupplierName = supplier.SupplierName;
             _appDbContext.SaveChanges();
 
             return Ok(supplier);
