@@ -67,7 +67,7 @@ namespace tech_project_back_end.Controllers
                                                     .ToList(),
                             Supplier = new { s.supplier_id, s.supplier_name },
                             Image = _appDbContext.Image
-                                .Where(i => i.product_id == p.product_id)
+                                .Where(i => i.ProductId == p.product_id)
                                 .FirstOrDefault()
                         })
                     .FirstOrDefault(p => p.Product.product_id == id);
@@ -117,7 +117,7 @@ namespace tech_project_back_end.Controllers
                 .ToList(),
             Supplier = new { s.supplier_id, s.supplier_name },
             Image = _appDbContext.Image
-                .Where(i => i.product_id == p.product_id)
+                .Where(i => i.ProductId == p.product_id)
                 .FirstOrDefault()
         })
     .AsEnumerable() // Perform client-side evaluation from this point
@@ -165,7 +165,7 @@ namespace tech_project_back_end.Controllers
 
                 Supplier = new { s.supplier_id, s.supplier_name },
                 Image = _appDbContext.Image
-                    .Where(i => i.product_id == p.product_id)
+                    .Where(i => i.ProductId == p.product_id)
                     .FirstOrDefault()
             });
 
@@ -264,7 +264,7 @@ namespace tech_project_back_end.Controllers
                 var result = await DeleteImageFolder(product_id);
                 var productsToDelete = _appDbContext.Product.Where(p => p.product_id == product_id);
                 _appDbContext.Product.RemoveRange(productsToDelete);
-                var productsImageToDelete = _appDbContext.Image.Where(i => i.product_id == product_id);
+                var productsImageToDelete = _appDbContext.Image.Where(i => i.ProductId == product_id);
                 _appDbContext.Image.RemoveRange(productsImageToDelete);
                 _appDbContext.SaveChanges();
 
@@ -305,7 +305,7 @@ namespace tech_project_back_end.Controllers
         public IActionResult GetAllImageOfProduct(string product_id)
         {
 
-            var result = _appDbContext.Image.Where(i => i.product_id == product_id);
+            var result = _appDbContext.Image.Where(i => i.ProductId == product_id);
             return Ok(result);
 
         }
@@ -338,9 +338,9 @@ namespace tech_project_back_end.Controllers
 
                 _appDbContext.Image.Add(new Image
                 {
-                    image_id = Guid.NewGuid().ToString()[..36],
-                    product_id = productId,
-                    image_href = imageUrl
+                    ImageId = Guid.NewGuid().ToString()[..36],
+                    ProductId = productId,
+                    ImageHref = imageUrl
                 });
 
                 await _appDbContext.SaveChangesAsync();
@@ -351,7 +351,7 @@ namespace tech_project_back_end.Controllers
         [HttpDelete("DeleteImageOfProduct")]
         public async Task<IActionResult> DeleteImageOfProduct(string product_id, string file_name)
         {
-            var imageExit = _appDbContext.Image.Where(i => i.product_id == product_id && i.file_name == file_name);
+            var imageExit = _appDbContext.Image.Where(i => i.ProductId == product_id && i.FileName == file_name);
             _appDbContext.RemoveRange(imageExit);
             _appDbContext.SaveChanges();
             DeleteImage(product_id, file_name);
@@ -438,10 +438,10 @@ namespace tech_project_back_end.Controllers
 
             _appDbContext.Image.Add(new Image
             {
-                image_id = Guid.NewGuid().ToString()[..36],
-                product_id = product_id,
-                image_href = imageUrl,
-                file_name = fileName,
+                ImageId = Guid.NewGuid().ToString()[..36],
+                ProductId = product_id,
+                ImageHref = imageUrl,
+                FileName = fileName,
 
             });
 

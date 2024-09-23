@@ -55,7 +55,7 @@ namespace tech_project_back_end.Controllers
                                     ProductId = sq.ProductId,
                                     TotalQuantitySold = sq.TotalQuantitySold,
                                     ProductName = p.name_pr,
-                                    Image = _appDbContext.Image.FirstOrDefault(i => i.product_id == sq.ProductId)
+                                    Image = _appDbContext.Image.FirstOrDefault(i => i.ProductId == sq.ProductId)
                                 })
                             .OrderByDescending(p => p.TotalQuantitySold)
                             .Take(count)

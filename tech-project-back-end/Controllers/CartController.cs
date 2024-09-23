@@ -58,7 +58,7 @@ namespace tech_project_back_end.Controllers
                                                     .SingleOrDefault(),
                                      Supplier = supplier,
                                      Image = _appDbContext.Set<Image>()
-                                         .Where(i => i.product_id == product.product_id)
+                                         .Where(i => i.ProductId == product.product_id)
                                          .FirstOrDefault()
                                  };
 

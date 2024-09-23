@@ -22,7 +22,7 @@ namespace tech_project_back_end.Controllers
                 => new
                 {
                     Product = _appDbContext.Product.Where(p => p.product_id == x.product_id).FirstOrDefault(),
-                    Image = _appDbContext.Image.Where(i => i.product_id == x.product_id).FirstOrDefault(),
+                    Image = _appDbContext.Image.Where(i => i.ProductId == x.product_id).FirstOrDefault(),
                     Quantity = x.quality,
                     Price = x.price,
                 });
