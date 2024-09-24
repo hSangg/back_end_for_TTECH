@@ -41,10 +41,10 @@ namespace tech_project_back_end.Models
         [Column("total", TypeName = "bigint(20)")]
         public long total { get; set; }
 
-        [Column("discount", TypeName = "varchar(50)")]
-        public string discount { get; set; }
+        [Column("discount_id", TypeName = "varchar(50)")]
+        public string discount_id { get; set; }
 
-        [ForeignKey("discount")]
+        [ForeignKey("discount_id")]
         public virtual Discount Discount { get; set; }
 
         [Column("delivery_fee", TypeName = "int")]
