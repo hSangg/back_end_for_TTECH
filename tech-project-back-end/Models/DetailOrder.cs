@@ -18,5 +18,11 @@ namespace tech_project_back_end.Models
 
         [Column("quality", TypeName = "int(11)")]
         public int quality { get; set; }
+
+        [ForeignKey("order_id")]
+        public virtual Order Order { get; set; }
+
+        [ForeignKey("product_id")]
+        public virtual Product Product { get; set; }
     }
 }

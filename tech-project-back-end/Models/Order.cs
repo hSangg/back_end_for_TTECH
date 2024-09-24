@@ -13,6 +13,9 @@ namespace tech_project_back_end.Models
         [Column("user_id", TypeName = "varchar(36)")]
         public string user_id { get; set; }
 
+        [ForeignKey("user_id")]
+        public virtual User User { get; set; } 
+
         [Required]
         [Column("create_order_at", TypeName = "datetime")]
         public DateTime createdAt { get; set; }
@@ -38,8 +41,11 @@ namespace tech_project_back_end.Models
         [Column("total", TypeName = "bigint(20)")]
         public long total { get; set; }
 
-        [Column("discount", TypeName = "varchar(50)")]
-        public string discount { get; set; }
+        [Column("discount_id", TypeName = "varchar(50)")]
+        public string discount_id { get; set; }
+
+        [ForeignKey("discount_id")]
+        public virtual Discount Discount { get; set; }
 
         [Column("delivery_fee", TypeName = "int")]
         public int delivery_fee { get; set; }
