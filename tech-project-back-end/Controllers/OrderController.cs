@@ -114,7 +114,7 @@ namespace tech_project_back_end.Controllers
                 customerNote = x.note,
 
                 deliveryFee = x.delivery_fee,
-                discountId = x.discount,
+                discountId = x.discount_id,
                 total = x.total,
                 createdAt = x.createdAt,
 
@@ -138,7 +138,7 @@ namespace tech_project_back_end.Controllers
                 {
                     CustomerInfor = u,
                     OrderInfor = o,
-                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount).FirstOrDefault()
+                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount_id).FirstOrDefault()
 
                 }
                 ).OrderByDescending(x => x.OrderInfor.createdAt);
@@ -159,7 +159,7 @@ namespace tech_project_back_end.Controllers
                 {
                     CustomerInfor = u,
                     OrderInfor = o,
-                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount).FirstOrDefault()
+                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount_id).FirstOrDefault()
 
                 }
                 ).OrderByDescending(x => x.OrderInfor.createdAt);

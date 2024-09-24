@@ -35,7 +35,7 @@ namespace tech_project_back_end.Controllers
         public IActionResult UpdateDiscount(Discount discount)
         {
             var isExit = _appDbContext.Discount.FirstOrDefault(x => x.DiscountId == discount.DiscountId);
-            if (isExit == null) { return BadRequest("discount not found"); }
+            if (isExit == null) { return BadRequest("discount_id not found"); }
 
             isExit = discount;
             _appDbContext.SaveChanges();
@@ -48,7 +48,7 @@ namespace tech_project_back_end.Controllers
         public IActionResult GetDiscount(DateTime currentDate)
         {
             var isExit = _appDbContext.Discount.FirstOrDefault(dis => dis.DiscountDateFrom < currentDate && dis.DiscountDateTo > currentDate);
-            if (isExit == null) return BadRequest("This date not cotain a discount");
+            if (isExit == null) return BadRequest("This date not cotain a discount_id");
             return Ok(isExit);
 
         }
@@ -58,7 +58,7 @@ namespace tech_project_back_end.Controllers
         {
 
             var isExit = _appDbContext.Discount.FirstOrDefault(x => x.DiscountId == discountId);
-            if (isExit == null) { return BadRequest("discount not found"); }
+            if (isExit == null) { return BadRequest("discount_id not found"); }
 
             _appDbContext.Remove(isExit);
             _appDbContext.SaveChanges();
