@@ -32,6 +32,10 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllers();
 
+builder.Services.AddMvc();
+
+builder.Services.AddScoped<ISupplierService, SupplierService>();
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
