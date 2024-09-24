@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
+using tech_project_back_end.DTO;
 using tech_project_back_end.Models;
+using tech_project_back_end.Services;
 
 namespace tech_project_back_end.Controllers
 {
@@ -12,22 +15,23 @@ namespace tech_project_back_end.Controllers
     public class SupplierController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-        public SupplierController(AppDbContext appDbContext)
+        private readonly IMapper _mapper;
+        private readonly SupplierService supplierService;
+        public SupplierController(AppDbContext appDbContext, IMapper mapper)
         {
             this._appDbContext = appDbContext;
+            this._mapper = mapper;
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Supplier>> AddSupplier(Supplier supplier)
+        public async Task<ActionResult<Supplier>> Add(SupplierDTO dto)
         {
-
-            supplier.SupplierId = Guid.NewGuid().ToString()[..36];
-
-            _appDbContext.Supplier.Add(supplier);
-            await _appDbContext.SaveChangesAsync();
-
-            return CreatedAtAction("AddSupplier", new { id = supplier.SupplierId }, supplier);
+            var supplierDTO = supplierService.CreateSupplier(dto);
+            if (supplierDTO == null) {
+                return BadRequest("Error while creating supplier");
+            }
+            return Ok(dto);
         }
 
         [HttpGet]
@@ -35,41 +39,48 @@ namespace tech_project_back_end.Controllers
         public IActionResult GetAll()
         {
             var supplierList = _appDbContext.Supplier.ToList();
+            var supplierDTOList = _mapper.Map<List<Supplier>>(supplierList);
 
-            return Ok(supplierList);
+            return Ok(supplierDTOList);
         }
 
 
 
         [HttpGet("{id}")]
-        public IActionResult GetById(string id)
+        public IActionResult GetSupplierById(string id)
         {
 
             var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.SupplierId == id);
             if (isExit == null) { return NotFound("Supplier not found"); }
-            return Ok(isExit);
+
+            var supplierDTO = _mapper.Map<SupplierDTO>(isExit);
+
+            return Ok(supplierDTO);
 
         }
 
-        [HttpDelete("DeleteSupplier")]
+        [HttpDelete]
         public IActionResult DeleteById(string id)
         {
             var isExit = _appDbContext.Supplier.FirstOrDefault(x => x.SupplierId == id);
             if (isExit == null) { return NotFound("Supplier not found"); }
+
             _appDbContext.Supplier.RemoveRange(isExit);
             _appDbContext.SaveChanges();
-            return Ok("deleted");
+
+            return Ok(isExit);
         }
 
-        [HttpPut("Update")]
-        public IActionResult Update(Supplier supplier)
+        [HttpPut]
+        public IActionResult Update(SupplierDTO dto)
         {
-            var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.SupplierId == supplier.SupplierId);
+            var isExit = _appDbContext.Supplier.FirstOrDefault(c => c.SupplierId == dto.SupplierId);
             if (isExit == null) { return NotFound("Supplier not found"); }
-            isExit.SupplierName = supplier.SupplierName;
+
+            _appDbContext.Supplier.Update(isExit);
             _appDbContext.SaveChanges();
 
-            return Ok(supplier);
+            return Ok(dto);
         }
 
 

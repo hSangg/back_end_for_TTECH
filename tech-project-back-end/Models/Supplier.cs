@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tech_project_back_end.Models
 {
-    public class Supplier
+    public class Supplier : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -14,4 +14,5 @@ namespace tech_project_back_end.Models
         [Column("supplier_name", TypeName = "varchar(255)")]
         public string SupplierName { get; set; }
     }
+
 }
