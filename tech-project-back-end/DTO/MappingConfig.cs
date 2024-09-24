@@ -6,7 +6,7 @@ namespace tech_project_back_end.DTO
     public class MappingConfig : Profile
     {
         public MappingConfig() {
-            CreateMap<Supplier, SupplierDTO>();
+            CreateMap<Supplier, SupplierDTO>().ReverseMap();
         }
     }
 }
