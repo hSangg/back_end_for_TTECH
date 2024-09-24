@@ -196,7 +196,7 @@ namespace tech_project_back_end.Controllers
             // Filter by supplier name
             if (!string.IsNullOrEmpty(filter.SupplierId))
             {
-                productList = productList.Where(p => p.Supplier.supplier_id == filter.SupplierId);
+                productList = productList.Where(p => p.Supplier.SupplierId == filter.SupplierId);
             }
 
             // Filter by category

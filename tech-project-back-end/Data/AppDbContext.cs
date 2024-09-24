@@ -26,6 +26,8 @@ namespace tech_project_back_end.Data
             modelBuilder.Entity<DetailOrder>().HasKey(c => new { c.order_id, c.product_id });
             modelBuilder.Entity<Discount>().HasKey(c => c.DiscountId);
             modelBuilder.Entity<ProductCategory>().HasKey(pc => new { pc.product_id, pc.category_id });
+
+            modelBuilder.Entity<Supplier>().Property(s => s.SupplierId).HasDefaultValue("NEWID()");
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

@@ -1,7 +1,9 @@
-﻿namespace tech_project_back_end.Services.IService
+using tech_project_back_end.DTO;
+
+namespace tech_project_back_end.Services.IService
 {
-    public class ISupplierService
+    public interface ISupplierService
     {
-        
+       Task<SupplierDTO> CreateSupplier(SupplierDTO dto);
     }
 }
