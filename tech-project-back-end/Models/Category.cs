@@ -12,5 +12,7 @@ namespace tech_project_back_end.Models
         [Required]
         [Column(TypeName = "varchar(100)")]
         public string category_name { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; } 
     }
 }

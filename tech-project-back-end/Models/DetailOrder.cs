@@ -18,5 +18,8 @@ namespace tech_project_back_end.Models
 
         [Column("quality", TypeName = "int(11)")]
         public int quality { get; set; }
+
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

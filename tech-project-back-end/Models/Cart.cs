@@ -15,5 +15,11 @@ namespace tech_project_back_end.Models
 
         [Column("quantity", TypeName = "int(11)")]
         public int quantity { get; set; }
+
+        [ForeignKey("user_id")]
+        public virtual User User { get; set; } 
+
+        [ForeignKey("product_id")]
+        public virtual Product Product { get; set; } 
     }
 }
