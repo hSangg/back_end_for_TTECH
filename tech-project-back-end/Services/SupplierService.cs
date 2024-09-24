@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using tech_project_back_end.Data;
 using tech_project_back_end.DTO;
 using tech_project_back_end.Models;
@@ -36,5 +36,4 @@ namespace tech_project_back_end.Services
                 return null;
             }
         }
-    }
 }

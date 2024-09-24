@@ -78,6 +78,7 @@ namespace tech_project_back_end.Controllers
             if (isExit == null) { return NotFound("Supplier not found"); }
 
             _appDbContext.Supplier.Update(isExit);
+
             _appDbContext.SaveChanges();
 
             return Ok(dto);
