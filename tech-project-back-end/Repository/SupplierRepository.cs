@@ -10,9 +10,9 @@ namespace tech_project_back_end.Repository
     public class SupplierRepository : ISupplierRepository
     {
         private readonly AppDbContext _appDbContext;
-        private readonly ILogger _logger;
+        private readonly ILogger<SupplierRepository> _logger;
         private readonly IMapper _mapper;
-        public SupplierRepository(AppDbContext appDbContext, ILogger logger, IMapper mapper) { 
+        public SupplierRepository(AppDbContext appDbContext, ILogger<SupplierRepository> logger, IMapper mapper) { 
             this._appDbContext = appDbContext;
             this._logger = logger;
             this._mapper = mapper;
