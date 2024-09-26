@@ -14,56 +14,111 @@ namespace tech_project_back_end.Controllers
     [Authorize]
     public class SupplierController : ControllerBase
     {
-        private readonly AppDbContext _appDbContext;
-        private readonly IMapper _mapper;
-        private readonly ISupplierService supplierService;
+        private readonly ISupplierService _supplierService;
         private readonly ILogger _logger;
-        public SupplierController(AppDbContext appDbContext, IMapper mapper, ISupplierService supplierService)
+        public SupplierController(ISupplierService supplierService, ILogger logger)
         {
-            this._appDbContext = appDbContext;
-            this._mapper = mapper;
-            this.supplierService = supplierService;
+            this._supplierService = supplierService;
+            this._logger = logger;
         }
 
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] SupplierDTO dto)
         {
-            var supplierDTO = await supplierService.CreateSupplier(dto);
-            if (supplierDTO == null) 
+            if (!ModelState.IsValid)
             {
-                return BadRequest("Error while creating supplier");
+                return BadRequest(ModelState);
             }
-            return Ok(supplierDTO);
+
+            try
+            {
+                var result = await _supplierService.CreateSupplier(dto);
+                return result != null
+                    ? Ok(result)
+                    : BadRequest("Failed to create supplier");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating supplier");
+                return StatusCode(500, "An error occurred while processing the request");
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var supplierDTOList = await supplierService.GetAllSupplier();
-            return Ok(supplierDTOList);
+            try
+            {
+                var supplierList = await _supplierService.GetAllSupplier();
+                return Ok(supplierList);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while fetching all the suppliers");
+                return StatusCode(500, "An error while processing the request");
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
-            var supplierDTO = await supplierService.GetSupplierById(id);
-            return Ok(supplierDTO);
+            try
+            {
+                var supplier = await _supplierService.GetSupplierById(id);
+                return supplier != null
+                    ? Ok(supplier)
+                    : NotFound($"Supplier with ID {id} not found");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error while fetching the supplier with id :", id);
+                return StatusCode(500, "An error occurred while processing the request");
+            }
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteById(string id)
         {
-            var supplierDTO = await supplierService.DeleteSupplierById(id);
-
-            return Ok(supplierDTO);
+            try
+            {
+                var result = await _supplierService.DeleteSupplierById(id);
+                return result != null
+                    ? Ok(result)
+                    : NotFound($"Supplier with id is {id} not found");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while deleting supplier with id: ", id);
+                return StatusCode(500, "Error while processing the request");
+            }
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(SupplierDTO dto)
+        public async Task<IActionResult> Update(string id, [FromBody] SupplierDTO dto)
         {
-            var supplierDTO = await supplierService.UpdateSupplier(dto);
+            if (id != dto.SupplierId)
+            {
+                return BadRequest("Id in url not match id in supplier request body");
+            }
 
-            return Ok(supplierDTO);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var result = await _supplierService.UpdateSupplier(dto);
+                return result != null
+                    ? Ok(result)
+                    : NotFound($"Supplier with ID {id} not found");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while updating the supplier with id: ", id);
+                return StatusCode(500, "An error occurred while processing the request");
+            }
+
         }
     }
 }
