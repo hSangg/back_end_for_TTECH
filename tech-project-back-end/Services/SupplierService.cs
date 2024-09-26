@@ -6,6 +6,7 @@ using tech_project_back_end.Services.IService;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.HttpResults;
+using tech_project_back_end.Repository.IRepository;
 
 namespace tech_project_back_end.Services
 {
@@ -13,23 +14,22 @@ namespace tech_project_back_end.Services
     {
         private readonly AppDbContext _appDbContext;
         private readonly IMapper _mapper;
+        private readonly ISupplierRepository _supplierRepository;
         private readonly ILogger<SupplierService> _logger;
 
-        public SupplierService(AppDbContext appDbContext, IMapper mapper, ILogger<SupplierService> logger)
+        public SupplierService(AppDbContext appDbContext, IMapper mapper, ILogger<SupplierService> logger, ISupplierRepository supplierRepository)
         {
             this._appDbContext = appDbContext;
             this._mapper = mapper;
             this._logger = logger;
+            this._supplierRepository = supplierRepository;
         }
 
         public async Task<SupplierDTO> CreateSupplier(SupplierDTO dto)
         {
             try
             {
-                var supplier = _mapper.Map<Supplier>(dto);
-                await _appDbContext.Supplier.AddAsync(supplier);
-                await _appDbContext.SaveChangesAsync();
-
+                var supplier = await _supplierRepository.Create(dto);
                 return _mapper.Map<SupplierDTO>(supplier);
             }
             catch (Exception ex)
@@ -41,24 +41,15 @@ namespace tech_project_back_end.Services
 
         public async Task<SupplierDTO> DeleteSupplierById(string id)
         {
-            var isExit =  await _appDbContext.Supplier.FirstOrDefaultAsync(supplier => supplier.SupplierId == id);
-            if (isExit == null)
-            {
-                _logger.LogError("Supplier not found");
-                return null;
-            }
-            _appDbContext.Supplier.RemoveRange(isExit);
-            await _appDbContext.SaveChangesAsync();
-
-            return _mapper.Map<SupplierDTO>(isExit);
-
+            var supplier = await _supplierRepository.Delete(id);
+            return _mapper.Map<SupplierDTO>(supplier);
         }
 
         public async Task<List<SupplierDTO>> GetAllSupplier()
         {
             try
             {
-                var supplierList = await _appDbContext.Supplier.ToListAsync();
+                var supplierList = await _supplierRepository.GetAll();
                 var supplierDTOList = _mapper.Map<List<SupplierDTO>>(supplierList);
                 return supplierDTOList;
             }
@@ -71,8 +62,7 @@ namespace tech_project_back_end.Services
 
         public async Task<SupplierDTO> GetSupplierById(string id)
         {
-            var supplier = await _appDbContext.Supplier
-                .FirstOrDefaultAsync(supplier => supplier.SupplierId == id);
+            var supplier = await _supplierRepository.GetById(id);
 
             var supplierDTO = _mapper.Map<SupplierDTO>(supplier);
             return supplierDTO;
@@ -80,20 +70,8 @@ namespace tech_project_back_end.Services
 
         public async Task<SupplierDTO> UpdateSupplier(SupplierDTO dto)
         {
-            var isExit = await _appDbContext.Supplier
-                .FirstOrDefaultAsync(supplier => supplier.SupplierId.Equals(dto.SupplierId));
-            if (isExit == null) 
-            {
-                _logger.LogError("Supplier is not exit");
-                return null;
-            }
-
-            _mapper.Map(dto, isExit);
-
-            await _appDbContext.SaveChangesAsync();
-
+            var supplierDTO = await _supplierRepository.Update(dto);
             return dto;
-            
         }
     }
 }
