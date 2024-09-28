@@ -14,7 +14,7 @@ namespace tech_project_back_end.Models
         public string user_id { get; set; }
 
         [ForeignKey("user_id")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         [Required]
         [Column("create_order_at", TypeName = "datetime")]

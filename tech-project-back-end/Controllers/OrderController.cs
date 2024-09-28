@@ -1,9 +1,6 @@
-﻿using ClosedXML.Excel;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
-using tech_project_back_end.Data;
-using tech_project_back_end.Models;
+using tech_project_back_end.DTO.Order;
 using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
@@ -12,26 +9,36 @@ namespace tech_project_back_end.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly AppDbContext _appDbContext;
-        private readonly IEmailService _emailService;
-        public OrderController(AppDbContext appDbContext, IEmailService emailService)
+        private readonly IOrderService _orderService;
+        private readonly ILogger<OrderController> _logger;
+        public OrderController(IEmailService emailService, IOrderService orderService, ILogger<OrderController> logger)
         {
-            _appDbContext = appDbContext;
-            _emailService = emailService;
+            this._orderService = orderService;
+            this._logger = logger;
         }
 
         [HttpPost("AddNewOrder")]
-        public IActionResult AddNewOrder(Order order)
+        public async Task<IActionResult> AddNewOrder(OrderDTO orderDTO)
         {
-            _appDbContext.Order.Add(order);
-            order.createdAt = DateTime.Now;
-            _appDbContext.SaveChanges();
-            return Ok(order);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var result = await _orderService.CreateOrder(orderDTO);
+                return result != null
+                    ? Ok(result)
+                    : StatusCode(422, "Failed to create order due to invalid business logic."); ;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating order");
+                return StatusCode(500, "An error occurred while processing the request");
+            }
 
 
         }
-
-
 
         [HttpPut("UpdateStateOrder")]
         public async Task<IActionResult> UpdateStateOrder(string orderId, string state)
@@ -44,194 +51,106 @@ namespace tech_project_back_end.Controllers
             try
             {
                 // Check if the specified product exists
-                var existingOrder = await _appDbContext.Order
-                    .FirstOrDefaultAsync(p => p.order_id == orderId);
-
-                if (existingOrder == null)
-                {
-                    return NotFound("Product not found");
-                }
-
-                // Update the existing product
-                existingOrder.state = state;
-
-                await _appDbContext.SaveChangesAsync();
+                var result = await _orderService.UpdateStateOrder(orderId, state);
 
                 return Ok("order updated successfully");
             }
-            catch (DbUpdateConcurrencyException)
+            catch(KeyNotFoundException ex)
             {
+                _logger.LogError(ex, "Order not found");
+                return NotFound(ex.Message);
+            }
+            catch (DbUpdateConcurrencyException ex1)
+            {
+                _logger.LogError(ex1, "Concurrency conflict");
                 return StatusCode(409, "Concurrency conflict");
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"Internal server error: {ex.Message}");
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
         [HttpGet("GetExcelFileData")]
-        public IActionResult GetExcelFileData()
+        public async Task<IActionResult> GetExcelFileData()
         {
-            var orderList = GetOrderData();
+            try
+            {   
+                var fileData = await _orderService.GetExcelFileData();
 
-            using (XLWorkbook wb = new())
-            {
-                wb.AddWorksheet(orderList, "Order Record");
-                using (MemoryStream ms = new())
-                {
-                    wb.SaveAs(ms);
+                Response.Headers.Add("Content-Disposition", "attachment; filename=OrderList.xlsx");
 
-                    // Set the Content-Disposition header to trigger file download
-                    Response.Headers.Add("Content-Disposition", "attachment; filename=OrderList.xlsx"); // Change the file extension to xlsx
-
-                    return File(ms.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-                }
+                return File(fileData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"); 
             }
-        }
-        [NonAction]
-        private DataTable GetOrderData()
-        {
-            DataTable dt = new DataTable();
-            dt.TableName = "OrderTable";
-            dt.Columns.Add("orderId", typeof(string));
-            dt.Columns.Add("customerName", typeof(string));
-            dt.Columns.Add("customerEmail", typeof(string));
-            dt.Columns.Add("customerPhone", typeof(string));
-
-            dt.Columns.Add("customerNote", typeof(string));
-            dt.Columns.Add("deliveryFee", typeof(int));
-            dt.Columns.Add("discountId", typeof(string));
-            dt.Columns.Add("total", typeof(long));
-            dt.Columns.Add("createdAt", typeof(DateTime));
-
-            var orderList = _appDbContext.Order.Select(x => new
+            catch (Exception ex)
             {
-                orderId = x.order_id,
-                customerName = x.name,
-                customerAddress = x.address,
-                customerEmail = x.email,
-                customerPhone = x.phone,
-                customerNote = x.note,
-
-                deliveryFee = x.delivery_fee,
-                discountId = x.discount_id,
-                total = x.total,
-                createdAt = x.createdAt,
-
-            }).ToList();
-            if (orderList.Count > 0)
-            {
-                orderList.ForEach(item =>
-                {
-                    dt.Rows.Add(item.orderId, item.customerName, item.customerEmail, item.customerPhone, item.customerNote, item.deliveryFee, item.discountId, item.total, item.createdAt);
-                });
+                _logger.LogError(ex, "Error occurred");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
-
-            return dt;
         }
 
         [HttpGet("GetAllOrder")]
-        public IActionResult GetAllOrder()
+        public async Task<IActionResult> GetAllOrder()
         {
-            var orders = _appDbContext.Order.Join(_appDbContext.User, o => o.user_id, u => u.UserId,
-                (o, u) => new
-                {
-                    CustomerInfor = u,
-                    OrderInfor = o,
-                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount_id).FirstOrDefault()
-
-                }
-                ).OrderByDescending(x => x.OrderInfor.createdAt);
-
-            return Ok(orders);
-
-
+            try
+            {   
+                var orders = await _orderService.GetAllOrder();
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting all orders");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("GetOrderById")]
-        public IActionResult GetOrderById(string order_id)
+        public async Task<IActionResult> GetOrderById(string order_id)
         {
-            var isExit = _appDbContext.Order.FirstOrDefault(o => o.order_id == order_id);
-            if (isExit != null) { return NotFound("Order not found"); }
 
-            var orders = _appDbContext.Order.Where(o => o.order_id.ToLower().Contains(order_id.ToLower())).Join(_appDbContext.User, o => o.user_id, u => u.UserId,
-                (o, u) => new
+            if (order_id == null)
+            {
+                return BadRequest("Invalid request data");
+            }
+            try
+            {
+                var orders = await _orderService.GetById(order_id);
+                foreach (var order in orders)
                 {
-                    CustomerInfor = u,
-                    OrderInfor = o,
-                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount_id).FirstOrDefault()
-
+                    Console.WriteLine($"Customer Info: {order.CustomerInfor}");
+                    Console.WriteLine($"Order Info: {order.OrderInfor}");
+                    Console.WriteLine($"Discount Info: {order.DiscountInfor}");
                 }
-                ).OrderByDescending(x => x.OrderInfor.createdAt);
-
-            return Ok(orders);
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting order by id");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
 
         }
 
 
         [HttpPost("GetOrderByUserId")]
-        public IActionResult GetOrderByUserId([FromBody] string userId)
+        public async Task<IActionResult> GetOrderByUserId([FromBody] string userId)
         {
-            var orders = _appDbContext.Order
-                .Join(
-                    _appDbContext.DetailOrder,
-                    o => o.order_id,
-                    od => od.order_id,
-                    (o, od) => new
-                    {
-                        OrderId = o.order_id,
-                        CreateOrderAt = o.createdAt,
-                        UserId = o.user_id,
-                        ProductId = od.product_id,
-                        QuantityPr = od.quality,
-                        PricePr = od.price,
-                        Total = o.total + o.delivery_fee
+            if (userId == null)
+            {
+                return BadRequest("Invalid request data");
+            }
+            try
+            {
+                var orders = await _orderService.GetByUserId(userId);
 
-                    })
-                .Where(x => x.UserId == userId)
-                .GroupBy(o => new
-                {
-                    o.OrderId,
-                    o.CreateOrderAt,
-                    o.UserId,
-                    o.Total
-
-                })
-                .Select(g => new
-                {
-                    OrderInfo = new
-                    {
-                        g.Key.OrderId,
-                        g.Key.CreateOrderAt,
-                        g.Key.UserId,
-                        g.Key.Total,
-
-                    },
-                    OrderDetails = g.Select(x => new
-                    {
-                        Product = _appDbContext.Product
-                            .Where(p => p.product_id == x.ProductId)
-                            .Select(p => new
-                            {
-                                p.product_id,
-                                p.name_pr,
-                                p.detail,
-                                p.price,
-                                Images = _appDbContext.Image
-                                    .Where(i => i.ProductId == p.product_id)
-                                    .Select(i => i.ImageHref)
-                                    .ToList()
-                            })
-                            .FirstOrDefault(),
-                        QuantityPr = x.QuantityPr,
-                        PricePr = x.PricePr
-                    }).ToList()
-                })
-                .ToList();
-
-            return Ok(orders);
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting order by user id");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
-
-
     }
 }

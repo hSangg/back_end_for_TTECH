@@ -7,7 +7,7 @@ namespace tech_project_back_end.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column(TypeName = "varchar(36)")]
+        [Column("user_id",TypeName = "varchar(36)")]
         [StringLength(36)]
         public string UserId { get; set; }
 
@@ -32,11 +32,12 @@ namespace tech_project_back_end.Models
         public string Password { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar(50)")]
+        [Column("isAdmin",TypeName = "varchar(50)")]
         [StringLength(50)]
         public string Role { get; set; }
 
         [Required]
+        [Column("create_at")]
         public DateTime CreatedAt { get; set; }
     }
 }
