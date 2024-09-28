@@ -5,15 +5,15 @@ namespace tech_project_back_end.Repository.IRepository;
 
 public interface IDiscountRepository
 {
-    Task<List<Discount>> GetAllAsync(Expression<Func<Discount, bool>>? filter = null);
+    Task<List<Discount>> GetAll(Expression<Func<Discount, bool>>? filter = null);
     
-    Task<Discount> GetAsync(Expression<Func<Discount, bool>>? filter = null, bool tracked = true);
+    Task<Discount> GetDiscount(Expression<Func<Discount, bool>>? filter = null, bool tracked = true);
     
-    Task<Discount> AddAsync(Discount entity);
+    Task<Discount> Create(Discount entity);
     
-    Task<Discount> UpdateAsync(Discount entity);
+    Task<Discount> Update(Discount entity);
     
-    Task RemoveAsync(Discount entity);
+    Task Delete(Discount entity);
     
     Task SaveAsync();
     

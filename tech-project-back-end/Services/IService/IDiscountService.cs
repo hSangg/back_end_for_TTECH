@@ -4,14 +4,14 @@ namespace tech_project_back_end.Services.IService;
 
 public interface IDiscountService
 {
-    Task<List<DiscountDTO>> GetAllDiscountsAsync();
+    Task<List<DiscountDTO>> GetAllDiscounts();
     
-    Task<DiscountDTO> GetDiscountByCurrentDateAsync(DateTime currentDate);
+    Task<DiscountDTO> GetDiscountByCurrentDate(DateTime currentDate);
     
-    Task<DiscountDTO> CreateDiscountAsync(CreateDiscountDTO entity);
+    Task<DiscountDTO> CreateDiscount(CreateDiscountDTO entity);
     
-    Task<DiscountDTO> UpdateDiscountAsync(DiscountDTO entity);
+    Task<DiscountDTO> UpdateDiscount(DiscountDTO entity);
     
-    Task DeleteDiscountByIdAsync(string discountId);
+    Task DeleteDiscountById(string discountId);
 
 }

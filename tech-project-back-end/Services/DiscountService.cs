@@ -19,11 +19,11 @@ public class DiscountService : IDiscountService
         _logger = logger;
     }
 
-    public async Task<List<DiscountDTO>> GetAllDiscountsAsync()
+    public async Task<List<DiscountDTO>> GetAllDiscounts()
     {
         try
         {
-            var result = await _discountRepository.GetAllAsync();
+            var result = await _discountRepository.GetAll();
             var discounts = _mapper.Map<List<DiscountDTO>>(result);
             return discounts;
         }
@@ -34,11 +34,11 @@ public class DiscountService : IDiscountService
         }
     }
 
-    public async Task<DiscountDTO> GetDiscountByCurrentDateAsync(DateTime currentDate)
+    public async Task<DiscountDTO> GetDiscountByCurrentDate(DateTime currentDate)
     {
         try
         {
-            var result = await _discountRepository.GetAsync(dis => dis.DiscountDateFrom < currentDate && dis.DiscountDateTo > currentDate);
+            var result = await _discountRepository.GetDiscount(dis => dis.DiscountDateFrom < currentDate && dis.DiscountDateTo > currentDate);
             var discount = _mapper.Map<DiscountDTO>(result);
             return discount;
         }
@@ -49,14 +49,14 @@ public class DiscountService : IDiscountService
         }
     }
 
-    public async Task<DiscountDTO> CreateDiscountAsync(CreateDiscountDTO entity)
+    public async Task<DiscountDTO> CreateDiscount(CreateDiscountDTO entity)
     {
         try
         {
             Discount discountForCreate = _mapper.Map<Discount>(entity);
             discountForCreate.DiscountId = Guid.NewGuid().ToString();
             discountForCreate.DiscountCode = Guid.NewGuid().ToString();
-            var result = await _discountRepository.AddAsync(discountForCreate);
+            var result = await _discountRepository.Create(discountForCreate);
             var newDiscount = _mapper.Map<DiscountDTO>(result);
             return newDiscount;
         }
@@ -67,12 +67,12 @@ public class DiscountService : IDiscountService
         }
     }
 
-    public async Task<DiscountDTO> UpdateDiscountAsync(DiscountDTO entity)
+    public async Task<DiscountDTO> UpdateDiscount(DiscountDTO entity)
     {
         try
         {
             Discount discountForUpdate = _mapper.Map<Discount>(entity);
-            var result = await _discountRepository.UpdateAsync(discountForUpdate);
+            var result = await _discountRepository.Update(discountForUpdate);
             DiscountDTO updateDiscount = _mapper.Map<DiscountDTO>(result);
             return updateDiscount;
         }
@@ -83,12 +83,12 @@ public class DiscountService : IDiscountService
         }
     }
 
-    public async Task DeleteDiscountByIdAsync(string discountId)
+    public async Task DeleteDiscountById(string discountId)
     {
         try
         {
-            var discountForDelete = await _discountRepository.GetAsync(a => a.DiscountId == discountId);
-            await _discountRepository.RemoveAsync(discountForDelete);
+            var discountForDelete = await _discountRepository.GetDiscount(a => a.DiscountId == discountId);
+            await _discountRepository.Delete(discountForDelete);
         }
         catch (Exception err)
         {
