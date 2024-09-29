@@ -80,6 +80,10 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+
+builder.Services.AddScoped<ICartService, CartService>();
+
 builder.Services.AddSingleton<ILogger>(provider =>provider.GetRequiredService<ILogger<SupplierService>>());
 
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));

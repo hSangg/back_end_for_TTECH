@@ -16,7 +16,7 @@ namespace tech_project_back_end.DTO.Order
         public string note { get; set; }
         public long total { get; set; }
         public string discount_id { get; set; }
-        public Discount Discount { get; set; }
+        public Models.Discount Discount { get; set; }
         public int delivery_fee { get; set; }
 
     }
