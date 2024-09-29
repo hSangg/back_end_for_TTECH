@@ -8,47 +8,47 @@ namespace tech_project_back_end.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column("order_id", TypeName = "varchar(36)")]
-        public string Order_id { get; set; }
+        public string OrderId { get; set; }
 
         [Column("user_id", TypeName = "varchar(36)")]
-        public string user_id { get; set; }
+        public string UserId { get; set; }
 
         [ForeignKey("user_id")]
         public virtual User User { get; set; }
 
         [Required]
         [Column("create_order_at", TypeName = "timestamp")]
-        public DateTime createdAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Column("name", TypeName = "varchar(100)")]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [Column("email", TypeName = "varchar(100)")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Column("phone", TypeName = "varchar(20)")]
-        public string phone { get; set; }
+        public string Phone { get; set; }
 
         [Column("address", TypeName = "varchar(200)")]
-        public string address { get; set; }
+        public string Address { get; set; }
 
         [Column("state", TypeName = "varchar(50)")]
-        public string state { get; set; }
+        public string State { get; set; }
 
         [Column("note", TypeName = "varchar(500)")]
         public string note { get; set; }
 
         [Column("total", TypeName = "bigint(20)")]
-        public long total { get; set; }
+        public long Total { get; set; }
 
         [Column("discount_id", TypeName = "varchar(50)")]
-        public string discount_id { get; set; }
+        public string DiscountId { get; set; }
 
         [ForeignKey("discount_id")]
         public virtual Discount Discount { get; set; }
 
         [Column("delivery_fee", TypeName = "int")]
-        public int delivery_fee { get; set; }
+        public int DeliveryFee { get; set; }
         public virtual ICollection<DetailOrder> DetailOrders { get; set; }
 
     }

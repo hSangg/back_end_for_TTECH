@@ -18,11 +18,11 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetOderDetailByOrderId")]
         public IActionResult GetOderDetailByOrderId(string order_id)
         {
-            var result = _appDbContext.DetailOrder.Where(od => od.Order_id == order_id).Select(x
+            var result = _appDbContext.DetailOrder.Where(od => od.OrderId == order_id).Select(x
                 => new
                 {
-                    Product = _appDbContext.Product.Where(p => p.Product_id == x.Product_id).FirstOrDefault(),
-                    Image = _appDbContext.Image.Where(i => i.ProductId == x.Product_id).FirstOrDefault(),
+                    Product = _appDbContext.Product.Where(p => p.ProductId == x.ProductId).FirstOrDefault(),
+                    Image = _appDbContext.Image.Where(i => i.ProductId == x.ProductId).FirstOrDefault(),
                     Quantity = x.Quantity,
                     Price = x.Price,
                 });
@@ -37,7 +37,7 @@ namespace tech_project_back_end.Controllers
             foreach (var detailOrder in detailOrders)
             {
                 _appDbContext.DetailOrder.Add(detailOrder);
-                var product_id = detailOrder.Product_id;
+                var product_id = detailOrder.ProductId;
                 var quantityDescrease = detailOrder.Quantity;
 
 

@@ -7,7 +7,7 @@ namespace tech_project_back_end.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string Image_Id { get; set; }
+        public string ImageId { get; set; }
 
         [Column("product_id", TypeName = "varchar(36)")]
         public string ProductId { get; set; }

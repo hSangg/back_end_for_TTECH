@@ -19,7 +19,7 @@ namespace tech_project_back_end.Repository
         public async Task<List<TopSellerProductDTO>> TopSeller(int count)
         {
             var subquery = _appDbContext.DetailOrder
-                .GroupBy(dt => dt.Product_id)
+                .GroupBy(dt => dt.ProductId)
                 .Select(g => new
                 {
                     ProductId = g.Key,
@@ -29,17 +29,17 @@ namespace tech_project_back_end.Repository
             var result = await subquery
                 .Join(_appDbContext.Product,
                     sq => sq.ProductId,
-                    p => p.Product_id,
+                    p => p.ProductId,
                     (sq, p) => new TopSellerProductDTO
                     {
                         ProductId = sq.ProductId,
                         TotalQuantitySold = sq.TotalQuantitySold,
-                        ProductName = p.name_pr,
+                        ProductName = p.NamePr,
                         Image = _appDbContext.Image
                             .Where(i => i.ProductId == sq.ProductId)
                             .Select(i => new ImageDTO
                             {
-                                Image_Id = i.Image_Id,
+                                Image_Id = i.ImageId,
                                 ProductId = i.ProductId,
                                 ImageHref = i.ImageHref
                             })

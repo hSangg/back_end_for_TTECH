@@ -36,14 +36,10 @@ namespace tech_project_back_end.Controllers
                 var revenueDto = await _revenueService.GetRevenue();
                 return Ok(revenueDto);
             }
-            catch (ArgumentException ex) 
-            {
-                return BadRequest(new { message = ex.Message });
-            }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while getting revenue");
-                return StatusCode(500, new { message = "An error occurred while processing your request.", details = ex.Message });
+                _logger.LogError(ex, "Error while fetching revenue");
+                throw;
             }
         }
 
@@ -55,14 +51,10 @@ namespace tech_project_back_end.Controllers
                 var result = await _productService.GetTopSellerProducts(count);
                 return Ok(result);
             }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while getting top seller product(s)");
-                return StatusCode(500, new { message = "An error occurred while processing your request.", details = ex.Message });
+                _logger.LogError(ex, "Error while getting top seller");
+                throw;
             }
         }
 
@@ -74,15 +66,10 @@ namespace tech_project_back_end.Controllers
                 var result = await _revenueService.GetRevenueByYear(year);
                 return Ok(result);
             }
-            catch (ArgumentException ex)
-            {
-                _logger.LogError(ex, "Please recheck your argument");
-                return BadRequest(new { message = ex.Message });
-            }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching revenue by year");
-                return StatusCode(500, new { message = "An error occurred while processing your request.", details = ex.Message });
+                _logger.LogError(ex, "Error while fetching revenue by year");
+                throw;
             }
         }
 
@@ -99,15 +86,10 @@ namespace tech_project_back_end.Controllers
                     revenue = revenueDto.Revenues
                 });
             }
-            catch (ArgumentException ex)
-            {
-                _logger.LogError(ex, "Please recheck your argument");
-                return BadRequest(new { message = ex.Message });
-            }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching revenue by day in system");
-                return StatusCode(500, new { message = "An error occurred while processing your request.", details = ex.Message });
+                _logger.LogError(ex, "Error while fetching revenue by day");
+                throw;
             }
         }
 
@@ -119,15 +101,10 @@ namespace tech_project_back_end.Controllers
                 var result = await _userService.GetTotalUser();
                 return Ok(result);
             }
-            catch (ArgumentException ex)
-            {
-                _logger.LogError(ex, "Please recheck your argument");
-                return BadRequest(new { message = ex.Message });
-            }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching total user in system");
-                return StatusCode(500, new { message = "An error occurred while processing your request.", details = ex.Message });
+                _logger.LogError(ex, "Error while fetching all customer");
+                throw;
             }
         }
 
@@ -139,15 +116,10 @@ namespace tech_project_back_end.Controllers
                 var result = await _orderService.GetTotalOrder();
                 return Ok(result);
             }
-            catch (ArgumentException ex)
-            {
-                _logger.LogError(ex, "Please recheck your argument");
-                return BadRequest(new { message = ex.Message });
-            }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching total order in system");
-                return StatusCode(500, new { message = "An error occurred while processing your request.", details = ex.Message });
+                _logger.LogError(ex, "Error while adding supplier");
+                throw;
             }
         }
     }

@@ -26,8 +26,8 @@ namespace tech_project_back_end.Services
             var ordersThisMonth = await _orderRepository.GetList(currentMonthStart, currentMonthEnd);
             var ordersLastMonth = await _orderRepository.GetList(lastMonthStart, lastMonthEnd);
 
-            decimal thisMonthRevenue = ordersThisMonth.Sum(o => o.total - o.delivery_fee);
-            decimal lastMonthRevenue = ordersLastMonth.Sum(o => o.total - o.delivery_fee);
+            decimal thisMonthRevenue = ordersThisMonth.Sum(o => o.Total - o.DeliveryFee);
+            decimal lastMonthRevenue = ordersLastMonth.Sum(o => o.Total - o.DeliveryFee);
             decimal percentDifference;
 
             if (lastMonthRevenue > 0)
