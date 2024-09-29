@@ -14,7 +14,7 @@ namespace tech_project_back_end.Models
 
         [Column("discount_amount", TypeName = "int(11)")]
         public int DiscountAmount { get; set; }
-        
+
         [Column("discount_date_from", TypeName = "date")]
         public DateTime? DiscountDateFrom { get; set; }
 

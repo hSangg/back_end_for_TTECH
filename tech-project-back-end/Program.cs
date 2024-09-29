@@ -1,4 +1,3 @@
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -6,8 +5,8 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using tech_project_back_end.Data;
 using tech_project_back_end.Helpter;
-using tech_project_back_end.Repository;
 using tech_project_back_end.Repository.IRepository;
+using tech_project_back_end.Repository;
 using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
 
@@ -36,9 +35,8 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 
 builder.Services.AddMvc();
-builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddLogging();
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -69,15 +67,23 @@ builder.Services.AddAuthentication().AddJwtBearer(
     }
 );
 
-builder.Services.AddScoped<ISupplierService, SupplierService>();
-builder.Services.AddTransient<ISupplierRepository, SupplierRepository>();
-builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
-builder.Services.AddScoped<IDiscountService, DiscountService>();
-builder.Services.AddSingleton<ILogger>(provider =>
-   provider.GetRequiredService<ILogger<SupplierService>>());
 
+builder.Services.AddScoped<ISupplierService, SupplierService>();
+
+builder.Services.AddTransient<ISupplierRepository, SupplierRepository>();
+
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+
+builder.Services.AddScoped<IDiscountService, DiscountService>();
+
+builder.Services.AddScoped<IOrderService, OrderService>();
+
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+builder.Services.AddSingleton<ILogger>(provider =>provider.GetRequiredService<ILogger<SupplierService>>());
 
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
 builder.Services.AddTransient<IEmailService, EmailService>();
 
 var app = builder.Build();
