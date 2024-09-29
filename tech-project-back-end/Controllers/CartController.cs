@@ -45,7 +45,7 @@ namespace tech_project_back_end.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetCartProduct()
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; // replace this with your own method for getting the user ID
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             try
             {
                 var newCart = await _cartService.GetCartProduct(userId);
@@ -63,7 +63,7 @@ namespace tech_project_back_end.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Add([FromBody] ModifyCartDTO entity)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; // replace this with your own method for getting the user ID
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             try
             {
                 var newCart = await _cartService.AddToCart(entity, userId);
