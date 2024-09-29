@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
+using tech_project_back_end.DTO.Discount;
 using tech_project_back_end.Models;
+using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
 {
@@ -8,62 +10,106 @@ namespace tech_project_back_end.Controllers
     [ApiController]
     public class DiscountController : ControllerBase
     {
-        private readonly AppDbContext _appDbContext;
-        public DiscountController(AppDbContext appDbContext)
+        private readonly IDiscountService _discountService;
+        private readonly ILogger _logger;
+        public DiscountController(IDiscountService discountService, ILogger logger)
         {
-            this._appDbContext = appDbContext;
+            _discountService = discountService;
+            _logger = logger;
         }
-
-
+        
         [HttpGet]
-        public IActionResult GetAllDiscount()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetAll()
         {
-            var voucherList = _appDbContext.Discount.ToList();
-            return Ok(voucherList);
+            try
+            {
+                var voucherList = await _discountService.GetAllDiscounts();
+                return Ok(voucherList);
+            } catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
+            }
+        }
+        
+        [HttpGet("GetCurrentDiscount")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetByCurrentTime(DateTime currentDate)
+        {
+            try
+            {
+                var voucherList = await _discountService.GetDiscountByCurrentDate(currentDate);
+                return Ok(voucherList);
+            } catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
+            }
         }
 
         [HttpPost]
-        public IActionResult AddNewDiscount(Discount discount)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Add([FromBody] CreateDiscountDTO discount)
         {
-            _appDbContext.Discount.Add(discount);
-            _appDbContext.SaveChanges();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            return Ok(discount);
+            try
+            {
+                var newDiscount = await _discountService.CreateDiscount(discount);
+                return newDiscount != null
+                    ? Ok(newDiscount)
+                    : BadRequest("Failed to create supplier");
+            } catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
+            }
         }
 
         [HttpPut]
-        public IActionResult UpdateDiscount(Discount discount)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> Update(DiscountDTO discount)
         {
-            var isExit = _appDbContext.Discount.FirstOrDefault(x => x.DiscountId == discount.DiscountId);
-            if (isExit == null) { return BadRequest("discount_id not found"); }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            isExit = discount;
-            _appDbContext.SaveChanges();
-
-            return Ok(isExit);
-
+            try
+            {
+                var updateDiscount = await _discountService.UpdateDiscount(discount);
+                return updateDiscount != null
+                    ? Ok(updateDiscount)
+                    : NotFound($"Supplier with ID {discount.DiscountId} not found");
+            } catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
+            }
         }
-
-        [HttpGet("GetCurrentDiscount")]
-        public IActionResult GetDiscount(DateTime currentDate)
-        {
-            var isExit = _appDbContext.Discount.FirstOrDefault(dis => dis.DiscountDateFrom < currentDate && dis.DiscountDateTo > currentDate);
-            if (isExit == null) return BadRequest("This date not cotain a discount_id");
-            return Ok(isExit);
-
-        }
-
+        
         [HttpDelete]
-        public IActionResult DeleteDiscount(string discountId)
+        public async Task<ActionResult> DeleteById(string discountId)
         {
 
-            var isExit = _appDbContext.Discount.FirstOrDefault(x => x.DiscountId == discountId);
-            if (isExit == null) { return BadRequest("discount_id not found"); }
-
-            _appDbContext.Remove(isExit);
-            _appDbContext.SaveChanges();
-
-            return Ok("Discount deleted.");
+            try
+            {
+                await _discountService.DeleteDiscountById(discountId);
+                return Ok("Successfully deleted discount");
+            } catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
+            }
 
         }
     }
