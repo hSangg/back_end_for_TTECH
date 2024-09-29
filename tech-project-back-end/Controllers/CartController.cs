@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
+using tech_project_back_end.DTO.Cart;
 using tech_project_back_end.Models;
+using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
 {
@@ -10,138 +13,103 @@ namespace tech_project_back_end.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly AppDbContext _appDbContext;
-        public CartController(AppDbContext appDbContext)
+        private readonly ICartService _cartService;
+        private readonly ILogger _logger;
+
+        public CartController(ICartService cartService, ILogger logger)
         {
-            _appDbContext = appDbContext;
+            _cartService = cartService;
+            _logger = logger;
         }
-
-
-
+        
         [HttpPost("GetUserTotalProduct")]
-        public IActionResult GetUserTotalProduct([FromBody] string user_id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetAll()
         {
-
-            var totalProduct = _appDbContext.Cart.Where(c => c.user_id == user_id).Select(x => x.product_id).Distinct().Count();
-            return Ok(totalProduct);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            try
+            {
+                var totalProduct = await _cartService.GetUserTotalProduct(userId);
+                return Ok(totalProduct);
+            } 
+            catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
+            }
         }
 
         [HttpPost("GetCartProduct")]
-        public IActionResult GetCartProduct([FromBody] string user_id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetCartProduct()
         {
-            var productsInCart = from cart in _appDbContext.Set<Cart>()
-                                 join product in _appDbContext.Set<Product>()
-                                 on cart.product_id equals product.Product_id
-                                 join supplier in _appDbContext.Set<Supplier>()
-                                 on product.supplier_id equals supplier.SupplierId
-                                 where cart.user_id == user_id
-                                 select new
-                                 {
-                                     Product = new
-                                     {
-                                         product_id = product.Product_id,
-                                         name_pr = product.name_pr,
-                                         name_serial = product.name_serial,
-                                         detail = product.detail,
-                                         price = product.price,
-                                         quantity_pr = product.quantity_pr,
-                                         guarantee_period = product.guarantee_period,
-                                         supplier_id = product.supplier_id,
-                                     },
-                                     quantity = cart.quantity,
-                                     Category = _appDbContext.ProductCategory
-                                        .Where(pc => pc.product_id == cart.product_id)
-                                        .Join(_appDbContext.Category,
-                                                pc => pc.category_id,
-                                                c => c.category_id,
-                                                    (pc, c) => new { c.category_id, c.category_name })
-                                                    .SingleOrDefault(),
-                                     Supplier = supplier,
-                                     Image = _appDbContext.Set<Image>()
-                                         .Where(i => i.ProductId == product.Product_id)
-                                         .FirstOrDefault()
-                                 };
-
-            return Ok(productsInCart);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            try
+            {
+                var newCart = await _cartService.GetCartProduct(userId);
+                return Ok(newCart);
+            } 
+            catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
+            }
         }
-        [HttpPut("UpdateQuantity")]
-        public IActionResult UpdateQuantity([FromBody] Cart cart)
+        
+        [HttpPost("AddToCart")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Add([FromBody] ModifyCartDTO entity)
         {
-            var userId = cart.user_id; // replace this with your own method for getting the user ID
-            var cartItem = _appDbContext.Set<Cart>()
-                .FirstOrDefault(c => c.user_id == userId && c.product_id == cart.product_id);
-            if (cartItem == null)
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            try
             {
-                return NotFound($"Cart item with product ID {cart.product_id} not found");
+                var newCart = await _cartService.AddToCart(entity, userId);
+                return Ok(newCart);
+            } 
+            catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
             }
+        }
 
-            if (cart.quantity == 0)
+        [HttpPut("UpdateQuantity")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Update([FromBody] ModifyCartDTO entity)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            try
             {
-                _appDbContext.Set<Cart>().Remove(cartItem);
-            }
-            else
+                var updateCart = await _cartService.UpdateQuantity(entity, userId);
+                return Ok(updateCart);
+            } 
+            catch(Exception err)
             {
-                cartItem.quantity = cart.quantity;
-                _appDbContext.Set<Cart>().Update(cartItem);
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
             }
-
-            _appDbContext.SaveChanges();
-            return Ok();
         }
 
         [HttpDelete("EmptyCart")]
-        public IActionResult EmptyCart(string user_id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> DeleteByUserId()
         {
-            var cartItems = _appDbContext.Set<Cart>().Where(c => c.user_id == user_id);
-            _appDbContext.Set<Cart>().RemoveRange(cartItems);
-            _appDbContext.SaveChanges();
-            return Ok();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            try
+            {
+                await _cartService.EmptyCart(userId);
+                return Ok("Successfully deleted cart");
+            } 
+            catch(Exception err)
+            {
+                _logger.LogError(err, err.Message);
+                return StatusCode(500, err.Message);
+            }
         }
-
-
-        [HttpPost("AddToCart")]
-        public IActionResult AddToCart([FromBody] Cart cart)
-        {
-
-            var userId = cart.user_id; // replace this with your own method for getting the user ID
-            var product = _appDbContext.Set<Product>().FirstOrDefault(p => p.Product_id == cart.product_id);
-            if (product == null)
-            {
-                return NotFound($"Product with ID {cart.product_id} not found");
-            }
-
-            var existingCartItem = _appDbContext.Set<Cart>()
-                .FirstOrDefault(c => c.user_id == userId && c.product_id == cart.product_id);
-            if (existingCartItem != null)
-            {
-                existingCartItem.quantity += cart.quantity;
-                _appDbContext.Set<Cart>().Update(existingCartItem);
-            }
-            else
-            {
-                var cartItem = new Cart
-                {
-                    user_id = userId,
-                    product_id = cart.product_id,
-                    quantity = cart.quantity
-                };
-                _appDbContext.Set<Cart>().Add(cartItem);
-            }
-
-            _appDbContext.SaveChanges();
-            return Ok(true);
-
-
-        }
-
-
-
-
-
-
-
     }
-
-
-
 }
