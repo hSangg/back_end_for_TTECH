@@ -75,6 +75,14 @@ builder.Services.AddAuthentication().AddJwtBearer(
     }
 );
 
+builder.Services.AddScoped<ISupplierService, SupplierService>();
+builder.Services.AddTransient<ISupplierRepository, SupplierRepository>();
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+builder.Services.AddScoped<IDiscountService, DiscountService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddSingleton<ILogger>(provider =>
+   provider.GetRequiredService<ILogger<SupplierService>>());
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
 
