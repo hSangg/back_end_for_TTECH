@@ -7,6 +7,7 @@ namespace tech_project_back_end.DTO
     {
         public MappingConfig() {
             CreateMap<Supplier, SupplierDTO>().ReverseMap();
+            CreateMap<Image, ImageDTO>().ReverseMap();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace tech_project_back_end.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column("order_id", TypeName = "varchar(36)")]
-        public string order_id { get; set; }
+        public string Order_id { get; set; }
 
         [Column("user_id", TypeName = "varchar(36)")]
         public string user_id { get; set; }
@@ -17,7 +17,7 @@ namespace tech_project_back_end.Models
         public virtual User User { get; set; } 
 
         [Required]
-        [Column("create_order_at", TypeName = "datetime")]
+        [Column("create_order_at", TypeName = "timestamp")]
         public DateTime createdAt { get; set; }
 
         [Column("name", TypeName = "varchar(100)")]
@@ -49,5 +49,7 @@ namespace tech_project_back_end.Models
 
         [Column("delivery_fee", TypeName = "int")]
         public int delivery_fee { get; set; }
+        public virtual ICollection<DetailOrder> DetailOrders { get; set; }
+
     }
 }

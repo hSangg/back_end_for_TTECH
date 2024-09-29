@@ -51,7 +51,7 @@ namespace tech_project_back_end.Controllers
                         {
                             Product = new
                             {
-                                product_id = p.product_id,
+                                product_id = p.Product_id,
                                 name_pr = p.name_pr,
                                 name_serial = p.name_serial,
                                 detail = p.detail,
@@ -60,7 +60,7 @@ namespace tech_project_back_end.Controllers
                                 guarantee_period = p.guarantee_period
                             },
                             Category = _appDbContext.ProductCategory
-                                        .Where(pc => pc.product_id == p.product_id)
+                                        .Where(pc => pc.product_id == p.Product_id)
                                         .Join(_appDbContext.Category,
                                                 pc => pc.category_id,
                                                 c => c.category_id,
@@ -68,7 +68,7 @@ namespace tech_project_back_end.Controllers
                                                     .ToList(),
                             Supplier = new { s.SupplierId, s.SupplierName },
                             Image = _appDbContext.Image
-                                .Where(i => i.ProductId == p.product_id)
+                                .Where(i => i.ProductId == p.Product_id)
                                 .FirstOrDefault()
                         })
                     .FirstOrDefault(p => p.Product.product_id == id);
@@ -101,7 +101,7 @@ namespace tech_project_back_end.Controllers
         {
             Product = new
             {
-                product_id = p.product_id,
+                product_id = p.Product_id,
                 name_pr = p.name_pr,
                 name_serial = p.name_serial,
                 detail = p.detail,
@@ -110,7 +110,7 @@ namespace tech_project_back_end.Controllers
                 guarantee_period = p.guarantee_period
             },
             Category = _appDbContext.ProductCategory
-                .Where(pc => pc.product_id == p.product_id)
+                .Where(pc => pc.product_id == p.Product_id)
                 .Join(_appDbContext.Category,
                     pc => pc.category_id,
                     c => c.category_id,
@@ -118,7 +118,7 @@ namespace tech_project_back_end.Controllers
                 .ToList(),
             Supplier = new { s.SupplierId, s.SupplierName },
             Image = _appDbContext.Image
-                .Where(i => i.ProductId == p.product_id)
+                .Where(i => i.ProductId == p.Product_id)
                 .FirstOrDefault()
         })
     .AsEnumerable() // Perform client-side evaluation from this point
@@ -147,7 +147,7 @@ namespace tech_project_back_end.Controllers
             {
                 Product = new
                 {
-                    product_id = p.product_id,
+                    product_id = p.Product_id,
                     name_pr = p.name_pr,
                     name_serial = p.name_serial,
                     detail = p.detail,
@@ -157,7 +157,7 @@ namespace tech_project_back_end.Controllers
 
                 },
                 Category = _appDbContext.ProductCategory
-                        .Where(pc => pc.product_id == p.product_id)
+                        .Where(pc => pc.product_id == p.Product_id)
                         .Join(_appDbContext.Category,
                             pc => pc.category_id,
                             c => c.category_id,
@@ -166,7 +166,7 @@ namespace tech_project_back_end.Controllers
 
                 Supplier = new { s.SupplierId, s.SupplierName },
                 Image = _appDbContext.Image
-                    .Where(i => i.ProductId == p.product_id)
+                    .Where(i => i.ProductId == p.Product_id)
                     .FirstOrDefault()
             });
 
@@ -263,7 +263,7 @@ namespace tech_project_back_end.Controllers
             try
             {
                 var result = await DeleteImageFolder(product_id);
-                var productsToDelete = _appDbContext.Product.Where(p => p.product_id == product_id);
+                var productsToDelete = _appDbContext.Product.Where(p => p.Product_id == product_id);
                 _appDbContext.Product.RemoveRange(productsToDelete);
                 var productsImageToDelete = _appDbContext.Image.Where(i => i.ProductId == product_id);
                 _appDbContext.Image.RemoveRange(productsImageToDelete);
@@ -339,7 +339,7 @@ namespace tech_project_back_end.Controllers
 
                 _appDbContext.Image.Add(new Image
                 {
-                    ImageId = Guid.NewGuid().ToString()[..36],
+                    Image_Id = Guid.NewGuid().ToString()[..36],
                     ProductId = productId,
                     ImageHref = imageUrl
                 });
@@ -375,7 +375,7 @@ namespace tech_project_back_end.Controllers
             {
                 // Check if the specified product exists
                 var existingProduct = await _appDbContext.Product
-                    .FirstOrDefaultAsync(p => p.product_id == updatedProduct.product_id);
+                    .FirstOrDefaultAsync(p => p.Product_id == updatedProduct.Product_id);
 
                 if (existingProduct == null)
                 {
@@ -439,7 +439,7 @@ namespace tech_project_back_end.Controllers
 
             _appDbContext.Image.Add(new Image
             {
-                ImageId = Guid.NewGuid().ToString()[..36],
+                Image_Id = Guid.NewGuid().ToString()[..36],
                 ProductId = product_id,
                 ImageHref = imageUrl,
                 FileName = fileName,

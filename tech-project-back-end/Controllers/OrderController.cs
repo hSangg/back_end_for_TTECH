@@ -45,7 +45,7 @@ namespace tech_project_back_end.Controllers
             {
                 // Check if the specified product exists
                 var existingOrder = await _appDbContext.Order
-                    .FirstOrDefaultAsync(p => p.order_id == orderId);
+                    .FirstOrDefaultAsync(p => p.Order_id == orderId);
 
                 if (existingOrder == null)
                 {
@@ -106,7 +106,7 @@ namespace tech_project_back_end.Controllers
 
             var orderList = _appDbContext.Order.Select(x => new
             {
-                orderId = x.order_id,
+                orderId = x.Order_id,
                 customerName = x.name,
                 customerAddress = x.address,
                 customerEmail = x.email,
@@ -151,10 +151,10 @@ namespace tech_project_back_end.Controllers
         [HttpGet("GetOrderById")]
         public IActionResult GetOrderById(string order_id)
         {
-            var isExit = _appDbContext.Order.FirstOrDefault(o => o.order_id == order_id);
+            var isExit = _appDbContext.Order.FirstOrDefault(o => o.Order_id == order_id);
             if (isExit != null) { return NotFound("Order not found"); }
 
-            var orders = _appDbContext.Order.Where(o => o.order_id.ToLower().Contains(order_id.ToLower())).Join(_appDbContext.User, o => o.user_id, u => u.UserId,
+            var orders = _appDbContext.Order.Where(o => o.Order_id.ToLower().Contains(order_id.ToLower())).Join(_appDbContext.User, o => o.user_id, u => u.UserId,
                 (o, u) => new
                 {
                     CustomerInfor = u,
@@ -175,16 +175,16 @@ namespace tech_project_back_end.Controllers
             var orders = _appDbContext.Order
                 .Join(
                     _appDbContext.DetailOrder,
-                    o => o.order_id,
-                    od => od.order_id,
+                    o => o.Order_id,
+                    od => od.Order_id,
                     (o, od) => new
                     {
-                        OrderId = o.order_id,
+                        OrderId = o.Order_id,
                         CreateOrderAt = o.createdAt,
                         UserId = o.user_id,
-                        ProductId = od.product_id,
-                        QuantityPr = od.quality,
-                        PricePr = od.price,
+                        ProductId = od.Product_id,
+                        QuantityPr = od.Quantity,
+                        PricePr = od.Price,
                         Total = o.total + o.delivery_fee
 
                     })
@@ -210,15 +210,15 @@ namespace tech_project_back_end.Controllers
                     OrderDetails = g.Select(x => new
                     {
                         Product = _appDbContext.Product
-                            .Where(p => p.product_id == x.ProductId)
+                            .Where(p => p.Product_id == x.ProductId)
                             .Select(p => new
                             {
-                                p.product_id,
+                                p.Product_id,
                                 p.name_pr,
                                 p.detail,
                                 p.price,
                                 Images = _appDbContext.Image
-                                    .Where(i => i.ProductId == p.product_id)
+                                    .Where(i => i.ProductId == p.Product_id)
                                     .Select(i => i.ImageHref)
                                     .ToList()
                             })

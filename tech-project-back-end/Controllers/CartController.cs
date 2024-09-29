@@ -31,7 +31,7 @@ namespace tech_project_back_end.Controllers
         {
             var productsInCart = from cart in _appDbContext.Set<Cart>()
                                  join product in _appDbContext.Set<Product>()
-                                 on cart.product_id equals product.product_id
+                                 on cart.product_id equals product.Product_id
                                  join supplier in _appDbContext.Set<Supplier>()
                                  on product.supplier_id equals supplier.SupplierId
                                  where cart.user_id == user_id
@@ -39,7 +39,7 @@ namespace tech_project_back_end.Controllers
                                  {
                                      Product = new
                                      {
-                                         product_id = product.product_id,
+                                         product_id = product.Product_id,
                                          name_pr = product.name_pr,
                                          name_serial = product.name_serial,
                                          detail = product.detail,
@@ -58,7 +58,7 @@ namespace tech_project_back_end.Controllers
                                                     .SingleOrDefault(),
                                      Supplier = supplier,
                                      Image = _appDbContext.Set<Image>()
-                                         .Where(i => i.ProductId == product.product_id)
+                                         .Where(i => i.ProductId == product.Product_id)
                                          .FirstOrDefault()
                                  };
 
@@ -104,7 +104,7 @@ namespace tech_project_back_end.Controllers
         {
 
             var userId = cart.user_id; // replace this with your own method for getting the user ID
-            var product = _appDbContext.Set<Product>().FirstOrDefault(p => p.product_id == cart.product_id);
+            var product = _appDbContext.Set<Product>().FirstOrDefault(p => p.Product_id == cart.product_id);
             if (product == null)
             {
                 return NotFound($"Product with ID {cart.product_id} not found");

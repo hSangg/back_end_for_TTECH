@@ -8,7 +8,7 @@ namespace tech_project_back_end.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column("product_id", TypeName = "varchar(36)")]
-        public string product_id { get; set; }
+        public string Product_id { get; set; }
 
         [Column("name_pr", TypeName = "varchar(200)")]
         public string name_pr { get; set; }
@@ -32,6 +32,9 @@ namespace tech_project_back_end.Models
         [ForeignKey("Supplier")] 
         public string supplier_id { get; set; }
 
-        public virtual Supplier Supplier { get; set; } 
+        public virtual Supplier Supplier { get; set; }
+
+        public virtual ICollection<DetailOrder> DetailOrders { get; set; }
+
     }
 }
