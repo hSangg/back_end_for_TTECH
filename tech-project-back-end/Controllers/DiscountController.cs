@@ -27,7 +27,8 @@ namespace tech_project_back_end.Controllers
             {
                 var voucherList = await _discountService.GetAllDiscounts();
                 return Ok(voucherList);
-            } catch(Exception err)
+            } 
+            catch(Exception err)
             {
                 _logger.LogError(err, err.Message);
                 return StatusCode(500, err.Message);
@@ -43,7 +44,8 @@ namespace tech_project_back_end.Controllers
             {
                 var voucherList = await _discountService.GetDiscountByCurrentDate(currentDate);
                 return Ok(voucherList);
-            } catch(Exception err)
+            } 
+            catch(Exception err)
             {
                 _logger.LogError(err, err.Message);
                 return StatusCode(500, err.Message);
@@ -66,7 +68,8 @@ namespace tech_project_back_end.Controllers
                 return newDiscount != null
                     ? Ok(newDiscount)
                     : BadRequest("Failed to create supplier");
-            } catch(Exception err)
+            } 
+            catch(Exception err)
             {
                 _logger.LogError(err, err.Message);
                 return StatusCode(500, err.Message);
@@ -90,7 +93,8 @@ namespace tech_project_back_end.Controllers
                 return updateDiscount != null
                     ? Ok(updateDiscount)
                     : NotFound($"Supplier with ID {discount.DiscountId} not found");
-            } catch(Exception err)
+            } 
+            catch(Exception err)
             {
                 _logger.LogError(err, err.Message);
                 return StatusCode(500, err.Message);
@@ -100,17 +104,16 @@ namespace tech_project_back_end.Controllers
         [HttpDelete]
         public async Task<ActionResult> DeleteById(string discountId)
         {
-
             try
             {
                 await _discountService.DeleteDiscountById(discountId);
                 return Ok("Successfully deleted discount");
-            } catch(Exception err)
+            } 
+            catch(Exception err)
             {
                 _logger.LogError(err, err.Message);
                 return StatusCode(500, err.Message);
             }
-
         }
     }
 }
