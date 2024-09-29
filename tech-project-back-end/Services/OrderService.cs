@@ -21,6 +21,7 @@ namespace tech_project_back_end.Services
             this._logger = logger;
             this._orderRepository = _orderRepository;
         }
+
         public async Task<OrderDTO> CreateOrder(OrderDTO orderDTO)
         {
             try
@@ -35,6 +36,7 @@ namespace tech_project_back_end.Services
                 throw;
             }
         }
+
         public async Task<OrderDTO> UpdateStateOrder(string id, string state)
         {
             try
@@ -53,6 +55,7 @@ namespace tech_project_back_end.Services
                 throw;
             }
         }
+
         public async  Task<DataTable> GetOrderData()
         {
             DataTable dt = new DataTable();
@@ -79,6 +82,7 @@ namespace tech_project_back_end.Services
 
             return dt;
         }
+
         public async Task<byte[]> GetExcelFileData()
         {
             var orderList = await this.GetOrderData();
@@ -93,14 +97,17 @@ namespace tech_project_back_end.Services
                 }
             }
         }
+
         public async Task<IEnumerable<dynamic>> GetAllOrder()
         {
             return await _orderRepository.GetAllWithDiscountOrderByDescending();
         }
+
         public async Task<IEnumerable<dynamic>> GetById(string orderId)
         {
             return await _orderRepository.GetALlByIdOrderByDescending(orderId);
         }
+
         public async Task<IEnumerable<dynamic>> GetByUserId(string userId)
         {
             return await _orderRepository.GetByUserId(userId);

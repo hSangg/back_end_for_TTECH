@@ -36,14 +36,6 @@ builder.Services.AddControllers();
 
 builder.Services.AddMvc();
 
-builder.Services.AddScoped<ISupplierService, SupplierService>();
-
-builder.Services.AddScoped<IOrderService, OrderService>();
-
-builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
-
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
@@ -75,18 +67,23 @@ builder.Services.AddAuthentication().AddJwtBearer(
     }
 );
 
-<<<<<<< HEAD
-=======
+
 builder.Services.AddScoped<ISupplierService, SupplierService>();
+
 builder.Services.AddTransient<ISupplierRepository, SupplierRepository>();
+
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+
 builder.Services.AddScoped<IDiscountService, DiscountService>();
-builder.Services.AddSingleton<ILogger>(provider =>
-   provider.GetRequiredService<ILogger<SupplierService>>());
 
+builder.Services.AddScoped<IOrderService, OrderService>();
 
->>>>>>> main
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+builder.Services.AddSingleton<ILogger>(provider =>provider.GetRequiredService<ILogger<SupplierService>>());
+
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
 builder.Services.AddTransient<IEmailService, EmailService>();
 
 var app = builder.Build();

@@ -11,6 +11,7 @@ namespace tech_project_back_end.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly ILogger<OrderController> _logger;
+
         public OrderController(IEmailService emailService, IOrderService orderService, ILogger<OrderController> logger)
         {
             this._orderService = orderService;
@@ -36,8 +37,6 @@ namespace tech_project_back_end.Controllers
                 _logger.LogError(ex, "Error occurred while creating order");
                 return StatusCode(500, "An error occurred while processing the request");
             }
-
-
         }
 
         [HttpPut("UpdateStateOrder")]
@@ -131,7 +130,6 @@ namespace tech_project_back_end.Controllers
             }
 
         }
-
 
         [HttpPost("GetOrderByUserId")]
         public async Task<IActionResult> GetOrderByUserId([FromBody] string userId)

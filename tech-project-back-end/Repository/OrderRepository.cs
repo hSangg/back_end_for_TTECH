@@ -13,35 +13,37 @@ namespace tech_project_back_end.Repository
         private readonly AppDbContext _appDbContext;
         private readonly ILogger<OrderController> _logger;
         private readonly IMapper _mapper;
+
         public OrderRepository(AppDbContext appDbContext, ILogger<OrderController> logger, IMapper mapper)
         {
             this._appDbContext = appDbContext;
             this._logger = logger;
             this._mapper = mapper;
         }
+
         public async Task<Order> Create(Order order) {
             order.createdAt = DateTime.Now;
             await _appDbContext.Order.AddAsync(order);
             await _appDbContext.SaveChangesAsync();
             return order;
         }
+
         public async Task<Order> FindById(string id)
         {
             return await _appDbContext.Order.FirstOrDefaultAsync(p => p.order_id == id);
         }
+
         public async Task<Order> UpdateState(string id,string state) {
             var existingOrder = await this.FindById(id);
-
-
             // Update the existing product
             if (existingOrder != null)
             {
                 existingOrder.state = state;
                 await _appDbContext.SaveChangesAsync();
             }
-
             return existingOrder;
         }
+
         public async Task<List<OrderDataTableDTO>> GetAll() {
             var listOrder = await _appDbContext.Order.Select(x => new OrderDataTableDTO
             {
@@ -59,6 +61,7 @@ namespace tech_project_back_end.Repository
             }).ToListAsync();
             return listOrder;
         }
+
         public async Task<IEnumerable<dynamic>> GetAllWithDiscountOrderByDescending() {
             var orders = await _appDbContext.Order.Join(_appDbContext.User, o => o.user_id, u => u.UserId,
                 (o, u) => new
@@ -72,6 +75,7 @@ namespace tech_project_back_end.Repository
 
             return orders;
         }
+
         public async Task<IEnumerable<dynamic>> GetALlByIdOrderByDescending(string id) {
             var isExit = this.FindById(id);
 
@@ -91,6 +95,7 @@ namespace tech_project_back_end.Repository
             }
             return null;
         }
+
         public async Task<IEnumerable<dynamic>> GetByUserId(string userId) {
             var orders = await _appDbContext.Order
                 .Join(
