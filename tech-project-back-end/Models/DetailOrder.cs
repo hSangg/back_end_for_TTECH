@@ -7,17 +7,17 @@ namespace tech_project_back_end.Models
     {
         [Key]
         [Column("order_id", TypeName = "varchar(36)")]
-        public string order_id { get; set; }
+        public string OrderId { get; set; }
 
         [Key]
         [Column("product_id", TypeName = "varchar(36)")]
-        public string product_id { get; set; }
+        public string ProductId { get; set; }
 
         [Column("price", TypeName = "bigint(20) UNSIGNED")]
-        public long price { get; set; }
+        public long Price { get; set; }
 
-        [Column("quality", TypeName = "int(11)")]
-        public int quality { get; set; }
+        [Column("quantity", TypeName = "int(11)")]
+        public int Quantity { get; set; }
 
         [ForeignKey("order_id")]
         public virtual Order Order { get; set; }

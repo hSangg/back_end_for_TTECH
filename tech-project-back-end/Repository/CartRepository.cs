@@ -37,35 +37,35 @@ public class CartRepository : ICartRepository
     public async Task<List<CartProductModel>> GetCartProduct(string userId)
     {
         var productsInCart = await _dbSet.Where(cart => cart.user_id == userId)
-            .Join(_db.Product, cart => cart.product_id, prod => prod.product_id, (cart, prod) => new { cart, prod })
+            .Join(_db.Product, cart => cart.product_id, prod => prod.ProductId, (cart, prod) => new { cart, prod })
             .Select(combined => new CartProductModel
             {
                 Product = new Product
                 {
-                    product_id = combined.prod.product_id,
-                    name_pr = combined.prod.name_pr,
-                    name_serial = combined.prod.name_serial,
-                    detail = combined.prod.detail,
-                    price = combined.prod.price,
-                    quantity_pr = combined.prod.quantity_pr,
-                    guarantee_period = combined.prod.guarantee_period,
-                    supplier_id = combined.prod.supplier_id
+                    ProductId = combined.prod.ProductId,
+                    NamePr = combined.prod.NamePr,
+                    NameSerial = combined.prod.NameSerial,
+                    Detail = combined.prod.Detail,
+                    Price = combined.prod.Price,
+                    QuantityPr = combined.prod.QuantityPr,
+                    GuaranteePeriod = combined.prod.GuaranteePeriod,
+                    SupplierId = combined.prod.SupplierId
                 },
                 Quantity = combined.cart.quantity,
                 Category = _db.ProductCategory.
-                    Where(pc => pc.product_id == combined.prod.product_id).
+                    Where(pc => pc.product_id == combined.prod.ProductId).
                     Join(_db.Category, pc => pc.category_id, c => c.category_id, (pc, c) => new Category
                     {
                         category_id = c.category_id,
                         category_name = c.category_name
                     }).SingleOrDefault(),
-                Supplier = _db.Supplier.Where(sup => sup.SupplierId == combined.prod.supplier_id).
+                Supplier = _db.Supplier.Where(sup => sup.SupplierId == combined.prod.SupplierId).
                     Select(sup => new SupplierModel
                     {
                         SupplierId = sup.SupplierId,
                         SupplierName = sup.SupplierName
                     }).SingleOrDefault(),
-                Image = _db.Image.Where(i => i.ProductId == combined.prod.product_id).FirstOrDefault()
+                Image = _db.Image.Where(i => i.ProductId == combined.prod.ProductId).FirstOrDefault()
             }).ToListAsync();
         return productsInCart;
     }
@@ -76,7 +76,7 @@ public class CartRepository : ICartRepository
         var newCart = await _dbSet.AddAsync(entity);
         
         var productToUpdate = await _db.Product.FindAsync(entity.product_id);
-        int newQuantity = productToUpdate.quantity_pr - entity.quantity;
+        int newQuantity = productToUpdate.QuantityPr - entity.quantity;
         await UpdateQuantityOfProduct(newQuantity, productToUpdate);
         
         await Save();
@@ -97,7 +97,7 @@ public class CartRepository : ICartRepository
 
             var productToUpdate = await _db.Product.FindAsync(entity.product_id);
         
-            int newQuantity = productToUpdate.quantity_pr + cartToUpdate.quantity - entity.quantity;
+            int newQuantity = productToUpdate.QuantityPr + cartToUpdate.quantity - entity.quantity;
             if (newQuantity < 0)
             {
                 throw new Exception("Quantity cannot be negative");
@@ -117,7 +117,7 @@ public class CartRepository : ICartRepository
     public async Task Delete(Cart entity)
     {
         var productToUpdate = await _db.Product.FindAsync(entity.product_id);
-        await UpdateQuantityOfProduct(productToUpdate.quantity_pr + entity.quantity, productToUpdate);
+        await UpdateQuantityOfProduct(productToUpdate.QuantityPr + entity.quantity, productToUpdate);
         _dbSet.RemoveRange(entity);
         await Save();
     }
@@ -129,7 +129,7 @@ public class CartRepository : ICartRepository
 
     private async Task UpdateQuantityOfProduct(int newQuantity, Product productToUpdate)
     {
-        productToUpdate.quantity_pr = newQuantity;
+        productToUpdate.QuantityPr = newQuantity;
         _db.Entry(productToUpdate).State = EntityState.Modified;
         await Save();
     }

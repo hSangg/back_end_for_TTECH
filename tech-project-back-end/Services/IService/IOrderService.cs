@@ -5,6 +5,7 @@ namespace tech_project_back_end.Services.IService
 {
     public interface IOrderService
     {
+        Task<int> GetTotalOrder();
 
         Task<OrderDTO> CreateOrder(OrderDTO orderDTO);
 

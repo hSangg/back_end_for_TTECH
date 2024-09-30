@@ -22,6 +22,11 @@ namespace tech_project_back_end.Services
             this._orderRepository = _orderRepository;
         }
 
+        public async Task<int> GetTotalOrder()
+        {
+            return await _orderRepository.Count();
+        }
+
         public async Task<OrderDTO> CreateOrder(OrderDTO orderDTO)
         {
             try

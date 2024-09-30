@@ -11,6 +11,7 @@ namespace tech_project_back_end.Repository
     public class OrderRepository : IOrderRepository
     {
         private readonly AppDbContext _appDbContext;
+        public async Task<int> Count() { return await _appDbContext.Order.CountAsync(); }
         private readonly ILogger<OrderController> _logger;
         private readonly IMapper _mapper;
 
@@ -21,8 +22,30 @@ namespace tech_project_back_end.Repository
             this._mapper = mapper;
         }
 
+
+        public async Task<List<Order>> GetList(DateTime startDate, DateTime endDate)
+        {
+            return await _appDbContext.Order
+                .Where(o => o.CreatedAt >= startDate && o.CreatedAt <= endDate)
+                .ToListAsync();
+        }
+
+        public async Task<long> MonthRevenue(DateTime startDateOfMonth, DateTime endDateOfMonth)
+        {
+            return await _appDbContext.Order
+                 .Where(o => o.CreatedAt >= startDateOfMonth && o.CreatedAt <= endDateOfMonth)
+                 .SumAsync(o => o.Total);
+        }
+
+        public async Task<long> DayRevenue(DateTime date)
+        {
+            return await _appDbContext.Order
+                 .Where(o => o.CreatedAt.Date == date.Date)
+                 .SumAsync(o => o.Total);
+        }
+
         public async Task<Order> Create(Order order) {
-            order.createdAt = DateTime.Now;
+            order.CreatedAt = DateTime.Now;
             await _appDbContext.Order.AddAsync(order);
             await _appDbContext.SaveChangesAsync();
             return order;
@@ -30,7 +53,7 @@ namespace tech_project_back_end.Repository
 
         public async Task<Order> FindById(string id)
         {
-            return await _appDbContext.Order.FirstOrDefaultAsync(p => p.order_id == id);
+            return await _appDbContext.Order.FirstOrDefaultAsync(p => p.OrderId == id);
         }
 
         public async Task<Order> UpdateState(string id,string state) {
@@ -38,7 +61,7 @@ namespace tech_project_back_end.Repository
             // Update the existing product
             if (existingOrder != null)
             {
-                existingOrder.state = state;
+                existingOrder.State = state;
                 await _appDbContext.SaveChangesAsync();
             }
             return existingOrder;
@@ -47,31 +70,31 @@ namespace tech_project_back_end.Repository
         public async Task<List<OrderDataTableDTO>> GetAll() {
             var listOrder = await _appDbContext.Order.Select(x => new OrderDataTableDTO
             {
-                orderId = x.order_id,
-                customerName = x.name,
-                customerAddress = x.address,
-                customerEmail = x.email,
-                customerPhone = x.phone,
+                orderId = x.OrderId,
+                customerName = x.Name,
+                customerAddress = x.Address,
+                customerEmail = x.Email,
+                customerPhone = x.Phone,
                 customerNote = x.note,
-                deliveryFee = x.delivery_fee,
-                discountId = x.discount_id,
-                total = x.total,
-                createdAt = x.createdAt,
+                deliveryFee = x.DeliveryFee,
+                discountId = x.DiscountId,
+                total = x.Total,
+                createdAt = x.CreatedAt,
 
             }).ToListAsync();
             return listOrder;
         }
 
         public async Task<IEnumerable<dynamic>> GetAllWithDiscountOrderByDescending() {
-            var orders = await _appDbContext.Order.Join(_appDbContext.User, o => o.user_id, u => u.UserId,
+            var orders = await _appDbContext.Order.Join(_appDbContext.User, o => o.UserId, u => u.UserId,
                 (o, u) => new
                 {
                     CustomerInfor = u,
                     OrderInfor = o,
-                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount_id).FirstOrDefault()
+                    DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.DiscountId).FirstOrDefault()
 
                 }
-                ).OrderByDescending(x => x.OrderInfor.createdAt).ToListAsync();
+                ).OrderByDescending(x => x.OrderInfor.CreatedAt).ToListAsync();
 
             return orders;
         }
@@ -82,15 +105,15 @@ namespace tech_project_back_end.Repository
             if (isExit != null)
             {
 
-                var orders = await _appDbContext.Order.Where(o => o.order_id.ToLower().Contains(id.ToLower())).Join(_appDbContext.User, o => o.user_id, u => u.UserId,
+                var orders = await _appDbContext.Order.Where(o => o.OrderId.ToLower().Contains(id.ToLower())).Join(_appDbContext.User, o => o.UserId, u => u.UserId,
                     (o, u) => new
                     {
                         CustomerInfor = u,
                         OrderInfor = o,
-                        DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.discount_id).FirstOrDefault()
+                        DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.DiscountId).FirstOrDefault()
 
                     }
-                    ).OrderByDescending(x => x.OrderInfor.createdAt).ToListAsync();
+                    ).OrderByDescending(x => x.OrderInfor.CreatedAt).ToListAsync();
                 return orders;
             }
             return null;
@@ -100,17 +123,17 @@ namespace tech_project_back_end.Repository
             var orders = await _appDbContext.Order
                 .Join(
                     _appDbContext.DetailOrder,
-                    o => o.order_id,
-                    od => od.order_id,
+                    o => o.OrderId,
+                    od => od.OrderId,
                     (o, od) => new
                     {
-                        OrderId = o.order_id,
-                        CreateOrderAt = o.createdAt,
-                        UserId = o.user_id,
-                        ProductId = od.product_id,
-                        QuantityPr = od.quality,
-                        PricePr = od.price,
-                        Total = o.total + o.delivery_fee
+                        OrderId = o.OrderId,
+                        CreateOrderAt = o.CreatedAt,
+                        UserId = o.UserId,
+                        ProductId = od.ProductId,
+                        QuantityPr = od.Quantity,
+                        PricePr = od.Price,
+                        Total = o.Total + o.DeliveryFee
 
                     })
                 .Where(x => x.UserId == userId)
@@ -135,15 +158,15 @@ namespace tech_project_back_end.Repository
                     OrderDetails = g.Select(x => new
                     {
                         Product = _appDbContext.Product
-                            .Where(p => p.product_id == x.ProductId)
+                            .Where(p => p.ProductId == x.ProductId)
                             .Select(p => new
                             {
-                                p.product_id,
-                                p.name_pr,
-                                p.detail,
-                                p.price,
+                                p.ProductId,
+                                p.NamePr,
+                                p.Detail,
+                                p.Price,
                                 Images = _appDbContext.Image
-                                    .Where(i => i.ProductId == p.product_id)
+                                    .Where(i => i.ProductId == p.ProductId)
                                     .Select(i => i.ImageHref)
                                     .ToList()
                             })

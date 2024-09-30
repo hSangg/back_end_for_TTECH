@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.Data;
+using tech_project_back_end.DTO.RevenueDTO;
 using tech_project_back_end.Models;
+using tech_project_back_end.Services;
+using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
 {
@@ -9,133 +13,114 @@ namespace tech_project_back_end.Controllers
     public class AdminController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-        public AdminController(AppDbContext appDbContext)
+        private readonly IRevenueService _revenueService;
+        private readonly IProductService _productService;
+        private readonly IOrderService _orderService;
+        private readonly IUserService _userService;
+        private readonly ILogger _logger;
+        public AdminController(AppDbContext appDbContext, ILogger logger, IRevenueService revenueService, IProductService productService, IOrderService orderService, IUserService userService)
         {
             _appDbContext = appDbContext;
+            _revenueService = revenueService;
+            _logger = logger;
+            _productService = productService;
+            _orderService = orderService;
+            _userService = userService;
         }
 
         [HttpGet("GetRevenue")]
-        public IActionResult GetRevenue()
+        public async Task<IActionResult> GetRevenue()
         {
-            DateTime currentMonthStart = DateTime.Now.AddDays(-1 * DateTime.Now.Day + 1).Date;
-            DateTime currentMonthEnd = currentMonthStart.AddMonths(1).AddDays(-1);
-            DateTime lastMonthStart = currentMonthStart.AddMonths(-1).AddDays(-1 * DateTime.Now.Day + 1).Date;
-            DateTime lastMonthEnd = lastMonthStart.AddMonths(1).AddDays(-1);
-
-            List<Order> ordersThisMonth = _appDbContext.Order.Where(o => o.createdAt >= currentMonthStart && o.createdAt <= currentMonthEnd).ToList();
-            List<Order> ordersLastMonth = _appDbContext.Order.Where(o => o.createdAt >= lastMonthStart && o.createdAt <= lastMonthEnd).ToList();
-
-            decimal thisMonthRevenue = ordersThisMonth.Sum(o => o.total - o.delivery_fee);
-            decimal lastMonthRevenue = ordersLastMonth.Sum(o => o.total - o.delivery_fee);
-            decimal percentDifference;
-            if (lastMonthRevenue > 0)
-                percentDifference = (thisMonthRevenue - lastMonthRevenue) / lastMonthRevenue * 100;
-            else percentDifference = 100;
-
-            return Ok(new { ThisMonthRevenue = thisMonthRevenue, LastMonthRevenue = lastMonthRevenue, PercentDifference = Math.Round(percentDifference, 2) });
+            try
+            {
+                var revenueDto = await _revenueService.GetRevenue();
+                return Ok(revenueDto);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while fetching revenue");
+                throw;
+            }
         }
 
         [HttpGet("GetTopSellerProduct")]
-        public IActionResult GetTopSellerProduct(int count)
+        public async Task<IActionResult> GetTopSellerProduct(int count)
         {
-            var subquery = _appDbContext.DetailOrder
-                            .GroupBy(dt => dt.product_id)
-                            .Select(g => new
-                            {
-                                ProductId = g.Key,
-                                TotalQuantitySold = g.Sum(dt => dt.quality)
-                            });
-
-            var result = subquery
-                            .Join(_appDbContext.Product,
-                                sq => sq.ProductId,
-                                p => p.product_id,
-                                (sq, p) => new
-                                {
-                                    ProductId = sq.ProductId,
-                                    TotalQuantitySold = sq.TotalQuantitySold,
-                                    ProductName = p.name_pr,
-                                    Image = _appDbContext.Image.FirstOrDefault(i => i.ProductId == sq.ProductId)
-                                })
-                            .OrderByDescending(p => p.TotalQuantitySold)
-                            .Take(count)
-                            .ToList();
-
-            return Ok(result);
-        }
-        [HttpGet("GetRevenueByYear")]
-        public IActionResult GetRevenueByYear(int year)
-        {
-            var startDate = new DateTime(year, 1, 1);
-            var endDate = DateTime.Now; // Current date
-
-            var labels = new List<string>();
-            var revenues = new List<long>();
-
-            for (var month = 1; month <= endDate.Month; month++)
+            try
             {
-                var startDateOfMonth = new DateTime(year, month, 1);
-                var endDateOfMonth = new DateTime(year, month, DateTime.DaysInMonth(year, month), 23, 59, 59);
-
-                var revenue = _appDbContext.Order
-                    .Where(o => o.createdAt >= startDateOfMonth && o.createdAt <= endDateOfMonth)
-                    .Sum(o => o.total);
-
-                labels.Add(startDateOfMonth.ToString("MMMM"));
-                revenues.Add(revenue);
+                var result = await _productService.GetTopSellerProducts(count);
+                return Ok(result);
             }
-
-            var result = new
+            catch (Exception ex)
             {
-                labels,
-                revenues
-            };
-
-            return Ok(result);
+                _logger.LogError(ex, "Error while getting top seller");
+                throw;
+            }
         }
+
+        [HttpGet("GetRevenueByYear")]
+        public async Task<IActionResult> GetRevenueByYear(int year)
+        {
+            try
+            {
+                var result = await _revenueService.GetRevenueByYear(year);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while fetching revenue by year");
+                throw;
+            }
+        }
+
         // GET api/revenue/day
         [HttpGet("GetRevenueByDay")]
-        public IActionResult GetRevenueByDay()
+        public async Task<IActionResult> GetRevenueByDay()
         {
-            var startDate = DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek); // Start from Sunday
-            var endDate = DateTime.Now; // Current date
-
-            var revenueByDay = new Dictionary<string, long>();
-
-            for (var date = startDate.Date; date <= endDate.Date; date = date.AddDays(1))
+            try
             {
-                var revenue = _appDbContext.Order
-                    .Where(o => o.createdAt.Date == date.Date)
-                    .Sum(o => o.total);
-
-                var label = date.ToString("dddd");
-
-                revenueByDay[label] = revenue;
+                var revenueDto = await _revenueService.GetRevenueByDay();
+                return Ok(new
+                {
+                    day = revenueDto.Days,
+                    revenue = revenueDto.Revenues
+                });
             }
-
-            var result = new
+            catch (Exception ex)
             {
-                day = revenueByDay.Keys,
-                revenue = revenueByDay.Values
-            };
-
-            return Ok(result);
+                _logger.LogError(ex, "Error while fetching revenue by day");
+                throw;
+            }
         }
 
         [HttpGet("GetTotalCustomer")]
-        public IActionResult GetTotalCustomer()
+        public async Task<IActionResult> GetTotalCustomer()
         {
-            var total = _appDbContext.User.Count();
-
-            return Ok(total);
+            try
+            {
+                var result = await _userService.GetTotalUser();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while fetching all customer");
+                throw;
+            }
         }
 
         [HttpGet("GetTotalOrder")]
-        public IActionResult GetTotalOrder()
+        public async Task<IActionResult> GetTotalOrder()
         {
-            var total = _appDbContext.Order.Count();
-
-            return Ok(total);
+            try
+            {
+                var result = await _orderService.GetTotalOrder();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while adding supplier");
+                throw;
+            }
         }
     }
 }

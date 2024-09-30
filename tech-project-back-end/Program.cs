@@ -67,6 +67,29 @@ builder.Services.AddAuthentication().AddJwtBearer(
     }
 );
 
+builder.Services.AddSingleton<ILogger>(provider =>
+   provider.GetRequiredService<ILogger<OrderService>>());
+
+builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
+
+builder.Services.AddSingleton<ILogger>(provider =>
+   provider.GetRequiredService<ILogger<ProductService>>());
+
+builder.Services.AddScoped<IRevenueService, RevenueService>();
+
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+
+builder.Services.AddSingleton<ILogger>(provider =>
+   provider.GetRequiredService<ILogger<RevenueService>>());
+
+builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+
+builder.Services.AddSingleton<ILogger>(provider =>
+   provider.GetRequiredService<ILogger<UserService>>());
 
 builder.Services.AddScoped<ISupplierService, SupplierService>();
 

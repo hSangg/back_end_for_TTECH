@@ -45,22 +45,22 @@ namespace tech_project_back_end.Controllers
             {
                 var product = _appDbContext.Product
                     .Join(_appDbContext.Supplier,
-                        p => p.supplier_id,
+                        p => p.SupplierId,
                         s => s.SupplierId,
                         (p, s) => new
                         {
                             Product = new
                             {
-                                product_id = p.product_id,
-                                name_pr = p.name_pr,
-                                name_serial = p.name_serial,
-                                detail = p.detail,
-                                price = p.price,
-                                quantity_pr = p.quantity_pr,
-                                guarantee_period = p.guarantee_period
+                                product_id = p.ProductId,
+                                name_pr = p.NamePr,
+                                name_serial = p.NameSerial,
+                                detail = p.Detail,
+                                price = p.Price,
+                                quantity_pr = p.QuantityPr,
+                                guarantee_period = p.GuaranteePeriod
                             },
                             Category = _appDbContext.ProductCategory
-                                        .Where(pc => pc.product_id == p.product_id)
+                                        .Where(pc => pc.product_id == p.ProductId)
                                         .Join(_appDbContext.Category,
                                                 pc => pc.category_id,
                                                 c => c.category_id,
@@ -68,7 +68,7 @@ namespace tech_project_back_end.Controllers
                                                     .ToList(),
                             Supplier = new { s.SupplierId, s.SupplierName },
                             Image = _appDbContext.Image
-                                .Where(i => i.ProductId == p.product_id)
+                                .Where(i => i.ProductId == p.ProductId)
                                 .FirstOrDefault()
                         })
                     .FirstOrDefault(p => p.Product.product_id == id);
@@ -95,22 +95,22 @@ namespace tech_project_back_end.Controllers
 
             var products = _appDbContext.Product
     .Join(_appDbContext.Supplier,
-        p => p.supplier_id,
+        p => p.SupplierId,
         s => s.SupplierId,
         (p, s) => new
         {
             Product = new
             {
-                product_id = p.product_id,
-                name_pr = p.name_pr,
-                name_serial = p.name_serial,
-                detail = p.detail,
-                price = p.price,
-                quantity_pr = p.quantity_pr,
-                guarantee_period = p.guarantee_period
+                product_id = p.ProductId,
+                name_pr = p.NamePr,
+                name_serial = p.NameSerial,
+                detail = p.Detail,
+                price = p.Price,
+                quantity_pr = p.QuantityPr,
+                guarantee_period = p.GuaranteePeriod
             },
             Category = _appDbContext.ProductCategory
-                .Where(pc => pc.product_id == p.product_id)
+                .Where(pc => pc.product_id == p.ProductId)
                 .Join(_appDbContext.Category,
                     pc => pc.category_id,
                     c => c.category_id,
@@ -118,7 +118,7 @@ namespace tech_project_back_end.Controllers
                 .ToList(),
             Supplier = new { s.SupplierId, s.SupplierName },
             Image = _appDbContext.Image
-                .Where(i => i.ProductId == p.product_id)
+                .Where(i => i.ProductId == p.ProductId)
                 .FirstOrDefault()
         })
     .AsEnumerable() // Perform client-side evaluation from this point
@@ -141,23 +141,23 @@ namespace tech_project_back_end.Controllers
         {
             var productList = _appDbContext.Product
         .Join(_appDbContext.Supplier,
-            p => p.supplier_id,
+            p => p.SupplierId,
             s => s.SupplierId,
             (p, s) => new
             {
                 Product = new
                 {
-                    product_id = p.product_id,
-                    name_pr = p.name_pr,
-                    name_serial = p.name_serial,
-                    detail = p.detail,
-                    price = p.price,
-                    quantity_pr = p.quantity_pr,
-                    guarantee_period = p.guarantee_period,
+                    product_id = p.ProductId,
+                    name_pr = p.NamePr,
+                    name_serial = p.NameSerial,
+                    detail = p.Detail,
+                    price = p.Price,
+                    quantity_pr = p.QuantityPr,
+                    guarantee_period = p.GuaranteePeriod,
 
                 },
                 Category = _appDbContext.ProductCategory
-                        .Where(pc => pc.product_id == p.product_id)
+                        .Where(pc => pc.product_id == p.ProductId)
                         .Join(_appDbContext.Category,
                             pc => pc.category_id,
                             c => c.category_id,
@@ -166,7 +166,7 @@ namespace tech_project_back_end.Controllers
 
                 Supplier = new { s.SupplierId, s.SupplierName },
                 Image = _appDbContext.Image
-                    .Where(i => i.ProductId == p.product_id)
+                    .Where(i => i.ProductId == p.ProductId)
                     .FirstOrDefault()
             });
 
@@ -263,7 +263,7 @@ namespace tech_project_back_end.Controllers
             try
             {
                 var result = await DeleteImageFolder(product_id);
-                var productsToDelete = _appDbContext.Product.Where(p => p.product_id == product_id);
+                var productsToDelete = _appDbContext.Product.Where(p => p.ProductId == product_id);
                 _appDbContext.Product.RemoveRange(productsToDelete);
                 var productsImageToDelete = _appDbContext.Image.Where(i => i.ProductId == product_id);
                 _appDbContext.Image.RemoveRange(productsImageToDelete);
@@ -375,7 +375,7 @@ namespace tech_project_back_end.Controllers
             {
                 // Check if the specified product exists
                 var existingProduct = await _appDbContext.Product
-                    .FirstOrDefaultAsync(p => p.product_id == updatedProduct.product_id);
+                    .FirstOrDefaultAsync(p => p.ProductId == updatedProduct.ProductId);
 
                 if (existingProduct == null)
                 {
@@ -383,21 +383,21 @@ namespace tech_project_back_end.Controllers
                 }
 
                 decimal temp;
-                if (!decimal.TryParse(updatedProduct.guarantee_period.ToString(), out temp) ||
-                    !decimal.TryParse(updatedProduct.quantity_pr.ToString(), out temp) ||
-                    !decimal.TryParse(updatedProduct.price.ToString(), out temp))
+                if (!decimal.TryParse(updatedProduct.GuaranteePeriod.ToString(), out temp) ||
+                    !decimal.TryParse(updatedProduct.QuantityPr.ToString(), out temp) ||
+                    !decimal.TryParse(updatedProduct.Price.ToString(), out temp))
                 {
                     return BadRequest(false);
                 }
 
                 // Update the existing product
-                existingProduct.name_pr = updatedProduct.name_pr;
-                existingProduct.name_serial = updatedProduct.name_serial;
-                existingProduct.detail = updatedProduct.detail;
-                existingProduct.price = updatedProduct.price;
-                existingProduct.quantity_pr = updatedProduct.quantity_pr;
-                existingProduct.guarantee_period = updatedProduct.guarantee_period;
-                existingProduct.supplier_id = updatedProduct.supplier_id;
+                existingProduct.NamePr = updatedProduct.NamePr;
+                existingProduct.NameSerial = updatedProduct.NameSerial;
+                existingProduct.Detail = updatedProduct.Detail;
+                existingProduct.Price = updatedProduct.Price;
+                existingProduct.QuantityPr = updatedProduct.QuantityPr;
+                existingProduct.GuaranteePeriod = updatedProduct.GuaranteePeriod;
+                existingProduct.SupplierId = updatedProduct.SupplierId;
 
                 await _appDbContext.SaveChangesAsync();
 

@@ -19,17 +19,29 @@ namespace tech_project_back_end.Data
             modelBuilder.Entity<Category>().HasKey(c => c.category_id);
             modelBuilder.Entity<User>().HasKey(c => c.UserId);
             modelBuilder.Entity<Supplier>().HasKey(c => c.SupplierId);
-            modelBuilder.Entity<Product>().HasKey(c => c.product_id);
-            modelBuilder.Entity<Order>().HasKey(c => c.order_id);
+            modelBuilder.Entity<Product>().HasKey(c => c.ProductId);
+            modelBuilder.Entity<Order>().HasKey(c => c.OrderId);
             modelBuilder.Entity<Image>().HasKey(c => c.ImageId);
             modelBuilder.Entity<Cart>().HasKey(c => new { c.user_id, c.product_id });
-            modelBuilder.Entity<DetailOrder>().HasKey(c => new { c.order_id, c.product_id });
+            modelBuilder.Entity<DetailOrder>().HasKey(c => new { c.OrderId, c.ProductId });
             modelBuilder.Entity<Discount>().HasKey(c => c.DiscountId);
             modelBuilder.Entity<ProductCategory>().HasKey(pc => new { pc.product_id, pc.category_id });
 
             modelBuilder.Entity<Supplier>()
                 .Property(s => s.SupplierId)
                 .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<DetailOrder>()
+                .HasOne(d => d.Order)
+                .WithMany(o => o.DetailOrders)  
+                .HasForeignKey(d => d.OrderId)
+                .HasPrincipalKey(o => o.OrderId);
+
+            modelBuilder.Entity<DetailOrder>()
+                .HasOne(d => d.Product)
+                .WithMany(p => p.DetailOrders)  
+                .HasForeignKey(d => d.ProductId)
+                .HasPrincipalKey(p => p.ProductId);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
