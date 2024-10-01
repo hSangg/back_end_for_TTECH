@@ -9,6 +9,7 @@ using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Repository;
 using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
+using tech_project_back_end.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -112,6 +113,10 @@ builder.Services.AddSingleton<ILogger>(provider =>provider.GetRequiredService<IL
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
 builder.Services.AddTransient<IEmailService, EmailService>();
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+
 
 var app = builder.Build();
 

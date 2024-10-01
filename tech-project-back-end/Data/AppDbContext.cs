@@ -16,7 +16,7 @@ namespace tech_project_back_end.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>().HasKey(c => c.category_id);
+            modelBuilder.Entity<Category>().HasKey(c => c.CategoryId);
             modelBuilder.Entity<User>().HasKey(c => c.UserId);
             modelBuilder.Entity<Supplier>().HasKey(c => c.SupplierId);
             modelBuilder.Entity<Product>().HasKey(c => c.ProductId);
