@@ -54,10 +54,10 @@ public class CartRepository : ICartRepository
                 Quantity = combined.cart.quantity,
                 Category = _db.ProductCategory.
                     Where(pc => pc.product_id == combined.prod.ProductId).
-                    Join(_db.Category, pc => pc.category_id, c => c.category_id, (pc, c) => new Category
+                    Join(_db.Category, pc => pc.category_id, c => c.CategoryId, (pc, c) => new Category
                     {
-                        category_id = c.category_id,
-                        category_name = c.category_name
+                        CategoryId = c.CategoryId,
+                        CategoryName = c.CategoryName
                     }).SingleOrDefault(),
                 Supplier = _db.Supplier.Where(sup => sup.SupplierId == combined.prod.SupplierId).
                     Select(sup => new SupplierModel
