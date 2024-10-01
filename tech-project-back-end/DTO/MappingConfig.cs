@@ -21,8 +21,6 @@ namespace tech_project_back_end.DTO
 
             CreateMap<Models.Cart, CartDTO>().ReverseMap();
 
-            CreateMap<Models.Product, ProductDTO>().ReverseMap();
-
             CreateMap<Models.Category, CategoryDTO>().ReverseMap();
         }
     }
