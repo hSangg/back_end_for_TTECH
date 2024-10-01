@@ -21,7 +21,8 @@ namespace tech_project_back_end.Repositories
                                  .ToListAsync();
 
         }
-            public async Task<Category> GetCategoryByIdAsync(string id)
+
+        public async Task<Category> GetCategoryByIdAsync(string id)
         {
             return await _context.Category.FirstOrDefaultAsync(c => c.CategoryId == id);
         }
