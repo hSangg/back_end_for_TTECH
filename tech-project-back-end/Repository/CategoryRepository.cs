@@ -16,10 +16,12 @@ namespace tech_project_back_end.Repositories
 
         public async Task<List<Category>> GetAllCategoriesAsync()
         {
-            return await _context.Category.ToListAsync();
-        }
+            return await _context.Category
+                                 .Where(c => !c.IsDeleted)
+                                 .ToListAsync();
 
-        public async Task<Category> GetCategoryByIdAsync(string id)
+        }
+            public async Task<Category> GetCategoryByIdAsync(string id)
         {
             return await _context.Category.FirstOrDefaultAsync(c => c.CategoryId == id);
         }
@@ -38,10 +40,11 @@ namespace tech_project_back_end.Repositories
 
         public async Task DeleteCategoryAsync(string id)
         {
-            var category = await _context.Category.FirstOrDefaultAsync(c => c.CategoryId == id);
+            var category = await GetCategoryByIdAsync(id);
             if (category != null)
             {
-                _context.Category.Remove(category);
+                category.IsDeleted = true; 
+                _context.Category.Update(category);
                 await _context.SaveChangesAsync();
             }
         }
