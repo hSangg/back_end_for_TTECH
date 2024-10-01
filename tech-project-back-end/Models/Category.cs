@@ -14,6 +14,9 @@ namespace tech_project_back_end.Models
         [Column("category_name", TypeName = "varchar(100)")]
         public string CategoryName { get; set; }
 
+        [Column("is_deleted", TypeName = "tinyint(1)")]
+        public bool IsDeleted { get; set; } 
+
         public virtual ICollection<Product> Products { get; set; }
     }
 }
