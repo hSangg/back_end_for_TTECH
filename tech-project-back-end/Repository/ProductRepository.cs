@@ -96,13 +96,10 @@ namespace tech_project_back_end.Repository
                 .Where(p => !p.IsDeleted)
                 .AsQueryable();
 
-            // Filter by minimum price
             query = query.Where(p => p.Price >= (ulong)filter.MinPrice);
 
-            // Filter by maximum price
             query = query.Where(p => p.Price <= (ulong)filter.MaxPrice);
 
-            // Filter by search key in product name, serial, detail, or category name
             if (!string.IsNullOrEmpty(filter.SearchKey))
             {
                 var searchKeyLower = filter.SearchKey.ToLower();
@@ -112,19 +109,16 @@ namespace tech_project_back_end.Repository
                                          p.Category.CategoryName.ToLower().Contains(searchKeyLower));
             }
 
-            // Filter by supplier ID
             if (!string.IsNullOrEmpty(filter.SupplierId))
             {
                 query = query.Where(p => p.SupplierId == filter.SupplierId);
             }
 
-            // Filter by category ID
             if (!string.IsNullOrEmpty(filter.CategoryId))
             {
                 query = query.Where(p => p.CategoryId == filter.CategoryId);
             }
 
-            // Sort by name or price
             if (!string.IsNullOrEmpty(filter.SortBy))
             {
                 switch (filter.SortBy.ToLower())
@@ -144,11 +138,10 @@ namespace tech_project_back_end.Repository
                 }
             }
 
-            // Pagination
             int pageNumber = filter.PageNumber < 1 ? 1 : filter.PageNumber;
             int pageSize = filter.PageSize < 1 ? 12 : filter.PageSize;
 
-            var totalProductCount = await query.CountAsync(); // Get total count
+            var totalProductCount = await query.CountAsync();
 
             var products = await query.Skip((pageNumber - 1) * pageSize)
                                       .Take(pageSize)
@@ -189,7 +182,6 @@ namespace tech_project_back_end.Repository
 
             if (product != null)
             {
-                // Mark the product as deleted instead of removing it
                 product.IsDeleted = true;
                 await _appDbContext.SaveChangesAsync();
             }

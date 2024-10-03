@@ -2,8 +2,8 @@
 {
     public class Filter
     {
-        public string SortBy { get; set; } = "created_at";
-        public bool IsDescending { get; set; } = false;
+        public string SortBy { get; set; } = "created_date";
+        public bool IsDescending { get; set; } = true;
         public int MinPrice { get; set; } = 0;
         public string SearchKey { get; set; } = "";
         public int MaxPrice { get; set; } = 999999999;

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tech_project_back_end.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -27,9 +27,6 @@ namespace tech_project_back_end.Models
 
         [Column("guarantee_period", TypeName = "int(11)")]
         public int GuaranteePeriod { get; set; }
-
-        [Column("is_deleted", TypeName = "tinyint(1)")]
-        public bool IsDeleted { get; set; } = false;
 
         [Column("supplier_id", TypeName = "varchar(36)")]
         [ForeignKey("Supplier")] 
