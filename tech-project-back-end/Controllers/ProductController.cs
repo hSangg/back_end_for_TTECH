@@ -78,7 +78,7 @@ namespace tech_project_back_end.Controllers
             try
             {
                 await _productService.DeleteProductAsync(id);
-                return NoContent();
+                return Ok("Product deleted successfully.");
             }
             catch (Exception ex)
             {
