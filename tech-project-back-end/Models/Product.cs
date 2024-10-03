@@ -28,6 +28,9 @@ namespace tech_project_back_end.Models
         [Column("guarantee_period", TypeName = "int(11)")]
         public int GuaranteePeriod { get; set; }
 
+        [Column("is_deleted", TypeName = "tinyint(1)")]
+        public bool IsDeleted { get; set; } = false;
+
         [Column("supplier_id", TypeName = "varchar(36)")]
         [ForeignKey("Supplier")] 
         public string SupplierId { get; set; }
@@ -41,6 +44,8 @@ namespace tech_project_back_end.Models
         public virtual Category Category{ get; set; }
 
         public virtual ICollection<DetailOrder> DetailOrders { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; } = new List<Image>();
 
     }
 }

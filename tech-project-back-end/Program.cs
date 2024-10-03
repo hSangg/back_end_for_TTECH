@@ -115,6 +115,7 @@ builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("Emai
 builder.Services.AddTransient<IEmailService, EmailService>();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 
