@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using tech_project_back_end.Data;
+using tech_project_back_end.DTO;
+using tech_project_back_end.DTO.Users;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
+using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
@@ -19,62 +18,67 @@ namespace tech_project_back_end.Controllers
         private readonly AppDbContext _appDBContext;
         private readonly IConfiguration _iConfiguration;
         private readonly IEmailService _iEmailService;
+        private readonly IUserService _userService;
+        private readonly ILogger _logger;
 
-        public UserController(AppDbContext appDBContext, IConfiguration configuration, IEmailService emailService)
+        public UserController(AppDbContext appDBContext, IConfiguration configuration, IEmailService emailService, IUserService userService, ILogger logger)
         {
             this._appDBContext = appDBContext;
             this._iConfiguration = configuration;
             this._iEmailService = emailService;
+            this._userService = userService;
+            this._logger = logger;
         }
 
         [HttpGet("GetUserById")]
-        public IActionResult GetUserById(string userId)
+        public async Task<IActionResult> GetUserById(string userId)
         {
-            var user = _appDBContext.User.Where(user => user.UserId == userId).FirstOrDefault();
-            if (user != null) return Ok(user);
-            return NotFound("User not found");
+            try
+            {
+                var user = await _userService.GetUserById(userId);
+                if (user != null)
+                    return Ok(user);
+                else return NotFound($"There's no user with {userId}");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"There's been error while fetching user with id: {userId}");
+                throw;
+            }
         }
 
-
         [HttpPost("register")]
-        public async Task<IActionResult> Register(User user)
+        public async Task<IActionResult> Register(UserDTO user)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (_appDBContext.User.Any(u => u.Email == user.Email))
+            try
             {
-                ModelState.AddModelError("email", "Email already exists.");
-                return BadRequest(ModelState);
+                (bool success, string? message, UserDTO? userRegistered, string? token) = await _userService.Register(user);
+
+                if (!success)
+                {
+                    ModelState.AddModelError(string.Empty, message);
+                    return BadRequest(ModelState);
+                }
+
+                Response.Cookies.Append("token", token!, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict,
+                    Expires = DateTimeOffset.Now.AddHours(1)
+                });
+
+                return CreatedAtAction("AddUser", new { id = userRegistered!.UserId }, new { userRegistered, token });
             }
-
-            if (_appDBContext.User.Any(u => u.Phone == user.Phone))
+            catch (Exception ex)
             {
-                ModelState.AddModelError("phone", "Phone number already exists.");
-                return BadRequest(ModelState);
-            }
-
-            user.CreatedAt = DateTime.Now;
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            _appDBContext.User.Add(user);
-            await _appDBContext.SaveChangesAsync();
-
-            string token = CreateToken(user);
-            string userJson = JsonConvert.SerializeObject(user);
-
-
-            Response.Cookies.Append("token", token, new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict,
-                Expires = DateTimeOffset.Now.AddHours(1)
-            });
-
-            return CreatedAtAction("AddUser", new { id = user.UserId }, new { user, token });
+                _logger.LogError(ex, "Error occurred while registering user");
+                throw;
+            } 
         }
 
         [HttpPost("ForgetPassword")]
@@ -82,162 +86,86 @@ namespace tech_project_back_end.Controllers
         {
             try
             {
-                var existingUser = await _appDBContext.User.FirstOrDefaultAsync(u => u.Email == email);
+                (bool success, string? message) = await _userService.ForgetPassword(email);
 
-                if (existingUser == null)
+                if (!success)
                 {
-                    return NotFound("User not found");
+                    return NotFound(message);
                 }
 
-                // Update the existing User
-                string newPassword = Guid.NewGuid().ToString()[..5];
-                existingUser.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
-
-                await _appDBContext.SaveChangesAsync();
-
-                MailRequest mailrequest = new MailRequest();
-                mailrequest.ToEmail = email;
-                mailrequest.Subject = "Đổi mật khẩu";
-                mailrequest.Body = @"
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-	                    <meta charset='UTF-8' />
-	                    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-	                    <title>Password Reset Email</title>
-	                    <style type='text/css'>
-		                    body {
-			                    margin: 0;
-			                    padding: 0;
-			                    font-family: Arial, sans-serif;
-			                    line-height: 1.6;
-			                    color: #333;
-		                    }
-		                    h1 {
-			                    text-align: center;
-			                    margin-top: 50px;
-		                    }
-		                    p {
-			                    text-align: center;
-			                    margin-top: 20px;
-		                    }
-		                    .btn {
-			                    background-color: #3b82f6;
-			                    color: white !important;
-			                    padding: 10px 20px;
-			                    border: none;
-			                    cursor: pointer;
-			                    width: 100%;
-			                    margin-top: 30px;
-			                    border-radius: 5px;
-                                text-decoration: none;
-                            
-		                    }
-		                    .btn:hover {
-			                    background-color: #60a5fa;
-		                    }
-	                    </style>
-                    </head>
-                    <body>
-	                    <h1>Đổi mật khẩu</h1>
-	                    <p>Xin chào, <strong>" + existingUser.Phone + @"</strong></p>
-	                    <p>Chúng tôi đã đổi mật khẩu của tài khoản của bạn do yêu cầu đổi mật khẩu. Mật khẩu mới của bạn là: </p>
-	                    <p><strong>" + newPassword + @"</strong></p>
-	                    <p>Vui lòng đăng nhập với mật khẩu mới để tiếp tục sử dụng dịch vụ của chúng tôi.</p>
-	                    <a href='https://github.com/hSangg' class='btn'>HSang</a>
-                    </body>
-                    </html>
-                    ";
-
-                await _iEmailService.SendEmailAsync(mailrequest);
-                return Ok("Password changed");
-
-
+                return Ok(message);
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error occurred while sending email");
                 throw;
             }
         }
+
         [HttpGet("GetAllUser")]
-        public IActionResult GetAllUser()
+        public async Task<IActionResult> GetAllUser()
         {
-            var userList = _appDBContext.User.ToList();
-            return Ok(userList);
+            try
+            {
+                var userList = await _userService.GetAllUser();
+                return Ok(userList);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while fetching user list");
+                throw;
+            }
 
         }
 
         [HttpPost("login")]
-        public IActionResult Login(UserLogin user)
+        public async Task<IActionResult> Login(UserLoginDTO user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                (bool success, string? message, UserDTO loginedUser, string token) = await _userService.Login(user);
+
+                if (!success)
+                {
+                    return NotFound(message);
+                }
+
+                Response.Cookies.Append("token", token, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict,
+                    Expires = DateTimeOffset.Now.AddHours(1)
+                });
+                return Ok(new { loginedUser, token });
+            }
+            catch(Exception ex) {
+                _logger.LogError(ex, "Error occurred while login");
+                throw;
+            }
+           
+        }
+
+        [HttpPut("UpdateUserInfor")]
+        public async Task<IActionResult> UpdateUserInfor([FromBody] UserUpdateDTO updatedUser)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var isExitUser = _appDBContext.User.FirstOrDefault(c => c.Phone == user.phone);
-            if (isExitUser == null) { return NotFound("User not found"); }
+            (bool success, string? message, UserDTO? user) = await _userService.UpdateUser(updatedUser);
 
-            if (!BCrypt.Net.BCrypt.Verify(user.password, isExitUser.Password))
+            if (!success)
             {
-                return BadRequest("Wrong password.");
+                return NotFound(message);
             }
 
-            string token = CreateToken(isExitUser);
-
-            Response.Cookies.Append("token", token, new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict,
-                Expires = DateTimeOffset.Now.AddHours(1)
-            });
-
-
-            return Ok(new { user = isExitUser, token });
+            return Ok(new { user, message });
         }
-
-        [HttpPut("UpdateUserInfor")]
-        public IActionResult UpdateUserInfor([FromBody] UpdatedUser updatedUser)
-        {
-            var user = _appDBContext.User.FirstOrDefault(c => c.UserId == updatedUser.user_id);
-            if (user == null)
-            {
-                return NotFound("User not found");
-            }
-
-            user.Name = updatedUser.name;
-            user.Email = updatedUser.email;
-            user.Phone = updatedUser.phone;
-
-            _appDBContext.SaveChanges();
-
-            return Ok(new { user, message = "User updated successfully" });
-        }
-
-        private string CreateToken(User user)
-        {
-            List<Claim> claims = new List<Claim>(){
-            new Claim(ClaimTypes.Name, user.Name),
-            new Claim(ClaimTypes.NameIdentifier, user.UserId),
-            new Claim(ClaimTypes.Role, user.Role)
-        };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                 _iConfiguration.GetSection("Authentication:Schemes:Bearer:SigningKeys:0:Value").Value!));
-
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddDays(99),
-                signingCredentials: creds
-                );
-
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return jwt;
-        }
-
     }
 }
