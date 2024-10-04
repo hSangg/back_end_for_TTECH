@@ -32,7 +32,13 @@ namespace tech_project_back_end.Models
         [ForeignKey("Supplier")] 
         public string SupplierId { get; set; }
 
+        [Column("category_id", TypeName = "varchar(36)")]
+        [ForeignKey("Category")]
+        public string CategoryId { get; set; }
+
         public virtual Supplier Supplier { get; set; }
+
+        public virtual Category Category{ get; set; }
 
         public virtual ICollection<DetailOrder> DetailOrders { get; set; }
 
