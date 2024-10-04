@@ -16,7 +16,7 @@ namespace tech_project_back_end.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>().HasKey(c => c.category_id);
+            modelBuilder.Entity<Category>().HasKey(c => c.CategoryId);
             modelBuilder.Entity<User>().HasKey(c => c.UserId);
             modelBuilder.Entity<Supplier>().HasKey(c => c.SupplierId);
             modelBuilder.Entity<Product>().HasKey(c => c.ProductId);
@@ -25,7 +25,6 @@ namespace tech_project_back_end.Data
             modelBuilder.Entity<Cart>().HasKey(c => new { c.user_id, c.product_id });
             modelBuilder.Entity<DetailOrder>().HasKey(c => new { c.OrderId, c.ProductId });
             modelBuilder.Entity<Discount>().HasKey(c => c.DiscountId);
-            modelBuilder.Entity<ProductCategory>().HasKey(pc => new { pc.product_id, pc.category_id });
 
             modelBuilder.Entity<Supplier>()
                 .Property(s => s.SupplierId)
@@ -97,7 +96,6 @@ namespace tech_project_back_end.Data
         public DbSet<User> User { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Image> Image { get; set; }
-        public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<DetailOrder> DetailOrder { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Discount> Discount { get; set; }

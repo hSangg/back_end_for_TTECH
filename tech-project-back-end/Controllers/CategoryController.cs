@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tech_project_back_end.Data;
-using tech_project_back_end.Models;
+using tech_project_back_end.DTO;
+using tech_project_back_end.Services;
 
 namespace tech_project_back_end.Controllers
 {
@@ -8,70 +8,97 @@ namespace tech_project_back_end.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly AppDbContext _appDbContext;
-        public CategoryController(AppDbContext appDbContext)
+        private readonly ICategoryService _categoryService;
+
+        public CategoryController(ICategoryService categoryService)
         {
-            this._appDbContext = appDbContext;
+            _categoryService = categoryService;
         }
 
         [HttpGet]
-        public IActionResult GetAllCategory()
+        public async Task<IActionResult> GetAllCategories()
         {
-            var categoryList = _appDbContext.Category.ToList();
-            return Ok(categoryList);
+            try
+            {
+                var categories = await _categoryService.GetAllCategoriesAsync();
+                return Ok(categories);
+            }
+            catch
+            {
+                return StatusCode(500, "An error occurred while retrieving categories.");
+            }
         }
 
         [HttpPost]
-        public IActionResult AddCategory(Category category)
+        public async Task<IActionResult> AddCategory([FromBody] CategoryDTO categoryDto)
         {
-            _appDbContext.Add(category);
-            _appDbContext.SaveChanges();
-
-            return Ok(category);
+            try
+            {
+                var result = await _categoryService.AddCategoryAsync(categoryDto);
+                if (result)
+                {
+                    return Ok(categoryDto);
+                }
+                return BadRequest("Failed to add category.");
+            }
+            catch
+            {
+                return StatusCode(500, "An error occurred while adding the category.");
+            }
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateCategory(string id, string updatedCategoryName)
+        public async Task<IActionResult> UpdateCategory(string id, [FromBody] string updatedCategoryName)
         {
-            var exitingCategory = _appDbContext.Category.FirstOrDefault(c => c.category_id == id);
-            if (exitingCategory == null) { return NotFound("Category not found"); }
-
-            exitingCategory.category_name = updatedCategoryName;
-            _appDbContext.SaveChanges();
-
-            return Ok(exitingCategory);
-
+            try
+            {
+                var result = await _categoryService.UpdateCategoryAsync(id, updatedCategoryName);
+                if (result)
+                {
+                    return Ok("Category updated successfully.");
+                }
+                return NotFound("Category not found.");
+            }
+            catch
+            {
+                return StatusCode(500, "An error occurred while updating the category.");
+            }
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCategory(string id)
+        public async Task<IActionResult> GetCategoryById(string id)
         {
-            var category = _appDbContext.Category.FirstOrDefault(c => c.category_id == id);
-            if (category == null)
+            try
             {
-                return NotFound("Category not found");
+                var category = await _categoryService.GetCategoryByIdAsync(id);
+                if (category == null)
+                {
+                    return NotFound("Category not found.");
+                }
+                return Ok(category);
             }
-
-            return Ok(category);
+            catch
+            {
+                return StatusCode(500, "An error occurred while retrieving the category.");
+            }
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteCategory(string id)
+        public async Task<IActionResult> DeleteCategory(string id)
         {
-            var category = _appDbContext.Category.FirstOrDefault(c => c.category_id == id);
-            if (category == null) { return NotFound("Category not found"); }
-
-            _appDbContext.Category.Remove(category);
-            _appDbContext.SaveChanges();
-
-            return Ok("Category deleted successfully");
+            try
+            {
+                var result = await _categoryService.DeleteCategoryAsync(id);
+                if (result)
+                {
+                    return Ok("Category deleted successfully.");
+                }
+                return NotFound("Category not found.");
+            }
+            catch
+            {
+                return StatusCode(500, "An error occurred while deleting the category.");
+            }
         }
-
-
-
-
-
-
-
     }
 }

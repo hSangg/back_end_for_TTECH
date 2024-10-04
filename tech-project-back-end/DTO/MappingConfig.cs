@@ -29,6 +29,7 @@ namespace tech_project_back_end.DTO
 
             CreateMap<Models.User, UserUpdateDTO>().ReverseMap();
 
+            CreateMap<Models.Category, CategoryDTO>().ReverseMap();
         }
     }
 }
