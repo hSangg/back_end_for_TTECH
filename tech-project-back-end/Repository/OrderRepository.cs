@@ -11,17 +11,11 @@ namespace tech_project_back_end.Repository
     public class OrderRepository : IOrderRepository
     {
         private readonly AppDbContext _appDbContext;
-        public async Task<int> Count() { return await _appDbContext.Order.CountAsync(); }
-        private readonly ILogger<OrderController> _logger;
-        private readonly IMapper _mapper;
 
-        public OrderRepository(AppDbContext appDbContext, ILogger<OrderController> logger, IMapper mapper)
+        public OrderRepository(AppDbContext appDbContext)
         {
             this._appDbContext = appDbContext;
-            this._logger = logger;
-            this._mapper = mapper;
         }
-
 
         public async Task<List<Order>> GetList(DateTime startDate, DateTime endDate)
         {
@@ -177,5 +171,7 @@ namespace tech_project_back_end.Repository
                 }).ToListAsync();
             return orders;
         }
+
+        public async Task<int> Count() { return await _appDbContext.Order.CountAsync(); }
     }
 }

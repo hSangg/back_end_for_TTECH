@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tech_project_back_end.Data;
-using tech_project_back_end.Models;
+using tech_project_back_end.DTO.DetailOrder;
+using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
 {
@@ -9,42 +9,53 @@ namespace tech_project_back_end.Controllers
     public class DetailOrderController : ControllerBase
     {
 
-        private readonly AppDbContext _appDbContext;
-        public DetailOrderController(AppDbContext appDbContext)
+        private readonly IDetailOrderService _detailOrderService;
+        private readonly ILogger<DetailOrderController> _logger;
+
+        public DetailOrderController(IDetailOrderService detailOrderService, ILogger<DetailOrderController> logger)
         {
-            _appDbContext = appDbContext;
+            this._detailOrderService = detailOrderService;
+            this._logger = logger;
         }
 
         [HttpGet("GetOderDetailByOrderId")]
-        public IActionResult GetOderDetailByOrderId(string order_id)
+        public async Task<IActionResult> GetOderDetailByOrderId(string id)
         {
-            var result = _appDbContext.DetailOrder.Where(od => od.OrderId == order_id).Select(x
-                => new
-                {
-                    Product = _appDbContext.Product.Where(p => p.ProductId == x.ProductId).FirstOrDefault(),
-                    Image = _appDbContext.Image.Where(i => i.ProductId == x.ProductId).FirstOrDefault(),
-                    Quantity = x.Quantity,
-                    Price = x.Price,
-                });
+            if (id == null)
+            {
+                return BadRequest("Invalid request data");
+            }
+            try
+            {
+                var result = await _detailOrderService.GetOderDetailByOrderId(id);
 
-            return Ok(result);
-
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting order detail by order id");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPost("AddNewDetailOrder")]
-        public IActionResult AddNewOrderDetail(List<DetailOrder> detailOrders)
+        public async Task<IActionResult> AddNewOrderDetail(List<DetailOrderDTO> detailOrderDTOs)
         {
-            foreach (var detailOrder in detailOrders)
+            if (detailOrderDTOs == null)
             {
-                _appDbContext.DetailOrder.Add(detailOrder);
-                var product_id = detailOrder.ProductId;
-                var quantityDescrease = detailOrder.Quantity;
-
-
-
+                return BadRequest("Invalid request data");
             }
-            _appDbContext.SaveChanges();
-            return Ok(detailOrders);
+            try
+            {
+                var result = await _detailOrderService.AddNewDetailOrder(detailOrderDTOs);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while adding new order detail");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+            
         }
     }
 }

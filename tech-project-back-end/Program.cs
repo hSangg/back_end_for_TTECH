@@ -9,6 +9,7 @@ using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Repository;
 using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
+using tech_project_back_end.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -107,6 +108,10 @@ builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 builder.Services.AddScoped<ICartService, CartService>();
 
+builder.Services.AddScoped<IDetailOrderRepository, DetailOrderRepository>();
+
+builder.Services.AddScoped<IDetailOrderService, DetailOrderService>();
+
 builder.Services.AddSingleton<ILogger>(provider =>provider.GetRequiredService<ILogger<SupplierService>>());
 
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
@@ -130,6 +135,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
