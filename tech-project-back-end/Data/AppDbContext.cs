@@ -41,6 +41,12 @@ namespace tech_project_back_end.Data
                 .WithMany(p => p.DetailOrders)  
                 .HasForeignKey(d => d.ProductId)
                 .HasPrincipalKey(p => p.ProductId);
+
+            modelBuilder.Entity<Image>()
+                .HasOne(i => i.Product)
+                .WithMany(p => p.Images)
+                .HasForeignKey(i => i.ProductId)
+                .HasPrincipalKey(p => p.ProductId);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

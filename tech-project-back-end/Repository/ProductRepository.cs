@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CloudinaryDotNet;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
 using tech_project_back_end.DTO;
+using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
 using tech_project_back_end.Repository.IRepository;
 
@@ -11,11 +13,13 @@ namespace tech_project_back_end.Repository
     {
         private readonly AppDbContext _appDbContext;
         private readonly ILogger<ProductRepository> _logger;
+        private readonly Cloudinary _cloudinary;
 
-        public ProductRepository (AppDbContext appDbContext, ILogger<ProductRepository> logger)
+        public ProductRepository (AppDbContext appDbContext, ILogger<ProductRepository> logger, Cloudinary cloudinary)
         {
             _appDbContext = appDbContext;
             _logger = logger;
+            _cloudinary = cloudinary;
         }
 
         public async Task<List<TopSellerProductDTO>> TopSeller(int count)
@@ -187,11 +191,11 @@ namespace tech_project_back_end.Repository
             }
         }
 
-        public async Task<List<ImageDTO>> GetProductImagesAsync(string productId)
+        public async Task<List<Image>> GetProductImagesAsync(string productId)
         {
             return await _appDbContext.Image
                 .Where(i => i.ProductId == productId)
-                .Select(i => new ImageDTO
+                .Select(i => new Image
                 {
                     ImageId = i.ImageId,
                     ProductId = i.ProductId,
@@ -200,19 +204,9 @@ namespace tech_project_back_end.Repository
                 .ToListAsync();
         }
 
-        public async Task AddImagesAsync(IFormFileCollection formFiles, string productId)
+        public async Task AddImagesAsync(Image image)
         {
-            foreach (var formFile in formFiles)
-            {
-                string imageUrl = await UploadImage(formFile, productId);
-                _appDbContext.Image.Add(new Image
-                {
-                    ImageId = Guid.NewGuid().ToString(),
-                    ProductId = productId,
-                    ImageHref = imageUrl
-                });
-            }
-
+            _appDbContext.Image.Add(image);
             await _appDbContext.SaveChangesAsync();
         }
 
@@ -236,20 +230,20 @@ namespace tech_project_back_end.Repository
             }
         }
 
-        public async Task DeleteImageAsync(string productId, string fileName)
+        public async Task DeleteImageAsync(string productId)
         {
-            var image = await _appDbContext.Image.FirstOrDefaultAsync(i => i.ProductId == productId && i.FileName == fileName);
-            if (image != null)
+            var images = await _appDbContext.Image.Where(i => i.ProductId == productId).ToListAsync();
+
+            for (int i = 0; i < images.Count; i++)
             {
-                _appDbContext.Image.Remove(image);
+                await ImageHelper.DeleteImage(images[i].ImageHref, _cloudinary);
+            }
+            
+            if (images != null)
+            {
+                _appDbContext.Image.RemoveRange(images);
                 await _appDbContext.SaveChangesAsync();
             }
-        }
-
-        private async Task<string> UploadImage(IFormFile formFile, string productId)
-        {
-            // Logic for uploading image
-            return "imageUrl";
         }
     }
 }

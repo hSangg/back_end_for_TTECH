@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using CloudinaryDotNet;
 using tech_project_back_end.DTO;
+using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
 using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Services.IService;
@@ -11,12 +13,14 @@ namespace tech_project_back_end.Services
         private readonly IProductRepository _productRepository;
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
+        private readonly Cloudinary _cloudinary;
 
-        public ProductService(IProductRepository productRepository, ILogger<ProductService> logger, IMapper mapper)
+        public ProductService(IProductRepository productRepository, ILogger<ProductService> logger, IMapper mapper, Cloudinary cloudinary)
         {
             _productRepository = productRepository;
             _logger = logger;
             _mapper = mapper;
+            _cloudinary = cloudinary;
         }
 
         public async Task<List<TopSellerProductDTO>> GetTopSellerProducts(int count)
@@ -24,7 +28,7 @@ namespace tech_project_back_end.Services
             return await _productRepository.TopSeller(count);
         }
 
-        public async Task AddProductAsync(ProductDTO productDTO)
+        public async Task AddProductAsync(CreateProductDTO productDTO)
         {
             var product = _mapper.Map<Product>(productDTO);
             await _productRepository.AddProductAsync(product);
@@ -47,12 +51,25 @@ namespace tech_project_back_end.Services
 
         public async Task<List<ImageDTO>> GetProductImagesAsync(string productId)
         {
-            return await _productRepository.GetProductImagesAsync(productId);
+            var result = await _productRepository.GetProductImagesAsync(productId);
+            var productImages = _mapper.Map<List<ImageDTO>>(result);
+            return productImages;
         }
 
-        public async Task AddImagesAsync(IFormFileCollection formFiles, string productId)
+        public async Task AddImagesAsync(List<IFormFile> formFiles, string productId)
         {
-            await _productRepository.AddImagesAsync(formFiles, productId);
+            var imageToCreate = new CreateImageDTO
+            {
+                ProductId = productId
+            };
+
+            for (int i = 0; i < formFiles.Count; i++)
+            {
+                var image = await ImageHelper.ImageUploadFunc(formFiles[i], _cloudinary);
+                imageToCreate.ImageHref = image.Url.ToString();
+                var imageOfProduct = _mapper.Map<Image>(imageToCreate);
+                await _productRepository.AddImagesAsync(imageOfProduct);
+            }
         }
 
         public async Task UpdateProductAsync(ProductDTO productDTO)
@@ -60,9 +77,9 @@ namespace tech_project_back_end.Services
             await _productRepository.UpdateProductAsync(productDTO);
         }
 
-        public async Task DeleteImageAsync(string productId, string fileName)
+        public async Task DeleteImageAsync(string productId)
         {
-            await _productRepository.DeleteImageAsync(productId, fileName);
+            await _productRepository.DeleteImageAsync(productId);
         }
     }
 }

@@ -9,11 +9,14 @@ using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Repository;
 using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
-
+using dotenv.net;
+using CloudinaryDotNet;
 using tech_project_back_end.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+DotEnv.Load();
 
 builder.Services.AddCors(options =>
 {
@@ -124,6 +127,9 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
+Cloudinary cloudinary = new Cloudinary(Environment.GetEnvironmentVariable("CLOUDINARY_URL"));
+cloudinary.Api.Secure = true;
+builder.Services.AddSingleton(cloudinary);
 
 var app = builder.Build();
 
