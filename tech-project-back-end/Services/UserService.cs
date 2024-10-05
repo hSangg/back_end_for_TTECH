@@ -70,6 +70,7 @@ namespace tech_project_back_end.Services
         public async Task<(bool Success, string? Message, UserDTO? User, string? Token)> Login(UserLoginDTO userLogin)
         {
             var user = await _userRepository.GetByPhone(userLogin.Phone);
+
             if (user == null)
             {
                 return (false, "User not found", null, null);
@@ -80,7 +81,7 @@ namespace tech_project_back_end.Services
                 return (false, "Wrong password", null, null);
             }
 
-            string token = await CreateToken(user);
+            string token = CreateToken(user);
 
             return (true, null, _mapper.Map<UserDTO>(user), token);
         }
@@ -88,6 +89,7 @@ namespace tech_project_back_end.Services
         public async Task<(bool Success, string? Message, UserDTO? User)> UpdateUser(UserUpdateDTO updatedUser)
         {
             var user = await _userRepository.GetById(updatedUser.UserId);
+
             if (user == null)
             {
                 return (false, "User not found", null);
@@ -114,8 +116,7 @@ namespace tech_project_back_end.Services
             
             await _userRepository.UpdatePassword(existingUser, newPassword);
 
-            var template = GetEmailTemplate("EmailResetPassword");
-            var emailBody = ReplacePlaceholders(template, new Dictionary<string, string>
+            var emailBody = _emailService.ProcessEmail("EmailResetPassword", new Dictionary<string, string>
             {
                 { "Phone", existingUser.Phone },
                 { "NewPassword", newPassword }
@@ -156,17 +157,17 @@ namespace tech_project_back_end.Services
 
             await _userRepository.AddUser(user);
 
-            string token = await CreateToken(user);
+            string token = CreateToken(user);
 
             return (true, "User registered successfully", _mapper.Map<UserDTO>(user), token);
         }
 
-        public async Task<string> CreateToken(User user)
+        private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>()
-        {
-            new Claim(ClaimTypes.Name, user.Name),
-            new Claim(ClaimTypes.NameIdentifier, user.UserId),
+            {
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId),
                 new Claim(ClaimTypes.Role, user.Role)
             };
 
@@ -181,24 +182,9 @@ namespace tech_project_back_end.Services
                 signingCredentials: creds
             );
 
-            var jwt = await Task.Run(() => new JwtSecurityTokenHandler().WriteToken(token));
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
             return jwt;
-        }
-
-        public string GetEmailTemplate(string templateName)
-        {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "Resources", $"{templateName}.html");
-            return File.ReadAllText(path);
-        }
-
-        public string ReplacePlaceholders(string template, Dictionary<string, string> placeholders)
-        {
-            foreach (var placeholder in placeholders)
-            {
-                template = template.Replace($"{{{{{placeholder.Key}}}}}", placeholder.Value);
-            }
-            return template;
         }
     }
 }

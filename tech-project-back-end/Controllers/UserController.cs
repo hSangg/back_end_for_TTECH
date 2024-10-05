@@ -15,17 +15,11 @@ namespace tech_project_back_end.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly AppDbContext _appDBContext;
-        private readonly IConfiguration _iConfiguration;
-        private readonly IEmailService _iEmailService;
         private readonly IUserService _userService;
         private readonly ILogger _logger;
 
-        public UserController(AppDbContext appDBContext, IConfiguration configuration, IEmailService emailService, IUserService userService, ILogger logger)
+        public UserController(IUserService userService, ILogger logger)
         {
-            this._appDBContext = appDBContext;
-            this._iConfiguration = configuration;
-            this._iEmailService = emailService;
             this._userService = userService;
             this._logger = logger;
         }
@@ -115,7 +109,6 @@ namespace tech_project_back_end.Controllers
                 _logger.LogError(ex, "Error occurred while fetching user list");
                 throw;
             }
-
         }
 
         [HttpPost("login")]
@@ -147,7 +140,6 @@ namespace tech_project_back_end.Controllers
                 _logger.LogError(ex, "Error occurred while login");
                 throw;
             }
-           
         }
 
         [HttpPut("UpdateUserInfor")]
