@@ -1,500 +1,160 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using tech_project_back_end.Data;
 using tech_project_back_end.DTO;
-using tech_project_back_end.Models;
+using tech_project_back_end.Services.IService;
+using Microsoft.Extensions.Logging;
 
 namespace tech_project_back_end.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly AppDbContext _appDbContext;
-        private readonly IWebHostEnvironment eviroment;
-        public ProductController(AppDbContext appDbContext, IWebHostEnvironment eviroment)
+        private readonly IProductService _productService;
+        private readonly ILogger<ProductController> _logger;
+
+        public ProductController(IProductService productService, ILogger<ProductController> logger)
         {
-            this._appDbContext = appDbContext;
-            this.eviroment = eviroment;
+            _productService = productService;
+            _logger = logger;
         }
 
-        [HttpPost("AddProduct")]
-        public async Task<IActionResult> AddProduct(Product product)
+        [HttpPost]
+        public async Task<IActionResult> AddProduct([FromBody] ProductDTO productDTO)
         {
+            if (productDTO == null)
+            {
+                return BadRequest("Product cannot be null.");
+            }
+
             try
             {
-                _appDbContext.Product.Add(product);
-
-
-                await _appDbContext.SaveChangesAsync();
-
-
-                return Ok(new { product });
+                await _productService.AddProductAsync(productDTO);
+                return CreatedAtAction(nameof(GetProductById), new { id = productDTO.ProductId }, productDTO);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return BadRequest("Failed to add product.");
+                _logger.LogError(ex, "Error occurred while adding product.");
+                return StatusCode(500, $"An error occurred while processing your request");
             }
         }
 
-        [HttpGet("getProductById")]
-        public IActionResult GetProductById(string id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProductById(string id)
         {
             try
             {
-                var product = _appDbContext.Product
-                    .Join(_appDbContext.Supplier,
-                        p => p.SupplierId,
-                        s => s.SupplierId,
-                        (p, s) => new
-                        {
-                            Product = new
-                            {
-                                product_id = p.ProductId,
-                                name_pr = p.NamePr,
-                                name_serial = p.NameSerial,
-                                detail = p.Detail,
-                                price = p.Price,
-                                quantity_pr = p.QuantityPr,
-                                guarantee_period = p.GuaranteePeriod
-                            },
-                            Category = _appDbContext.ProductCategory
-                                        .Where(pc => pc.product_id == p.ProductId)
-                                        .Join(_appDbContext.Category,
-                                                pc => pc.category_id,
-                                                c => c.category_id,
-                                                    (pc, c) => new { c.category_id, c.category_name })
-                                                    .ToList(),
-                            Supplier = new { s.SupplierId, s.SupplierName },
-                            Image = _appDbContext.Image
-                                .Where(i => i.ProductId == p.ProductId)
-                                .FirstOrDefault()
-                        })
-                    .FirstOrDefault(p => p.Product.product_id == id);
-
-                if (product != null)
+                var product = await _productService.GetProductByIdAsync(id);
+                if (product == null)
                 {
-                    return Ok(product);
+                    return NotFound();
                 }
-                else
-                {
-                    return NotFound("Product not found");
-                }
-            }
-            catch
-            {
-                return NotFound("Product not found");
-            }
-        }
-
-        [HttpPost("GetProductBySearchQuery")]
-        public IActionResult GetProductBySearchQuery([FromBody] string searchQuery)
-        {
-            var searchKeywords = searchQuery.ToLower().Split(' ');
-
-            var products = _appDbContext.Product
-    .Join(_appDbContext.Supplier,
-        p => p.SupplierId,
-        s => s.SupplierId,
-        (p, s) => new
-        {
-            Product = new
-            {
-                product_id = p.ProductId,
-                name_pr = p.NamePr,
-                name_serial = p.NameSerial,
-                detail = p.Detail,
-                price = p.Price,
-                quantity_pr = p.QuantityPr,
-                guarantee_period = p.GuaranteePeriod
-            },
-            Category = _appDbContext.ProductCategory
-                .Where(pc => pc.product_id == p.ProductId)
-                .Join(_appDbContext.Category,
-                    pc => pc.category_id,
-                    c => c.category_id,
-                    (pc, c) => new { c.category_id, c.category_name })
-                .ToList(),
-            Supplier = new { s.SupplierId, s.SupplierName },
-            Image = _appDbContext.Image
-                .Where(i => i.ProductId == p.ProductId)
-                .FirstOrDefault()
-        })
-    .AsEnumerable() // Perform client-side evaluation from this point
-    .Where(x =>
-        searchKeywords.Any(keyword =>
-            x.Product.name_pr.ToLower().Contains(keyword.ToLower()) ||
-            x.Product.name_serial.ToLower().Contains(keyword.ToLower()) ||
-            x.Product.detail.ToLower().Contains(keyword.ToLower()) || x.Product.product_id.ToLower().Contains(keyword.ToLower()) ||
-            x.Category.Any(x => x.category_name.ToLower().Contains(keyword.ToLower())) == true
-        )
-    )
-    .Distinct().Take(6).ToList();
-
-            return Ok(products);
-        }
-
-
-        [HttpPost("GetProduct")]
-        public IActionResult GetProduct([FromBody] Filter filter)
-        {
-            var productList = _appDbContext.Product
-        .Join(_appDbContext.Supplier,
-            p => p.SupplierId,
-            s => s.SupplierId,
-            (p, s) => new
-            {
-                Product = new
-                {
-                    product_id = p.ProductId,
-                    name_pr = p.NamePr,
-                    name_serial = p.NameSerial,
-                    detail = p.Detail,
-                    price = p.Price,
-                    quantity_pr = p.QuantityPr,
-                    guarantee_period = p.GuaranteePeriod,
-
-                },
-                Category = _appDbContext.ProductCategory
-                        .Where(pc => pc.product_id == p.ProductId)
-                        .Join(_appDbContext.Category,
-                            pc => pc.category_id,
-                            c => c.category_id,
-                            (pc, c) => new { c.category_id, c.category_name })
-                        .ToList(),
-
-                Supplier = new { s.SupplierId, s.SupplierName },
-                Image = _appDbContext.Image
-                    .Where(i => i.ProductId == p.ProductId)
-                    .FirstOrDefault()
-            });
-
-
-            // Filter by minimum and maximum price
-            if (filter.MinPrice.HasValue)
-            {
-                productList = productList.Where(p => p.Product.price >= (ulong)filter.MinPrice.Value);
-            }
-
-            if (!string.IsNullOrEmpty(filter.SearchKey))
-            {
-                productList = productList
-                    .Where(x =>
-                        x.Product.name_pr.ToLower().Contains(filter.SearchKey.ToLower()) ||
-                        x.Product.name_serial.ToLower().Contains(filter.SearchKey.ToLower()) ||
-                        x.Product.detail.ToLower().Contains(filter.SearchKey.ToLower()) || x.Product.product_id.ToLower().Contains(filter.SearchKey.ToLower()) ||
-                        x.Category.Any(c => c.category_name.ToLower().Contains(filter.SearchKey.ToLower())) == true
-
-                );
-            }
-
-            if (filter.MaxPrice.HasValue)
-            {
-                productList = productList.Where(p => p.Product.price <= (ulong)filter.MaxPrice.Value);
-            }
-
-            // Filter by supplier name
-            if (!string.IsNullOrEmpty(filter.SupplierId))
-            {
-                productList = productList.Where(p => p.Supplier.SupplierId == filter.SupplierId);
-            }
-
-            // Filter by category
-            if (!string.IsNullOrEmpty(filter.CategoryId))
-            {
-                productList = productList
-                    .Join(_appDbContext.ProductCategory,
-                        p => p.Product.product_id,
-                        pc => pc.product_id,
-                        (p, pc) => new { p, pc })
-                    .Where(x => x.pc.category_id == filter.CategoryId)
-                    .Select(x => x.p);
-            }
-
-            // Sort by name or price
-            if (!string.IsNullOrEmpty(filter.SortBy))
-            {
-                switch (filter.SortBy.ToLower())
-                {
-                    case "name":
-                        productList = (bool)filter.IsDescending ?
-                            productList.OrderByDescending(p => p.Product.name_pr) :
-                            productList.OrderBy(p => p.Product.name_pr);
-                        break;
-                    case "price":
-                        productList = (bool)filter.IsDescending ?
-                            productList.OrderByDescending(p => p.Product.price) :
-                            productList.OrderBy(p => p.Product.price);
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-
-
-            // Pagination
-            int pageNumber = filter.PageNumber ?? 1;
-            int pageSize = filter.PageSize ?? 10;
-
-            var pagedProductList = productList.Skip((pageNumber - 1) * pageSize)
-                                              .Take(pageSize)
-                                              .ToList();
-
-            var totalProductCount = productList.Count();
-            var totalPages = (int)Math.Ceiling((double)totalProductCount / pageSize);
-
-            var response = new
-            {
-                Products = pagedProductList,
-                PageNumber = pageNumber,
-                PageSize = pageSize,
-                TotalPages = totalPages,
-                TotalProducts = totalProductCount
-            };
-
-            return Ok(response);
-        }
-
-        [HttpDelete]
-        public async Task<IActionResult> DeleteProductById(string product_id)
-        {
-            try
-            {
-                var result = await DeleteImageFolder(product_id);
-                var productsToDelete = _appDbContext.Product.Where(p => p.ProductId == product_id);
-                _appDbContext.Product.RemoveRange(productsToDelete);
-                var productsImageToDelete = _appDbContext.Image.Where(i => i.ProductId == product_id);
-                _appDbContext.Image.RemoveRange(productsImageToDelete);
-                _appDbContext.SaveChanges();
-
-                return Ok("Add oke");
-
-
+                return Ok(product);
             }
             catch (Exception ex)
             {
-                return BadRequest("Failed to upload image.");
+                _logger.LogError(ex, "Error occurred while retrieving product with ID: {Id}", id);
+                return StatusCode(500, "An error occurred while processing your request.");
             }
-
         }
 
-        [HttpPost("AddMoreImageForProduct")]
-        public async Task<IActionResult> AddMoreImageForProduct(IFormFileCollection formFileCollection, string product_id)
+        [HttpPost("filter")]
+        public async Task<IActionResult> GetFilteredProducts([FromBody] Filter filter)
         {
             try
             {
-                foreach (var formFile in formFileCollection)
-                {
-
-                    string imageUrl = await AddImage(formFile, product_id);
-
-
-                }
-                return Ok("Add oke");
-
+                var products = await _productService.GetFilteredProductsAsync(filter);
+                return Ok(products);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return BadRequest("Failed to upload image.");
+                _logger.LogError(ex, "Error occurred while filtering products.");
+                return StatusCode(500, "An error occurred while processing your request.");
             }
         }
 
-        [HttpGet("GetAllImageOfProduct")]
-        public IActionResult GetAllImageOfProduct(string product_id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(string id)
         {
-
-            var result = _appDbContext.Image.Where(i => i.ProductId == product_id);
-            return Ok(result);
-
-        }
-
-        [HttpPost("UpaloadImage")]
-        public async Task<string> UpaloadImage(IFormFileCollection formFileCollection)
-        {
-            foreach (var formFile in formFileCollection)
+            try
             {
-                string productId = Path.GetFileNameWithoutExtension(formFile.FileName);
-                string filePath = GetFilePath(productId);
-
-                if (!System.IO.Directory.Exists(filePath))
-                {
-                    System.IO.Directory.CreateDirectory(filePath);
-                }
-
-                string fileExtension = Path.GetExtension(formFile.FileName);
-                string imageName = $"{productId}{DateTimeOffset.Now:yyyyMMddHHmmssffff}{fileExtension}";
-                string imagePath = Path.Combine(filePath, imageName);
-
-                using (FileStream stream = System.IO.File.Create(imagePath))
-                {
-                    await formFile.CopyToAsync(stream);
-                }
-
-                string baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}{HttpContext.Request.PathBase}";
-                string relativePath = $"/Upload/product/{productId}/{imageName}";
-                string imageUrl = baseUrl + relativePath;
-
-                _appDbContext.Image.Add(new Image
-                {
-                    ImageId = Guid.NewGuid().ToString()[..36],
-                    ProductId = productId,
-                    ImageHref = imageUrl
-                });
-
-                await _appDbContext.SaveChangesAsync();
+                await _productService.DeleteProductAsync(id);
+                return Ok("Product deleted successfully.");
             }
-            return "oke";
-        }
-
-        [HttpDelete("DeleteImageOfProduct")]
-        public async Task<IActionResult> DeleteImageOfProduct(string product_id, string file_name)
-        {
-            var imageExit = _appDbContext.Image.Where(i => i.ProductId == product_id && i.FileName == file_name);
-            _appDbContext.RemoveRange(imageExit);
-            _appDbContext.SaveChanges();
-            DeleteImage(product_id, file_name);
-
-            return Ok("");
-
-        }
-
-        [HttpPut("UpdateProduct")]
-        public async Task<IActionResult> UpdateProduct([FromBody] Product updatedProduct)
-        {
-            if (updatedProduct == null)
+            catch (Exception ex)
             {
-                return BadRequest("Invalid request data");
+                _logger.LogError(ex, "Error occurred while deleting product with ID: {Id}", id);
+                return StatusCode(500, "An error occurred while processing your request.");
             }
+        }
 
+        [HttpGet("{id}/images")]
+        public async Task<IActionResult> GetProductImages(string id)
+        {
+            try
+            {
+                var images = await _productService.GetProductImagesAsync(id);
+                return Ok(images);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while retrieving images for product with ID: {Id}", id);
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
+        }
 
+        [HttpPost("{id}/images")]
+        public async Task<IActionResult> AddImages(string id, IFormFileCollection formFiles)
+        {
+            if (formFiles == null || !formFiles.Any())
+            {
+                return BadRequest("No images provided.");
+            }
 
             try
             {
-                // Check if the specified product exists
-                var existingProduct = await _appDbContext.Product
-                    .FirstOrDefaultAsync(p => p.ProductId == updatedProduct.ProductId);
-
-                if (existingProduct == null)
-                {
-                    return NotFound("Product not found");
-                }
-
-                decimal temp;
-                if (!decimal.TryParse(updatedProduct.GuaranteePeriod.ToString(), out temp) ||
-                    !decimal.TryParse(updatedProduct.QuantityPr.ToString(), out temp) ||
-                    !decimal.TryParse(updatedProduct.Price.ToString(), out temp))
-                {
-                    return BadRequest(false);
-                }
-
-                // Update the existing product
-                existingProduct.NamePr = updatedProduct.NamePr;
-                existingProduct.NameSerial = updatedProduct.NameSerial;
-                existingProduct.Detail = updatedProduct.Detail;
-                existingProduct.Price = updatedProduct.Price;
-                existingProduct.QuantityPr = updatedProduct.QuantityPr;
-                existingProduct.GuaranteePeriod = updatedProduct.GuaranteePeriod;
-                existingProduct.SupplierId = updatedProduct.SupplierId;
-
-                await _appDbContext.SaveChangesAsync();
-
-                return Ok("Product updated successfully");
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                return StatusCode(409, "Concurrency conflict");
+                await _productService.AddImagesAsync(formFiles, id);
+                return NoContent();
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                _logger.LogError(ex, "Error occurred while adding images for product with ID: {Id}", id);
+                return StatusCode(500, "An error occurred while processing your request.");
             }
         }
 
-
-        [NonAction]
-        public async Task<string> AddImage(IFormFile formFile, string product_id)
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductDTO product)
         {
-            string FilePath = GetFilePath(product_id);
-
-            if (!System.IO.Directory.Exists(FilePath))
+            if (product == null)
             {
-                System.IO.Directory.CreateDirectory(FilePath);
+                return BadRequest("Product cannot be null.");
             }
 
-            string fileExtension = Path.GetExtension(formFile.FileName);
-            string fileName = $"{DateTime.Now.Ticks}{fileExtension}";
-            string ImagePath = Path.Combine(FilePath, fileName);
-
-            using (FileStream stream = System.IO.File.Create(ImagePath))
+            try
             {
-                await formFile.CopyToAsync(stream);
+                await _productService.UpdateProductAsync(product);
+                return NoContent();
             }
-
-            string baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}{HttpContext.Request.PathBase}";
-            string relativePath = $"/Upload/product/{product_id}/{fileName}";
-            string imageUrl = baseUrl + relativePath;
-
-            _appDbContext.Image.Add(new Image
+            catch (Exception ex)
             {
-                ImageId = Guid.NewGuid().ToString()[..36],
-                ProductId = product_id,
-                ImageHref = imageUrl,
-                FileName = fileName,
-
-            });
-
-            await _appDbContext.SaveChangesAsync();
-
-            return imageUrl;
+                _logger.LogError(ex, "Error occurred while updating product.");
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
         }
 
-
-        [NonAction]
-        private string GetFilePath(string product_id)
+        [HttpDelete("{productId}/images/{fileName}")]
+        public async Task<IActionResult> DeleteImage(string productId, string fileName)
         {
-            return this.eviroment.WebRootPath + "\\Upload\\product\\" + product_id;
-        }
-
-        [NonAction]
-        public async Task<string> DeleteImageFolder(string product_id)
-        {
-            string filePath = GetFilePath(product_id);
-
-            if (System.IO.Directory.Exists(filePath))
+            try
             {
-                System.IO.Directory.Delete(filePath, true);
+                await _productService.DeleteImageAsync(productId, fileName);
+                return NoContent();
             }
-
-            return "oke";
-        }
-
-        [NonAction]
-        public void DeleteImage(string product_id, string file_name)
-        {
-            string filePath = GetFilePath(product_id);
-            string imagePath = Path.Combine(filePath, file_name);
-
-            if (System.IO.File.Exists(imagePath))
+            catch (Exception ex)
             {
-                System.IO.File.Delete(imagePath);
+                _logger.LogError(ex, "Error occurred while deleting image '{FileName}' for product ID: {ProductId}", fileName, productId);
+                return StatusCode(500, "An error occurred while processing your request.");
             }
         }
-
-        [HttpDelete("RemoveImageFolder")]
-        public async Task<IActionResult> RemoveImageFolder(string product_id)
-        {
-            string filePath = GetFilePath(product_id);
-
-            if (System.IO.Directory.Exists(filePath))
-            {
-                System.IO.Directory.Delete(filePath, true);
-            }
-
-            return Ok("oke");
-        }
-
     }
 }

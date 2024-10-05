@@ -52,13 +52,11 @@ public class CartRepository : ICartRepository
                     SupplierId = combined.prod.SupplierId
                 },
                 Quantity = combined.cart.quantity,
-                Category = _db.ProductCategory.
-                    Where(pc => pc.product_id == combined.prod.ProductId).
-                    Join(_db.Category, pc => pc.category_id, c => c.CategoryId, (pc, c) => new Category
-                    {
-                        CategoryId = c.CategoryId,
-                        CategoryName = c.CategoryName
-                    }).SingleOrDefault(),
+                Category = new Category
+                {
+                    CategoryId = combined.prod.Category.CategoryId,
+                    CategoryName = combined.prod.Category.CategoryName
+                },
                 Supplier = _db.Supplier.Where(sup => sup.SupplierId == combined.prod.SupplierId).
                     Select(sup => new SupplierModel
                     {

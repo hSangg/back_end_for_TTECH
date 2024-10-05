@@ -2,7 +2,7 @@
 {
     public class ImageDTO
     {
-        public string Image_Id { get; set; }
+        public string ImageId { get; set; }
         public string ProductId { get; set; }
         public string ImageHref { get; set; }
     }
