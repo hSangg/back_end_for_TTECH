@@ -49,7 +49,7 @@ namespace tech_project_back_end.Models
 
         [Column("delivery_fee", TypeName = "int")]
         public int DeliveryFee { get; set; }
-        public virtual ICollection<DetailOrder> DetailOrders { get; set; }
 
+        public virtual ICollection<DetailOrder> DetailOrders { get; set; }
     }
 }
