@@ -47,6 +47,18 @@ namespace tech_project_back_end.Services
             smtp.Disconnect(true);
         }
 
+        public string ProcessEmail(string template, Dictionary<string, string> placeholders)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "Resources", $"{template}.html");
 
+            var emailTemplate = File.ReadAllText(path);
+
+            foreach (var placeholder in placeholders)
+            {
+                emailTemplate = emailTemplate.Replace($"{{{{{placeholder.Key}}}}}", placeholder.Value);
+            }
+
+            return emailTemplate;
+        }
     }
 }
