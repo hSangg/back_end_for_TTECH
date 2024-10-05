@@ -3,19 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tech_project_back_end.Models
 {
-    public class Category
+    public class Category : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column("category_id", TypeName = "varchar(36)")]
-        public string CategoryId { get; set; } // Use Guid instead of string
+        public string CategoryId { get; set; }
 
         [Required]
         [Column("category_name", TypeName = "varchar(100)")]
         public string CategoryName { get; set; }
-
-        [Column("is_deleted", TypeName = "tinyint(1)")]
-        public bool IsDeleted { get; set; } 
 
         public virtual ICollection<Product> Products { get; set; }
     }

@@ -2,6 +2,7 @@
 using tech_project_back_end.DTO.Order;
 using tech_project_back_end.DTO.Cart;
 using tech_project_back_end.DTO.Discount;
+using tech_project_back_end.DTO.DetailOrder;
 using tech_project_back_end.Models;
 using tech_project_back_end.DTO.Users;
 
@@ -28,8 +29,12 @@ namespace tech_project_back_end.DTO
             CreateMap<Models.User, UserLoginDTO>().ReverseMap();
 
             CreateMap<Models.User, UserUpdateDTO>().ReverseMap();
+            
+            CreateMap<Models.DetailOrder, DetailOrderDTO>().ReverseMap();
 
             CreateMap<Models.Category, CategoryDTO>().ReverseMap();
+
+            CreateMap<Models.Product, ProductDTO>().ReverseMap();
         }
     }
 }

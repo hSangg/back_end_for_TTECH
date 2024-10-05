@@ -12,7 +12,7 @@ namespace tech_project_back_end.Controllers
         private readonly IOrderService _orderService;
         private readonly ILogger<OrderController> _logger;
 
-        public OrderController(IEmailService emailService, IOrderService orderService, ILogger<OrderController> logger)
+        public OrderController(IOrderService orderService, ILogger<OrderController> logger)
         {
             this._orderService = orderService;
             this._logger = logger;
@@ -35,7 +35,7 @@ namespace tech_project_back_end.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error occurred while creating order");
-                return StatusCode(500, "An error occurred while processing the request");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -49,7 +49,6 @@ namespace tech_project_back_end.Controllers
 
             try
             {
-                // Check if the specified product exists
                 var result = await _orderService.UpdateStateOrder(orderId, state);
 
                 return Ok("order updated successfully");

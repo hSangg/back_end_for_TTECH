@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
 using tech_project_back_end.DTO;
+using tech_project_back_end.Models;
 using tech_project_back_end.Repository.IRepository;
 
 namespace tech_project_back_end.Repository
@@ -23,11 +25,11 @@ namespace tech_project_back_end.Repository
                 .Select(g => new
                 {
                     ProductId = g.Key,
-                    TotalQuantitySold = g.Sum(dt => dt.Quantity) 
+                    TotalQuantitySold = g.Sum(dt => dt.Quantity)
                 });
 
             var result = await subquery
-                .Join(_appDbContext.Product,
+                .Join(_appDbContext.Product.Where(p => !p.IsDeleted),
                     sq => sq.ProductId,
                     p => p.ProductId,
                     (sq, p) => new TopSellerProductDTO
@@ -39,7 +41,7 @@ namespace tech_project_back_end.Repository
                             .Where(i => i.ProductId == sq.ProductId)
                             .Select(i => new ImageDTO
                             {
-                                Image_Id = i.ImageId,
+                                ImageId = i.ImageId,
                                 ProductId = i.ProductId,
                                 ImageHref = i.ImageHref
                             })
@@ -50,6 +52,204 @@ namespace tech_project_back_end.Repository
                 .ToListAsync();
 
             return result;
+        }
+
+        public async Task AddProductAsync(Product product)
+        {
+            _appDbContext.Product.Add(product);
+            await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task<ProductDTO> GetProductByIdAsync(string id)
+        {
+            var product = await _appDbContext.Product
+                .Include(p => p.Supplier)
+                .Include(p => p.Category)
+                .Include(p => p.Images)
+                .FirstOrDefaultAsync(p => p.ProductId == id && !p.IsDeleted);
+
+            if (product == null) return null;
+
+            return new DTO.ProductDTO
+            {
+                ProductId = product.ProductId,
+                NamePr = product.NamePr,
+                NameSerial = product.NameSerial,
+                Detail = product.Detail,
+                Price = product.Price,
+                QuantityPr = product.QuantityPr,
+                GuaranteePeriod = product.GuaranteePeriod,
+                SupplierId = product.SupplierId,
+                CategoryId = product.CategoryId,
+                SupplierName = product.Supplier?.SupplierName,
+                CategoryName = product.Category?.CategoryName,
+                Images = product.Images.Select(i => i.ImageHref).ToArray()
+            };
+        }
+
+        public async Task<FilteredProductResponse> GetFilteredProductsAsync(Filter filter)
+        {
+            var query = _appDbContext.Product
+                .Include(p => p.Supplier)
+                .Include(p => p.Category)
+                .Include(p => p.Images)
+                .Where(p => !p.IsDeleted)
+                .AsQueryable();
+
+            query = query.Where(p => p.Price >= (ulong)filter.MinPrice);
+
+            query = query.Where(p => p.Price <= (ulong)filter.MaxPrice);
+
+            if (!string.IsNullOrEmpty(filter.SearchKey))
+            {
+                var searchKeyLower = filter.SearchKey.ToLower();
+                query = query.Where(p => p.NamePr.ToLower().Contains(searchKeyLower) ||
+                                         p.NameSerial.ToLower().Contains(searchKeyLower) ||
+                                         p.Detail.ToLower().Contains(searchKeyLower) ||
+                                         p.Category.CategoryName.ToLower().Contains(searchKeyLower));
+            }
+
+            if (!string.IsNullOrEmpty(filter.SupplierId))
+            {
+                query = query.Where(p => p.SupplierId == filter.SupplierId);
+            }
+
+            if (!string.IsNullOrEmpty(filter.CategoryId))
+            {
+                query = query.Where(p => p.CategoryId == filter.CategoryId);
+            }
+
+            if (!string.IsNullOrEmpty(filter.SortBy))
+            {
+                switch (filter.SortBy.ToLower())
+                {
+                    case "name":
+                        query = filter.IsDescending ?
+                            query.OrderByDescending(p => p.NamePr) :
+                            query.OrderBy(p => p.NamePr);
+                        break;
+                    case "price":
+                        query = filter.IsDescending ?
+                            query.OrderByDescending(p => p.Price) :
+                            query.OrderBy(p => p.Price);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            int pageNumber = filter.PageNumber < 1 ? 1 : filter.PageNumber;
+            int pageSize = filter.PageSize < 1 ? 12 : filter.PageSize;
+
+            var totalProductCount = await query.CountAsync();
+
+            var products = await query.Skip((pageNumber - 1) * pageSize)
+                                      .Take(pageSize)
+                                      .Select(p => new ProductDTO
+                                      {
+                                          ProductId = p.ProductId,
+                                          NamePr = p.NamePr,
+                                          NameSerial = p.NameSerial,
+                                          Detail = p.Detail,
+                                          Price = p.Price,
+                                          QuantityPr = p.QuantityPr,
+                                          GuaranteePeriod = p.GuaranteePeriod,
+                                          SupplierId = p.SupplierId,
+                                          CategoryId = p.CategoryId,
+                                          Images = p.Images.Select(i => i.ImageHref).ToArray()
+                                      })
+                                      .ToListAsync();
+
+            var totalPages = (int)Math.Ceiling((double)totalProductCount / pageSize);
+            if (totalPages < 1)
+            {
+                totalPages = 1;
+            }
+            return new FilteredProductResponse
+            {
+                Products = products,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPages = totalPages,
+                TotalProducts = totalProductCount
+            };
+        }
+
+        public async Task DeleteProductAsync(string productId)
+        {
+            var product = await _appDbContext.Product
+                .FirstOrDefaultAsync(p => p.ProductId == productId);
+
+            if (product != null)
+            {
+                product.IsDeleted = true;
+                await _appDbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<ImageDTO>> GetProductImagesAsync(string productId)
+        {
+            return await _appDbContext.Image
+                .Where(i => i.ProductId == productId)
+                .Select(i => new ImageDTO
+                {
+                    ImageId = i.ImageId,
+                    ProductId = i.ProductId,
+                    ImageHref = i.ImageHref
+                })
+                .ToListAsync();
+        }
+
+        public async Task AddImagesAsync(IFormFileCollection formFiles, string productId)
+        {
+            foreach (var formFile in formFiles)
+            {
+                string imageUrl = await UploadImage(formFile, productId);
+                _appDbContext.Image.Add(new Image
+                {
+                    ImageId = Guid.NewGuid().ToString(),
+                    ProductId = productId,
+                    ImageHref = imageUrl
+                });
+            }
+
+            await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateProductAsync(ProductDTO product)
+        {
+            var existingProduct = await _appDbContext.Product
+                .FirstOrDefaultAsync(p => p.ProductId == product.ProductId && !p.IsDeleted);
+
+            if (existingProduct != null)
+            {
+                existingProduct.NamePr = product.NamePr;
+                existingProduct.NameSerial = product.NameSerial;
+                existingProduct.Detail = product.Detail;
+                existingProduct.Price = product.Price;
+                existingProduct.QuantityPr = product.QuantityPr;
+                existingProduct.GuaranteePeriod = product.GuaranteePeriod;
+                existingProduct.SupplierId = product.SupplierId;
+                existingProduct.CategoryId = product.CategoryId;
+
+                await _appDbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteImageAsync(string productId, string fileName)
+        {
+            var image = await _appDbContext.Image.FirstOrDefaultAsync(i => i.ProductId == productId && i.FileName == fileName);
+            if (image != null)
+            {
+                _appDbContext.Image.Remove(image);
+                await _appDbContext.SaveChangesAsync();
+            }
+        }
+
+        private async Task<string> UploadImage(IFormFile formFile, string productId)
+        {
+            // Logic for uploading image
+            return "imageUrl";
         }
     }
 }
