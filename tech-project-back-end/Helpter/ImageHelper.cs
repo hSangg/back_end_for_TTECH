@@ -26,7 +26,7 @@ public class ImageHelper
 
     public async static Task<bool> DeleteImage(string imageHref, Cloudinary cloudinary)
     {
-        string pattern = @"([^/]+)(?=\.\w+$)"; // Tìm tên tệp trước phần mở rộng
+        string pattern = @"([^/]+)(?=\.\w+$)";
         Match match = Regex.Match(imageHref, pattern);
         var success = await cloudinary.DestroyAsync(new DeletionParams(match.Value));
         return success.StatusCode == System.Net.HttpStatusCode.OK;
