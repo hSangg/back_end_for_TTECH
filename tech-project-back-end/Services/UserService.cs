@@ -148,9 +148,11 @@ namespace tech_project_back_end.Services
 
             var user = new User
             {
+                UserId = userRegister.UserId,
                 Name = userRegister.Name,
                 Email = userRegister.Email,
                 Phone = userRegister.Phone,
+                Role = userRegister.Role,
                 CreatedAt = DateTime.Now,
                 Password = BCrypt.Net.BCrypt.HashPassword(userRegister.Password)
             };
