@@ -7,7 +7,7 @@ namespace tech_project_back_end.Services.IService
     {
         Task<List<TopSellerProductDTO>> GetTopSellerProducts(int count);
 
-        Task AddProductAsync(ProductDTO productDTO);
+        Task AddProductAsync(CreateProductDTO productDTO);
 
         Task<ProductDTO> GetProductByIdAsync(string id);
 
@@ -17,10 +17,10 @@ namespace tech_project_back_end.Services.IService
 
         Task<List<ImageDTO>> GetProductImagesAsync(string productId);
 
-        Task AddImagesAsync(IFormFileCollection formFiles, string productId);
+        Task AddImagesAsync(List<IFormFile> formFiles, string productId);
 
         Task UpdateProductAsync(ProductDTO product);
 
-        Task DeleteImageAsync(string productId, string fileName);
+        Task DeleteImageAsync(string productId);
     }
 }

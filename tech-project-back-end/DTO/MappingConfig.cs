@@ -13,9 +13,7 @@ namespace tech_project_back_end.DTO
         public MappingConfig() {
 
             CreateMap<Supplier, SupplierDTO>().ReverseMap();
-
-            CreateMap<Image, ImageDTO>().ReverseMap();
-
+            
             CreateMap <Models.Order, OrderDTO >().ReverseMap();
 
             CreateMap<Models.Discount, DiscountDTO>().ReverseMap();
@@ -35,6 +33,12 @@ namespace tech_project_back_end.DTO
             CreateMap<Models.Category, CategoryDTO>().ReverseMap();
 
             CreateMap<Models.Product, ProductDTO>().ReverseMap();
+
+            CreateMap<Product, CreateProductDTO>().ReverseMap();
+            
+            CreateMap<Models.Image, ImageDTO>().ReverseMap();
+
+            CreateMap<Image, CreateImageDTO>().ReverseMap();
         }
     }
 }

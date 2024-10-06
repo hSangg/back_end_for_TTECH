@@ -19,7 +19,7 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct([FromBody] ProductDTO productDTO)
+        public async Task<IActionResult> AddProduct([FromBody] CreateProductDTO productDTO)
         {
             if (productDTO == null)
             {
@@ -103,23 +103,22 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost("{id}/images")]
-        public async Task<IActionResult> AddImages(string id, IFormFileCollection formFiles)
+        public async Task<IActionResult> AddImages(string id, List<IFormFile> formFiles)
         {
             if (formFiles == null || !formFiles.Any())
             {
                 return BadRequest("No images provided.");
             }
-
-            try
-            {
-                await _productService.AddImagesAsync(formFiles, id);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while adding images for product with ID: {Id}", id);
-                return StatusCode(500, "An error occurred while processing your request.");
-            }
+             try
+             {
+                 await _productService.AddImagesAsync(formFiles, id);
+                 return NoContent();
+             }
+             catch (Exception ex)
+             {
+                 _logger.LogError(ex, "Error occurred while adding images for product with ID: {Id}", id);
+                 return StatusCode(500, "An error occurred while processing your request.");
+             }
         }
 
         [HttpPut]
@@ -142,17 +141,17 @@ namespace tech_project_back_end.Controllers
             }
         }
 
-        [HttpDelete("{productId}/images/{fileName}")]
-        public async Task<IActionResult> DeleteImage(string productId, string fileName)
+        [HttpDelete("{productId}/images")]
+        public async Task<IActionResult> DeleteImage(string productId)
         {
             try
             {
-                await _productService.DeleteImageAsync(productId, fileName);
+                await _productService.DeleteImageAsync(productId);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while deleting image '{FileName}' for product ID: {ProductId}", fileName, productId);
+                _logger.LogError(ex, "Error occurred while deleting image for product ID: {ProductId}", productId);
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }

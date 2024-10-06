@@ -32,7 +32,7 @@ namespace tech_project_back_end.Models
         public string Password { get; set; }
 
         [Required]
-        [Column("isAdmin",TypeName = "varchar(50)")]
+        [Column("Role",TypeName = "varchar(50)")]
         [StringLength(50)]
         public string Role { get; set; }
 

@@ -15,12 +15,12 @@ namespace tech_project_back_end.Repository.IRepository
 
         Task DeleteProductAsync(string productId);
 
-        Task<List<ImageDTO>> GetProductImagesAsync(string productId);
+        Task<List<Image>> GetProductImagesAsync(string productId);
 
-        Task AddImagesAsync(IFormFileCollection formFiles, string productId);
+        Task AddImagesAsync(Image image);
 
         Task UpdateProductAsync(ProductDTO product);
 
-        Task DeleteImageAsync(string productId, string fileName);
+        Task DeleteImageAsync(string productId);
     }
 }
