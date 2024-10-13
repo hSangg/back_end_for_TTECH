@@ -1,3 +1,5 @@
+using CloudinaryDotNet;
+using dotenv.net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -5,16 +7,15 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using tech_project_back_end.Data;
 using tech_project_back_end.Helpter;
-using tech_project_back_end.Repository.IRepository;
+using tech_project_back_end.Repositories;
 using tech_project_back_end.Repository;
+using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
-using dotenv.net;
-using CloudinaryDotNet;
-using tech_project_back_end.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 DotEnv.Load();
 
@@ -117,7 +118,7 @@ builder.Services.AddScoped<IDetailOrderRepository, DetailOrderRepository>();
 
 builder.Services.AddScoped<IDetailOrderService, DetailOrderService>();
 
-builder.Services.AddSingleton<ILogger>(provider =>provider.GetRequiredService<ILogger<SupplierService>>());
+builder.Services.AddSingleton<ILogger>(provider => provider.GetRequiredService<ILogger<SupplierService>>());
 
 builder.Services.Configure<EMailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
@@ -127,11 +128,29 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
-Cloudinary cloudinary = new Cloudinary(Environment.GetEnvironmentVariable("CLOUDINARY_URL"));
+Cloudinary cloudinary = new Cloudinary(
+    //Environment.GetEnvironmentVariable("CLOUDINARY_URL")
+    "cloudinary://822283717824738:frzUnb-Q8dmFLM_9yCSv5obxNLA@dk94mqfmc"
+    );
 cloudinary.Api.Secure = true;
 builder.Services.AddSingleton(cloudinary);
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        context.Database.Migrate();
+        context.SeedData();
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database");
+    }
+}
 
 app.UseSwagger();
 
