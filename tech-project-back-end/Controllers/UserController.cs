@@ -66,7 +66,7 @@ namespace tech_project_back_end.Controllers
                     Expires = DateTimeOffset.Now.AddHours(1)
                 });
 
-                return CreatedAtAction("AddUser", new { id = userRegistered!.UserId }, new { userRegistered, token });
+                return Created("", new { User = userRegistered, Token = token });
             }
             catch (Exception ex)
             {

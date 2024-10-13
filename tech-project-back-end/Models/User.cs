@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using tech_project_back_end.Models.Enum;
 
 namespace tech_project_back_end.Models
 {
@@ -9,7 +10,7 @@ namespace tech_project_back_end.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column("user_id",TypeName = "varchar(36)")]
         [StringLength(36)]
-        public string UserId { get; set; }
+        public string UserId { get; set; } = Guid.NewGuid().ToString("N").Substring(0, 10);
 
         [Required]
         [Column(TypeName = "varchar(100)")]
@@ -32,9 +33,9 @@ namespace tech_project_back_end.Models
         public string Password { get; set; }
 
         [Required]
-        [Column("Role",TypeName = "varchar(50)")]
+        [Column("Role", TypeName = "varchar(50)")]
         [StringLength(50)]
-        public string Role { get; set; }
+        public string Role { get; set; } = Enum.Role.USER;
 
         [Required]
         [Column("create_at")]
