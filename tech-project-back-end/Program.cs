@@ -13,9 +13,7 @@ using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
 
-
 var builder = WebApplication.CreateBuilder(args);
-
 
 DotEnv.Load();
 
@@ -58,7 +56,6 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
 
 builder.Services.AddAuthentication().AddJwtBearer(
     options =>
@@ -129,8 +126,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 Cloudinary cloudinary = new Cloudinary(
-    //Environment.GetEnvironmentVariable("CLOUDINARY_URL")
-    "cloudinary://822283717824738:frzUnb-Q8dmFLM_9yCSv5obxNLA@dk94mqfmc"
+    Environment.GetEnvironmentVariable("CLOUDINARY_URL")
     );
 cloudinary.Api.Secure = true;
 builder.Services.AddSingleton(cloudinary);
