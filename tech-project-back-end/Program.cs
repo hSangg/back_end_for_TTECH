@@ -136,6 +136,7 @@ cloudinary.Api.Secure = true;
 builder.Services.AddSingleton(cloudinary);
 
 var app = builder.Build();
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
