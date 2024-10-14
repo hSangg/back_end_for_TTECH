@@ -139,17 +139,18 @@ namespace tech_project_back_end.Data
             {
                 var suppliers = new List<Supplier>
                 {
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "Apple Inc." },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "Samsung Electronics" },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "Sony Corporation" },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "Dell Technologies" },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "Lenovo Group" },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "HP Inc." },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "Microsoft Corporation" },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "LG Electronics" },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "ASUS" },
-                    new() { SupplierId = Guid.NewGuid().ToString(), SupplierName = "Acer Inc." }
+                    new() { SupplierId = "S01", SupplierName = "Apple Inc." },
+                    new() { SupplierId = "S02", SupplierName = "Samsung Electronics" },
+                    new() { SupplierId = "S03", SupplierName = "Sony Corporation" },
+                    new() { SupplierId = "S04", SupplierName = "Dell Technologies" },
+                    new() { SupplierId = "S05", SupplierName = "Lenovo Group" },
+                    new() { SupplierId = "S06", SupplierName = "HP Inc." },
+                    new() { SupplierId = "S07", SupplierName = "Microsoft Corporation" },
+                    new() { SupplierId = "S08", SupplierName = "LG Electronics" },
+                    new() { SupplierId = "S09", SupplierName = "ASUS" },
+                    new() { SupplierId = "S10", SupplierName = "Acer Inc." }
                 };
+
 
                 Supplier.AddRange(suppliers);
                 SaveChanges();
@@ -161,7 +162,7 @@ namespace tech_project_back_end.Data
                 {
                     new()
                     {
-                        DiscountId = Guid.NewGuid().ToString(),
+                        DiscountId = "DC01",
                         DiscountCode = "SUMMER2024",
                         DiscountAmount = 15,
                         DiscountDateFrom = new DateTime(2024, 6, 1),
@@ -169,7 +170,7 @@ namespace tech_project_back_end.Data
                     },
                     new()
                     {
-                        DiscountId = Guid.NewGuid().ToString(),
+                        DiscountId = "DC02",
                         DiscountCode = "WINTER2024",
                         DiscountAmount = 20,
                         DiscountDateFrom = new DateTime(2024, 12, 1),
@@ -177,16 +178,13 @@ namespace tech_project_back_end.Data
                     },
                     new()
                     {
-                        DiscountId = Guid.NewGuid().ToString(),
+                        DiscountId = "DC03",
                         DiscountCode = "NEWYEAR2025",
                         DiscountAmount = 25,
                         DiscountDateFrom = new DateTime(2025, 1, 1),
                         DiscountDateTo = new DateTime(2025, 1, 31)
                     }
                 };
-
-                Discount.AddRange(discounts);
-                SaveChanges();
 
                 Discount.AddRange(discounts);
                 SaveChanges();
@@ -205,7 +203,7 @@ namespace tech_project_back_end.Data
                         Price = 899,
                         QuantityPr = 50,
                         GuaranteePeriod = 24,
-                        SupplierId = "1148a964-9c13-4992-a494-ddd5feed48bb",
+                        SupplierId = "S01",
                         CategoryId = "MOBIL002"
                     },
                     new Product
@@ -217,7 +215,7 @@ namespace tech_project_back_end.Data
                         Price = 1199,
                         QuantityPr = 30,
                         GuaranteePeriod = 24,
-                        SupplierId = "f46e48bf-1eb4-46d7-ae69-b6500103b438",
+                        SupplierId = "S02",
                         CategoryId = "COMP001"
                     },
                     new Product
@@ -229,7 +227,7 @@ namespace tech_project_back_end.Data
                         Price = 350,
                         QuantityPr = 100,
                         GuaranteePeriod = 12,
-                        SupplierId = "551761f7-f32b-4cff-a91b-9f503a34d92a",
+                        SupplierId = "S04",
                         CategoryId = "AUDIO003"
                     }
                 };
