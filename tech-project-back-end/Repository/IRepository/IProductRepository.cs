@@ -1,5 +1,6 @@
 ﻿using tech_project_back_end.DTO;
 using tech_project_back_end.Models;
+using tech_project_back_end.Models.ViewModel;
 
 namespace tech_project_back_end.Repository.IRepository
 {
@@ -12,6 +13,8 @@ namespace tech_project_back_end.Repository.IRepository
         Task<ProductDTO> GetProductByIdAsync(string id);
 
         Task<FilteredProductResponse> GetFilteredProductsAsync(Filter filter);
+
+        Task<List<ProductBySearchQueryModel>> GetProductBySearchQuery(string keyword);
 
         Task DeleteProductAsync(string productId);
 

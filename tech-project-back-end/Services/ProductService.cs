@@ -3,6 +3,7 @@ using CloudinaryDotNet;
 using tech_project_back_end.DTO;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
+using tech_project_back_end.Models.ViewModel;
 using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Services.IService;
 
@@ -42,6 +43,15 @@ namespace tech_project_back_end.Services
         public async Task<FilteredProductResponse> GetFilteredProductsAsync(Filter filter)
         {
             return await _productRepository.GetFilteredProductsAsync(filter);
+        }
+
+        public async Task<List<ProductBySearchQueryModel>> GetProductBySearchQueryAsync(string searchQuery)
+        {
+            string keyword = searchQuery.ToLower().Trim();
+
+            var products = await _productRepository.GetProductBySearchQuery(keyword);
+
+            return products;
         }
 
         public async Task DeleteProductAsync(string productId)
