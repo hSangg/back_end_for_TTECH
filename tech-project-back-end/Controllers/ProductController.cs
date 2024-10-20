@@ -72,6 +72,21 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [HttpPost("GetProductBySearchQuery")]
+        public async Task<IActionResult> GetProductBySearchQuery([FromBody] string searchQuery)
+        {
+            try
+            {
+                var products = await _productService.GetProductBySearchQueryAsync(searchQuery);
+                return Ok(products);
+            } catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while filtering products.");
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
+        }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(string id)
         {

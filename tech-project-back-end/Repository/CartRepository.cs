@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
 using tech_project_back_end.Models;
+using tech_project_back_end.Models.ViewModel;
 using tech_project_back_end.Repository.IRepository;
 
 namespace tech_project_back_end.Repository;

@@ -1,5 +1,5 @@
 using tech_project_back_end.DTO.Cart;
-using tech_project_back_end.Models;
+using tech_project_back_end.Models.ViewModel;
 
 namespace tech_project_back_end.Services.IService;
 

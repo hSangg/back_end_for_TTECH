@@ -5,6 +5,7 @@ using tech_project_back_end.Data;
 using tech_project_back_end.DTO;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
+using tech_project_back_end.Models.ViewModel;
 using tech_project_back_end.Repository.IRepository;
 
 namespace tech_project_back_end.Repository
@@ -15,7 +16,7 @@ namespace tech_project_back_end.Repository
         private readonly ILogger<ProductRepository> _logger;
         private readonly Cloudinary _cloudinary;
 
-        public ProductRepository (AppDbContext appDbContext, ILogger<ProductRepository> logger, Cloudinary cloudinary)
+        public ProductRepository(AppDbContext appDbContext, ILogger<ProductRepository> logger, Cloudinary cloudinary)
         {
             _appDbContext = appDbContext;
             _logger = logger;
@@ -177,6 +178,48 @@ namespace tech_project_back_end.Repository
                 TotalPages = totalPages,
                 TotalProducts = totalProductCount
             };
+        }
+
+        public async Task<List<ProductBySearchQueryModel>> GetProductBySearchQuery(string keyword)
+        {
+            var products = _appDbContext.Product.AsNoTracking().
+                    Include(p => p.Supplier).
+                    Include(p => p.Category).
+                    Include(p => p.Images).
+                    Where(
+                        p => p.NamePr.ToLower().Contains(keyword) ||
+                        p.ProductId.ToLower().Contains(keyword) ||
+                        p.NameSerial.ToLower().Contains(keyword) ||
+                        p.Detail.ToLower().Contains(keyword) ||
+                        p.Category.CategoryName.ToLower().Contains(keyword)
+                    ).
+                    Select(p => new ProductBySearchQueryModel
+                    {
+                        Product = new Product
+                        {
+                            ProductId = p.ProductId,
+                            NamePr = p.NamePr,
+                            NameSerial = p.NameSerial,
+                            Detail = p.Detail,
+                            Price = p.Price,
+                            QuantityPr = p.QuantityPr,
+                            GuaranteePeriod = p.GuaranteePeriod,
+                            SupplierId = p.SupplierId
+                        },
+                        Supplier = new SupplierModel
+                        {
+                            SupplierId = p.Supplier.SupplierId,
+                            SupplierName = p.Supplier.SupplierName
+                        },
+                        Category = new CategoryModel
+                        {
+                            CategoryId = p.Category.CategoryId,
+                            CategoryName = p.Category.CategoryName
+                        },
+                        Image = p.Images.FirstOrDefault()
+                    }).Distinct().Take(6).ToList();
+
+            return products;
         }
 
         public async Task DeleteProductAsync(string productId)
