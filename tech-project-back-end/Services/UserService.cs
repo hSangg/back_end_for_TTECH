@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DocumentFormat.OpenXml.Office2010.Excel;
+using dotenv.net;
 using Irony.Parsing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -172,7 +173,7 @@ namespace tech_project_back_end.Services
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                _configuration.GetSection("Authentication:Schemes:Bearer:SigningKeys:0:Value").Value!));
+               Environment.GetEnvironmentVariable("ASPNETCORE_AUTHENTICATION_SCHEMES_BEARER_SIGNINGKEYS")));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 

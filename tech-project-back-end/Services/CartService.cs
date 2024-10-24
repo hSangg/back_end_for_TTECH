@@ -106,8 +106,11 @@ public class CartService : ICartService
     {
         try
         {
-            var existingCart = await _cartRepository.GetCart(p => p.user_id == user_id).Result.FirstOrDefaultAsync();
-            await _cartRepository.Delete(existingCart);
+            var cartList = await _cartRepository.GetCart(p => p.user_id == user_id).Result.ToListAsync();
+            foreach(var cart in cartList)
+            {
+                await _cartRepository.Delete(cart);
+            }
         }
         catch (Exception ex)
         {
