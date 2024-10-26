@@ -7,6 +7,7 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using tech_project_back_end.Data;
 using tech_project_back_end.Helpter;
+using tech_project_back_end.Models.User;
 using tech_project_back_end.Repositories;
 using tech_project_back_end.Repository;
 using tech_project_back_end.Repository.IRepository;
@@ -53,6 +54,11 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
     ;
+});
+
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("CanViewProduct", policy => policy.RequireClaim("Permission", "view_product"));
+
 });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

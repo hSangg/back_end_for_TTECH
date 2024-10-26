@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using tech_project_back_end.Data;
-using tech_project_back_end.Models;
+using tech_project_back_end.Models.User;
 using tech_project_back_end.Repository.IRepository;
 
 namespace tech_project_back_end.Repository

@@ -11,7 +11,7 @@ using System.Text;
 using tech_project_back_end.DTO;
 using tech_project_back_end.DTO.Users;
 using tech_project_back_end.Helpter;
-using tech_project_back_end.Models;
+using tech_project_back_end.Models.User;
 using tech_project_back_end.Repository;
 using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Services.IService;

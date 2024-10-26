@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Security.Claims;
 using System.Text;
 using tech_project_back_end.Models;
+using tech_project_back_end.Models.User;
 
 namespace tech_project_back_end.Data
 {
@@ -25,6 +26,12 @@ namespace tech_project_back_end.Data
             modelBuilder.Entity<Cart>().HasKey(c => new { c.user_id, c.product_id });
             modelBuilder.Entity<DetailOrder>().HasKey(c => new { c.OrderId, c.ProductId });
             modelBuilder.Entity<Discount>().HasKey(c => c.DiscountId);
+            //modelBuilder.Entity<Role>().HasKey(c => c.RoleId);
+            //modelBuilder.Entity<Permission>().HasKey(c => c.PermissionId);
+            //modelBuilder.Entity<UserRole>()
+            //            .HasKey(ur => new { ur.UserId, ur.RoleId });
+            //modelBuilder.Entity<RolePermission>()
+            //    .HasKey(rp => new { rp.RoleId, rp.PermissionId });
 
             modelBuilder.Entity<Supplier>()
                 .Property(s => s.SupplierId)
@@ -47,6 +54,36 @@ namespace tech_project_back_end.Data
                 .WithMany(p => p.Images)
                 .HasForeignKey(i => i.ProductId)
                 .HasPrincipalKey(p => p.ProductId);
+
+            //modelBuilder.Entity<UserRole>(entity =>
+            //{
+            //    entity.HasKey(ur => new { ur.RoleId, ur.UserId });
+
+            //    entity.HasOne(userRole => userRole.User)
+            //    .WithMany(user => user.UserRoles)
+            //    .HasForeignKey(userRole => userRole.UserId)
+            //    .OnDelete(DeleteBehavior.Cascade);
+
+            //    entity.HasOne(userRole => userRole.Role)
+            //    .WithMany(role => role.UserRoles)
+            //    .HasForeignKey(userRole => userRole.RoleId)
+            //    .OnDelete(DeleteBehavior.Cascade);
+            //});
+
+            //modelBuilder.Entity<RolePermission>(entity => 
+            //{
+            //    entity.HasKey(rp => new { rp.RoleId, rp.PermissionId });
+
+            //    entity.HasOne(rp => rp.Permission)
+            //    .WithMany(p => p.RolePermissions)
+            //    .HasForeignKey(rp => rp.PermissionId)
+            //    .OnDelete(DeleteBehavior.Cascade);
+
+            //    entity.HasOne(rp => rp.Role)
+            //    .WithMany(r => r.RolePermissions)
+            //    .HasForeignKey(rp => rp.RoleId)
+            //    .OnDelete(DeleteBehavior.Cascade);
+            //});
 
             modelBuilder.Entity<Category>().HasData(
                     new() { CategoryId = "COMP001", CategoryName = "Computers & Laptops" },
@@ -361,6 +398,34 @@ namespace tech_project_back_end.Data
                     }
                 );
 
+            modelBuilder.Entity<Role>().HasData(
+                new Role
+                { 
+                    RoleId = "9c49a4fa-0eac-4e44-a1e0-28e3e2bca66b",
+                    RoleName = "ADMIN"
+
+                }, 
+                new Role
+                {
+                    RoleId = "3f747674-b515-4f30-b2ad-4b50520d6ae5",
+                    RoleName = "USER"
+
+                }
+            );
+
+            modelBuilder.Entity<Permission>().HasData(
+                new Permission
+                { 
+                    PermissionId = "3f747674-b515-4f30-b2ad-4b50520d6ae5",
+                    PermissionName = "view_product"
+                },
+                new Permission
+                {
+                    PermissionId = "9c49a4fa-0eac-4e44-a1e0-28e3e2bca66b",
+                    PermissionName = "update_product"
+                }
+            );
+
             modelBuilder.Entity<Image>().HasData(
                     new Image
                     {
@@ -550,5 +615,11 @@ namespace tech_project_back_end.Data
         public DbSet<Discount> Discount { get; set; }
         public DbSet<Cart> Cart { get; set; }
         public DbSet<AuditLogs> AuditLogs { get; set; }
+        //public DbSet<Role> Roles { get; set; }
+        //public DbSet<Permission> Permissions { get; set; }
+        //public DbSet<UserRole> UserRoles { get; set; }
+        //public DbSet<RolePermission> RolePermissions { get; set; }
+
+
     }
 }
