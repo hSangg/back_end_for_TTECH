@@ -55,6 +55,11 @@ builder.Services.AddSwaggerGen(options =>
     ;
 });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("view_product", policy => policy.RequireClaim("Permission", "view_product"));
+});
+
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddAuthentication().AddJwtBearer(
@@ -124,6 +129,8 @@ builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+
+builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 
 Cloudinary cloudinary = new Cloudinary(
     Environment.GetEnvironmentVariable("CLOUDINARY_URL")

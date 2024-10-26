@@ -8,7 +8,7 @@ namespace tech_project_back_end.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column("user_id",TypeName = "varchar(36)")]
+        [Column("user_id", TypeName = "varchar(36)")]
         [StringLength(36)]
         public string UserId { get; set; } = Guid.NewGuid().ToString("N").Substring(0, 10);
 
@@ -40,5 +40,14 @@ namespace tech_project_back_end.Models
         [Required]
         [Column("create_at")]
         public DateTime CreatedAt { get; set; }
+
+        public virtual ICollection<UserRole> UserRoles { get; set; }
+
+        [NotMapped]
+        public List<string> Roles { get; set; }
+
+        [NotMapped]
+        public List<string> Permissions { get; set; }
+
     }
 }

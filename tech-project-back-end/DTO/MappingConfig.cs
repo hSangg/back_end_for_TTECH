@@ -22,11 +22,11 @@ namespace tech_project_back_end.DTO
 
             CreateMap<Models.Cart, CartDTO>().ReverseMap();
 
-            CreateMap<Models.User, UserDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
 
-            CreateMap<Models.User, UserLoginDTO>().ReverseMap();
+            CreateMap<User, UserLoginDTO>().ReverseMap();
 
-            CreateMap<Models.User, UserUpdateDTO>().ReverseMap();
+            CreateMap<User, UserUpdateDTO>().ReverseMap();
             
             CreateMap<Models.DetailOrder, DetailOrderDTO>().ReverseMap();
 

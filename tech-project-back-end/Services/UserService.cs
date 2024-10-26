@@ -2,12 +2,14 @@
 using DocumentFormat.OpenXml.Office2010.Excel;
 using dotenv.net;
 using Irony.Parsing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Text;
+using tech_project_back_end.Data;
 using tech_project_back_end.DTO;
 using tech_project_back_end.DTO.Users;
 using tech_project_back_end.Helpter;
@@ -22,13 +24,20 @@ namespace tech_project_back_end.Services
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly IEmailService _emailService;
         private readonly ILogger<UserService> _logger;
         private readonly IConfiguration _configuration;
 
-        public UserService(IMapper mapper, IUserRepository userRepository, IEmailService emailService, ILogger<UserService> logger, IConfiguration configuration)
+        public UserService(IMapper mapper, 
+            IUserRepository userRepository, 
+            IRoleRepository roleRepository,
+            IEmailService emailService, 
+            ILogger<UserService> logger, 
+            IConfiguration configuration)
         {
-            _userRepository = userRepository; ;
+            _userRepository = userRepository;
+            _roleRepository = roleRepository;
             _emailService = emailService;
             _logger = logger;
             _mapper = mapper;
@@ -70,7 +79,7 @@ namespace tech_project_back_end.Services
 
         public async Task<(bool Success, string? Message, UserDTO? User, string? Token)> Login(UserLoginDTO userLogin)
         {
-            var user = await _userRepository.GetByPhone(userLogin.Phone);
+            var user = await GetUserByPhoneNumberWithRolesAndPermissions(userLogin.Phone);
 
             if (user == null)
             {
@@ -156,9 +165,29 @@ namespace tech_project_back_end.Services
                 Password = BCrypt.Net.BCrypt.HashPassword(userRegister.Password)
             };
 
+            var defaultRole = await _roleRepository.getUserDefaultRole();
+
+
+            if (defaultRole == null) {
+                throw new Exception("User default role not found");
+            }
+
+            user.UserRoles = new List<UserRole>
+            {
+                new UserRole
+                {
+                    User = user,
+                    Role = defaultRole,
+                    RoleId = defaultRole.RoleId,
+                    UserId = user.UserId
+                }
+            };
+
             await _userRepository.AddUser(user);
 
-            string token = CreateToken(user);
+            var userWithRolesPermissions = await GetUserByPhoneNumberWithRolesAndPermissions(user.UserId);
+
+            string token = CreateToken(userWithRolesPermissions);
 
             return (true, "User registered successfully", _mapper.Map<UserDTO>(user), token);
         }
@@ -169,8 +198,23 @@ namespace tech_project_back_end.Services
             {
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.NameIdentifier, user.UserId),
-                new Claim(ClaimTypes.Role, user.Role)
             };
+
+            if (user.Roles != null)
+            {
+                foreach (var role in user.Roles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role));
+                }
+            }
+
+            if (user.Permissions != null)
+            {
+                foreach (var permission in user.Permissions)
+                {
+                    claims.Add(new Claim("Permission", permission));
+                }
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                Environment.GetEnvironmentVariable("ASPNETCORE_AUTHENTICATION_SCHEMES_BEARER_SIGNINGKEYS")));
@@ -179,13 +223,30 @@ namespace tech_project_back_end.Services
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(99),
+                expires: DateTime.Now.AddDays(1),
                 signingCredentials: creds
             );
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
             return jwt;
+        }
+
+        private async Task<User> GetUserByPhoneNumberWithRolesAndPermissions(string phoneNumber)
+        {
+            var user = await _userRepository.GetUserRolePermissionByPhoneNumber(phoneNumber);
+
+            if (user != null)
+            {
+                user.Roles = user.UserRoles.Select(ur => ur.Role.RoleName).ToList();
+                user.Permissions = user.UserRoles
+                                       .SelectMany(ur => ur.Role.RolePermissions)
+                                       .Select(rp => rp.Permission.PermissionName)
+                                       .Distinct()
+                                       .ToList();
+            }
+
+            return user;
         }
     }
 }
