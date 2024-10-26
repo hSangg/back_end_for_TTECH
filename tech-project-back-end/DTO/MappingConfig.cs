@@ -5,7 +5,6 @@ using tech_project_back_end.DTO.Discount;
 using tech_project_back_end.DTO.DetailOrder;
 using tech_project_back_end.Models;
 using tech_project_back_end.DTO.Users;
-using tech_project_back_end.Models.User;
 
 namespace tech_project_back_end.DTO
 {

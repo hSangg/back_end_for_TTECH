@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security;
 
-namespace tech_project_back_end.Models.User
+namespace tech_project_back_end.Models
 {
     public class RolePermission
     {

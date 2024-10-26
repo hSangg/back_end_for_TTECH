@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace tech_project_back_end.Models.User
+
+namespace tech_project_back_end.Models
 {
     public class Role
     {

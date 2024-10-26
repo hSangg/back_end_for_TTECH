@@ -1,4 +1,4 @@
-﻿using tech_project_back_end.Models.User;
+﻿using tech_project_back_end.Models;
 
 namespace tech_project_back_end.Repository.IRepository
 {
@@ -23,5 +23,7 @@ namespace tech_project_back_end.Repository.IRepository
         public Task<bool> CheckEmail(string email);
 
         public Task<bool> CheckPhone(string phone);
+
+        public Task<User> GetUserRolePermissionByPhoneNumber(string phone);
     }
 }

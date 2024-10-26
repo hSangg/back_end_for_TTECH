@@ -2,6 +2,7 @@
 using tech_project_back_end.DTO;
 using tech_project_back_end.Services.IService;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace tech_project_back_end.Controllers
 {
@@ -38,6 +39,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "view_product")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(string id)
         {

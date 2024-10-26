@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using tech_project_back_end.Models.Enum;
 
-namespace tech_project_back_end.Models.User
+namespace tech_project_back_end.Models
 {
     public class User
     {
@@ -41,6 +41,13 @@ namespace tech_project_back_end.Models.User
         [Column("create_at")]
         public DateTime CreatedAt { get; set; }
 
-        //public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
+
+        [NotMapped]
+        public List<string> Roles { get; set; }
+
+        [NotMapped]
+        public List<string> Permissions { get; set; }
+
     }
 }
