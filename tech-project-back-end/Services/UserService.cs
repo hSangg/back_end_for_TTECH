@@ -185,7 +185,7 @@ namespace tech_project_back_end.Services
 
             await _userRepository.AddUser(user);
 
-            var userWithRolesPermissions = await GetUserByPhoneNumberWithRolesAndPermissions(user.UserId);
+            var userWithRolesPermissions = await GetUserByPhoneNumberWithRolesAndPermissions(user.Phone);
 
             string token = CreateToken(userWithRolesPermissions);
 
