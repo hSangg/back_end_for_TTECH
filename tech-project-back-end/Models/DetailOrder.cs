@@ -19,10 +19,10 @@ namespace tech_project_back_end.Models
         [Column("quantity", TypeName = "int(11)")]
         public int Quantity { get; set; }
 
-        [ForeignKey("order_id")]
+        [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
 
-        [ForeignKey("product_id")]
+        [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
     }
 }

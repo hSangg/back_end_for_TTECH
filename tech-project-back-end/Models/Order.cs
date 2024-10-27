@@ -11,10 +11,8 @@ namespace tech_project_back_end.Models
         public string OrderId { get; set; }
 
         [Column("user_id", TypeName = "varchar(36)")]
-        public string UserId { get; set; }
-
         [ForeignKey("user_id")]
-        public virtual User User { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [Column("create_order_at", TypeName = "timestamp")]
@@ -42,13 +40,15 @@ namespace tech_project_back_end.Models
         public long Total { get; set; }
 
         [Column("discount_id", TypeName = "varchar(50)")]
-        public string DiscountId { get; set; }
-
         [ForeignKey("discount_id")]
-        public virtual Discount Discount { get; set; }
+        public string? DiscountId { get; set; }
 
         [Column("delivery_fee", TypeName = "int")]
         public int DeliveryFee { get; set; }
+
+        public virtual User User { get; set; }
+
+        public virtual Discount Discount { get; set; }
 
         public virtual ICollection<DetailOrder> DetailOrders { get; set; }
     }
