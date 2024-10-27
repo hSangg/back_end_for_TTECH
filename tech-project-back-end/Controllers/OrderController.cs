@@ -114,12 +114,6 @@ namespace tech_project_back_end.Controllers
             try
             {
                 var orders = await _orderService.GetById(order_id);
-                foreach (var order in orders)
-                {
-                    Console.WriteLine($"Customer Info: {order.CustomerInfor}");
-                    Console.WriteLine($"Order Info: {order.OrderInfor}");
-                    Console.WriteLine($"Discount Info: {order.DiscountInfor}");
-                }
                 return Ok(orders);
             }
             catch (Exception ex)

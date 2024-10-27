@@ -14,25 +14,26 @@ namespace tech_project_back_end.Repository
             this._appDbContext = appDbContext;
         }
 
-        public async Task<IEnumerable<dynamic>> GetOderDetailByOrderId(string id)
+        public async Task<dynamic> GetOderDetailByOrderId(string id)
         {
-            var orderDetails = await _appDbContext.DetailOrder.Where(od => od.OrderId == id).ToListAsync();
-
-            var result = new List<dynamic>();
-
-            foreach (var detail in orderDetails)
-            {
-                var product = _appDbContext.Product.Where(p => p.ProductId == detail.ProductId).FirstOrDefault();
-                var image = _appDbContext.Image.Where(i => i.ProductId == detail.ProductId).FirstOrDefault();
-
-                result.Add(new
-                {
-                    Product = product,
-                    Image = image,
-                    Quantity = detail.Quantity,
-                    Price = detail.Price
-                });
-            }
+            var result = await _appDbContext.DetailOrder
+                                 .Where(od => od.OrderId == id)
+                                 .Select(x => new
+                                 {
+                                     Product = new
+                                     {
+                                         x.Product.ProductId,
+                                         x.Product.NamePr,
+                                     },
+                                     Image = x.Product.Images.Select(i => new
+                                     {
+                                         i.ImageId,
+                                         i.ImageHref
+                                     }).FirstOrDefault(),
+                                     Quantity = x.Quantity,
+                                     Price = x.Price
+                                 })
+                                 .ToListAsync();
             return result;
         }
 

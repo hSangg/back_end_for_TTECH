@@ -20,7 +20,7 @@ namespace tech_project_back_end.Services
             this._detailOrderRepository = detailOrderRepository;
         }
 
-        public async Task<IEnumerable<dynamic>> GetOderDetailByOrderId(string id)
+        public async Task<dynamic> GetOderDetailByOrderId(string id)
         {
             return await _detailOrderRepository.GetOderDetailByOrderId(id);
         }
