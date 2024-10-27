@@ -629,8 +629,8 @@ namespace tech_project_back_end.Data
         public DbSet<User> User { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Image> Image { get; set; }
-        public DbSet<DetailOrder> DetailOrder { get; set; }
         public DbSet<Order> Order { get; set; }
+        public DbSet<DetailOrder> DetailOrder { get; set; }
         public DbSet<Discount> Discount { get; set; }
         public DbSet<Cart> Cart { get; set; }
         public DbSet<AuditLogs> AuditLogs { get; set; }
