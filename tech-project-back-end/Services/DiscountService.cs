@@ -55,7 +55,6 @@ public class DiscountService : IDiscountService
         {
             Discount discountForCreate = _mapper.Map<Discount>(entity);
             discountForCreate.DiscountId = Guid.NewGuid().ToString();
-            discountForCreate.DiscountCode = Guid.NewGuid().ToString();
             var result = await _discountRepository.Create(discountForCreate);
             var newDiscount = _mapper.Map<DiscountDTO>(result);
             return newDiscount;

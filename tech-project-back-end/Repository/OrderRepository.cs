@@ -89,28 +89,36 @@ namespace tech_project_back_end.Repository
 
                 }
                 ).OrderByDescending(x => x.OrderInfor.CreatedAt).ToListAsync();
-
+            
             return orders;
         }
 
         public async Task<IEnumerable<dynamic>> GetALlByIdOrderByDescending(string id) {
-            var isExit = this.FindById(id);
+            var orders = await _appDbContext.Order
+                                .Where(o => o.OrderId.ToLower().Contains(id.ToLower()))
+                                .Join(_appDbContext.User,
+                                    o => o.UserId,
+                                    u => u.UserId,
+                                    (o, u) => new
+                                    {
+                                        CustomerInfor = u,
+                                        OrderInfor = o
+                                    })
+                                .ToListAsync();
 
-            if (isExit != null)
+            var discounts = await _appDbContext.Discount.ToListAsync();
+
+            var result = orders.AsEnumerable().Select(o => new
             {
+                o.CustomerInfor,
+                o.OrderInfor,
+                DiscountInfor = discounts.FirstOrDefault(d => d.DiscountId == o.OrderInfor.DiscountId)
+            })
+            .OrderByDescending(x => x.OrderInfor.CreatedAt)
+            .ToList();
 
-                var orders = await _appDbContext.Order.Where(o => o.OrderId.ToLower().Contains(id.ToLower())).Join(_appDbContext.User, o => o.UserId, u => u.UserId,
-                    (o, u) => new
-                    {
-                        CustomerInfor = u,
-                        OrderInfor = o,
-                        DiscountInfor = _appDbContext.Discount.Where(d => d.DiscountId == o.DiscountId).FirstOrDefault()
+            return result.Any() ? result : null;
 
-                    }
-                    ).OrderByDescending(x => x.OrderInfor.CreatedAt).ToListAsync();
-                return orders;
-            }
-            return null;
         }
 
         public async Task<IEnumerable<dynamic>> GetByUserId(string userId) {
