@@ -66,21 +66,21 @@ namespace tech_project_back_end.Services
             return productImages;
         }
 
-        public async Task AddImagesAsync(List<IFormFile> formFiles, string productId)
+        public async Task AddImagesAsync(List<string> images, string productId)
         {
-            var imageToCreate = new CreateImageDTO
+            foreach (var imageUrl in images)
             {
-                ProductId = productId
-            };
+                var imageToCreate = new CreateImageDTO
+                {
+                    ProductId = productId,
+                    ImageHref = imageUrl
+                };
 
-            for (int i = 0; i < formFiles.Count; i++)
-            {
-                var image = await ImageHelper.ImageUploadFunc(formFiles[i], _cloudinary);
-                imageToCreate.ImageHref = image.Url.ToString();
                 var imageOfProduct = _mapper.Map<Image>(imageToCreate);
-                await _productRepository.AddImagesAsync(imageOfProduct);
+                await _productRepository.AddImageAsync(imageOfProduct);
             }
         }
+
 
         public async Task UpdateProductAsync(ProductDTO productDTO)
         {

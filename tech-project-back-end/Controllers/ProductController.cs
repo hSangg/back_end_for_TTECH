@@ -120,22 +120,22 @@ namespace tech_project_back_end.Controllers
         }
 
         [HttpPost("{id}/images")]
-        public async Task<IActionResult> AddImages(string id, List<IFormFile> formFiles)
+        public async Task<IActionResult> AddImages(string id,[FromBody] List<string> images)
         {
-            if (formFiles == null || !formFiles.Any())
+            if (images == null || !images.Any())
             {
                 return BadRequest("No images provided.");
             }
-             try
-             {
-                 await _productService.AddImagesAsync(formFiles, id);
-                 return NoContent();
-             }
-             catch (Exception ex)
-             {
-                 _logger.LogError(ex, "Error occurred while adding images for product with ID: {Id}", id);
-                 return StatusCode(500, "An error occurred while processing your request.");
-             }
+            try
+            {
+                await _productService.AddImagesAsync(images, id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while adding images for product with ID: {Id}", id);
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
         }
 
         [HttpPut]

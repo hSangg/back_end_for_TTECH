@@ -20,7 +20,7 @@ namespace tech_project_back_end.Repository.IRepository
 
         Task<List<Image>> GetProductImagesAsync(string productId);
 
-        Task AddImagesAsync(Image image);
+        Task AddImageAsync(Image image);
 
         Task UpdateProductAsync(ProductDTO product);
 
