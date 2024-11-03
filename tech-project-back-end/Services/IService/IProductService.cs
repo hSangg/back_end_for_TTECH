@@ -20,7 +20,7 @@ namespace tech_project_back_end.Services.IService
 
         Task<List<ImageDTO>> GetProductImagesAsync(string productId);
 
-        Task AddImagesAsync(List<IFormFile> formFiles, string productId);
+        Task AddImagesAsync(List<string> images, string productId);
 
         Task UpdateProductAsync(ProductDTO product);
 

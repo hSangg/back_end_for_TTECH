@@ -247,7 +247,7 @@ namespace tech_project_back_end.Repository
                 .ToListAsync();
         }
 
-        public async Task AddImagesAsync(Image image)
+        public async Task AddImageAsync(Image image)
         {
             _appDbContext.Image.Add(image);
             await _appDbContext.SaveChangesAsync();
