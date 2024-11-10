@@ -153,7 +153,7 @@ namespace tech_project_back_end.Services
                 return (false, "User not found");
             }
 
-            string newPassword = Guid.NewGuid().ToString()[..5];
+            string newPassword = Guid.NewGuid().ToString()[..6];
             
             await _userRepository.UpdatePassword(existingUser, newPassword);
 
@@ -175,31 +175,36 @@ namespace tech_project_back_end.Services
             return (true, "Password changed successfully");
         }
 
-        public async Task<(bool Success, string? Message, UserDTO? User, string? Token)> Register(UserDTO userRegister)
+
+        public async Task<(bool Success, string? Message, UserDTO? User, string? Token)> Register(UserDTO userRegisterDto)
         {
-            if (await _userRepository.CheckEmail(userRegister.Email))
+            var passwordErrors = ValidatePassword(userRegisterDto.Password);
+            if (passwordErrors.Any())
+            {
+                return (false, string.Join(", ", passwordErrors), null, null);
+            }
+
+            if (await _userRepository.CheckEmail(userRegisterDto.Email))
             {
                 return (false, "Email already exists", null, null);
             }
-
-            if (await _userRepository.CheckPhone(userRegister.Phone))
+            if (await _userRepository.CheckPhone(userRegisterDto.Phone))
             {
                 return (false, "Phone number already exists", null, null);
             }
 
             var user = new User
             {
-                Name = userRegister.Name,
-                Email = userRegister.Email,
-                Phone = userRegister.Phone,
+                Name = userRegisterDto.Name,
+                Email = userRegisterDto.Email,
+                Phone = userRegisterDto.Phone,
                 CreatedAt = DateTime.Now,
-                Password = BCrypt.Net.BCrypt.HashPassword(userRegister.Password)
+                Password = BCrypt.Net.BCrypt.HashPassword(userRegisterDto.Password)
             };
 
             var defaultRole = await _roleRepository.getUserDefaultRole();
-
-
-            if (defaultRole == null) {
+            if (defaultRole == null)
+            {
                 throw new Exception("User default role not found");
             }
 
@@ -215,12 +220,37 @@ namespace tech_project_back_end.Services
             };
 
             await _userRepository.AddUser(user);
-
             var userWithRolesPermissions = await GetUserByPhoneNumberWithRolesAndPermissions(user.Phone);
-
             string token = CreateToken(userWithRolesPermissions);
-
             return (true, "User registered successfully", _mapper.Map<UserDTO>(user), token);
+        }
+
+        private List<string> ValidatePassword(string password)
+        {
+            var errors = new List<string>();
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                errors.Add("Password is required");
+                return errors;
+            }
+
+            if (password.Length < 8)
+                errors.Add("Password must be at least 8 characters long");
+
+            if (!password.Any(char.IsUpper))
+                errors.Add("Password must contain at least one uppercase letter");
+
+            if (!password.Any(char.IsLower))
+                errors.Add("Password must contain at least one lowercase letter");
+
+            if (!password.Any(char.IsDigit))
+                errors.Add("Password must contain at least one number");
+
+            if (!password.Any(ch => !char.IsLetterOrDigit(ch)))
+                errors.Add("Password must contain at least one special character");
+
+            return errors;
         }
 
         private string CreateToken(User user)
