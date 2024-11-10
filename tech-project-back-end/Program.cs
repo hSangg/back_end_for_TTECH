@@ -133,7 +133,8 @@ builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 
 Cloudinary cloudinary = new Cloudinary(
-    Environment.GetEnvironmentVariable("CLOUDINARY_URL")
+    //Environment.GetEnvironmentVariable("CLOUDINARY_URL")
+    "cloudinary://822283717824738:frzUnb-Q8dmFLM_9yCSv5obxNLA@dk94mqfmc"
     );
 cloudinary.Api.Secure = true;
 builder.Services.AddSingleton(cloudinary);
