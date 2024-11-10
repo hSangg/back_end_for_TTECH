@@ -48,6 +48,5 @@ namespace tech_project_back_end.Models
 
         [NotMapped]
         public List<string> Permissions { get; set; }
-
     }
 }
