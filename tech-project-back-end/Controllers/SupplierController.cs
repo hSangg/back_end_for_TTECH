@@ -1,17 +1,12 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using tech_project_back_end.Data;
 using tech_project_back_end.DTO;
-using tech_project_back_end.Models;
-using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class SupplierController : ControllerBase
     {
         private readonly ISupplierService _supplierService;
@@ -22,6 +17,7 @@ namespace tech_project_back_end.Controllers
             this._logger = logger;
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] SupplierDTO dto)
         {
@@ -59,6 +55,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
@@ -76,6 +73,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpDelete]
         public async Task<IActionResult> DeleteById(string id)
         {
@@ -93,6 +91,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPut]
         public async Task<IActionResult> Update(string id, [FromBody] SupplierDTO dto)
         {

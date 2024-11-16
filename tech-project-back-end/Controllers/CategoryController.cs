@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.DTO;
 using tech_project_back_end.Services;
 
@@ -29,6 +30,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPost]
         public async Task<IActionResult> AddCategory([FromBody] CategoryDTO categoryDto)
         {
@@ -47,6 +49,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCategory(string id, [FromBody] string updatedCategoryName)
         {
@@ -65,6 +68,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategoryById(string id)
         {
@@ -83,6 +87,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(string id)
         {

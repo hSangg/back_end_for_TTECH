@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using tech_project_back_end.Data;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.DTO.Discount;
-using tech_project_back_end.Models;
 using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
@@ -17,7 +16,8 @@ namespace tech_project_back_end.Controllers
             _discountService = discountService;
             _logger = logger;
         }
-        
+
+        [Authorize(Policy = "ADMIN")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -52,6 +52,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -76,6 +77,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -100,7 +102,8 @@ namespace tech_project_back_end.Controllers
                 return StatusCode(500, err.Message);
             }
         }
-        
+
+        [Authorize(Policy = "ADMIN")]
         [HttpDelete]
         public async Task<ActionResult> DeleteById(string discountId)
         {

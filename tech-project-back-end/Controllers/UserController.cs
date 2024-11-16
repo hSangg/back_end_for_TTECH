@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using tech_project_back_end.Data;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using tech_project_back_end.DTO;
 using tech_project_back_end.DTO.Users;
-using tech_project_back_end.Helpter;
-using tech_project_back_end.Models;
-using tech_project_back_end.Services;
 using tech_project_back_end.Services.IService;
 
 namespace tech_project_back_end.Controllers
@@ -24,9 +20,11 @@ namespace tech_project_back_end.Controllers
             this._logger = logger;
         }
 
+        [Authorize]
         [HttpGet("GetUserById")]
-        public async Task<IActionResult> GetUserById(string userId)
+        public async Task<IActionResult> GetUserById()
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             try
             {
                 var user = await _userService.GetUserById(userId);
@@ -75,6 +73,7 @@ namespace tech_project_back_end.Controllers
             } 
         }
 
+        [Authorize]
         [HttpPost("ForgetPassword")]
         public async Task<IActionResult> ForgetPassword([FromBody] string email)
         {
@@ -96,6 +95,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpGet("GetAllUser")]
         public async Task<IActionResult> GetAllUser()
         {
@@ -142,12 +142,20 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("UpdateUserInfor")]
         public async Task<IActionResult> UpdateUserInfor([FromBody] UserUpdateDTO updatedUser)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (userId != updatedUser.UserId)
+            {
+                return Unauthorized();
             }
 
             (bool success, string? message, UserDTO? user) = await _userService.UpdateUser(updatedUser);

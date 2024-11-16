@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using tech_project_back_end.DTO;
 using tech_project_back_end.Services.IService;
-using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 
 namespace tech_project_back_end.Controllers
@@ -19,6 +18,7 @@ namespace tech_project_back_end.Controllers
             _logger = logger;
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPost]
         public async Task<IActionResult> AddProduct([FromBody] CreateProductDTO productDTO)
         {
@@ -39,7 +39,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
-        [Authorize(Policy = "view_product")]
+        //[Authorize(Policy = "view_product")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(string id)
         {
@@ -88,7 +88,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
-
+        [Authorize(Policy = "ADMIN")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
@@ -119,6 +119,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPost("{id}/images")]
         public async Task<IActionResult> AddImages(string id,[FromBody] List<string> images)
         {
@@ -138,6 +139,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPut]
         public async Task<IActionResult> UpdateProduct([FromBody] ProductDTO product)
         {
@@ -158,6 +160,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpDelete("{productId}/images")]
         public async Task<IActionResult> DeleteImage(string productId)
         {

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using tech_project_back_end.DTO.Order;
 using tech_project_back_end.Services.IService;
 
@@ -18,6 +20,7 @@ namespace tech_project_back_end.Controllers
             this._logger = logger;
         }
 
+        [Authorize]
         [HttpPost("AddNewOrder")]
         public async Task<IActionResult> AddNewOrder(OrderDTO orderDTO)
         {
@@ -39,6 +42,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpPut("UpdateStateOrder")]
         public async Task<IActionResult> UpdateStateOrder(string orderId, string state)
         {
@@ -70,6 +74,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpGet("GetExcelFileData")]
         public async Task<IActionResult> GetExcelFileData()
         {
@@ -88,6 +93,7 @@ namespace tech_project_back_end.Controllers
             }
         }
 
+        [Authorize(Policy = "ADMIN")]
         [HttpGet("GetAllOrder")]
         public async Task<IActionResult> GetAllOrder()
         {
@@ -124,12 +130,18 @@ namespace tech_project_back_end.Controllers
 
         }
 
+        [Authorize]
         [HttpPost("GetOrderByUserId")]
         public async Task<IActionResult> GetOrderByUserId([FromBody] string userId)
         {
+            var userIdToken = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId == null)
             {
                 return BadRequest("Invalid request data");
+            }
+            if(userIdToken != userId)
+            {
+                return Forbid();
             }
             try
             {
