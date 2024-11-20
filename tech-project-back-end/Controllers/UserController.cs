@@ -155,7 +155,7 @@ namespace tech_project_back_end.Controllers
 
             if (userId != updatedUser.UserId)
             {
-                return Unauthorized();
+                return Forbid();
             }
 
             (bool success, string? message, UserDTO? user) = await _userService.UpdateUser(updatedUser);

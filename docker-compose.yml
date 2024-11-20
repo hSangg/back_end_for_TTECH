@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  tech-project-back-end:
+    image: ${DOCKER_REGISTRY-}techprojectbackend
+    build:
+      context: .
+      dockerfile: tech-project-back-end/Dockerfile
