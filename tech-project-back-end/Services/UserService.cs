@@ -1,23 +1,16 @@
 ﻿using AutoMapper;
-using DocumentFormat.OpenXml.Office2010.Excel;
-using dotenv.net;
-using Irony.Parsing;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Text;
-using tech_project_back_end.Data;
 using tech_project_back_end.DTO;
 using tech_project_back_end.DTO.Users;
 using tech_project_back_end.Helpter;
 using tech_project_back_end.Models;
-using tech_project_back_end.Repository;
 using tech_project_back_end.Repository.IRepository;
 using tech_project_back_end.Services.IService;
+using Role = tech_project_back_end.Models.Enum.Role;
 
 namespace tech_project_back_end.Services
 {
@@ -108,16 +101,16 @@ namespace tech_project_back_end.Services
                 });
                 attempts++;
 
-                if (attempts > MaxFailedAttempts)
-                {
-                    _cache.Set($"Lockout_{userLogin.Phone}", true, TimeSpan.FromMinutes(LockoutDurationMinutes));
-                    _cache.Remove($"FailedAttempts_{userLogin.Phone}");
-                    return (false, "Account locked. Try again in 1 minute.", null, null);
-                } else
-                {
-                    _cache.Set($"Lockout_{userLogin.Phone}", attempts);
-                    return (false, $"Wrong password. {MaxFailedAttempts - attempts} attempts remaining.", null, null);
-                }
+                //if (attempts > MaxFailedAttempts)
+                //{
+                //    _cache.Set($"Lockout_{userLogin.Phone}", true, TimeSpan.FromMinutes(LockoutDurationMinutes));
+                //    _cache.Remove($"FailedAttempts_{userLogin.Phone}");
+                //    return (false, "Account locked. Try again in 1 minute.", null, null);
+                //} else
+                //{
+                //    _cache.Set($"Lockout_{userLogin.Phone}", attempts);
+                //    return (false, $"Wrong password. {MaxFailedAttempts - attempts} attempts remaining.", null, null);
+                //}
             }
 
             _cache.Remove($"FailedAttempts_{userLogin.Phone}");
@@ -202,8 +195,18 @@ namespace tech_project_back_end.Services
                 Password = BCrypt.Net.BCrypt.HashPassword(userRegisterDto.Password)
             };
 
-            var defaultRole = await _roleRepository.getUserDefaultRole();
-            if (defaultRole == null)
+            if (_userRepository.Count().Result == 0)
+            {
+                user.Role = Role.ADMIN;
+            }
+            else
+            {
+                user.Role = Role.USER;
+            }
+
+            string defaultRoleId = (await _roleRepository.getUserDefaultRole(user.Role)).RoleId;
+
+            if (defaultRoleId == null)
             {
                 throw new Exception("User default role not found");
             }
@@ -212,9 +215,9 @@ namespace tech_project_back_end.Services
             {
                 new UserRole
                 {
-                    User = user,
-                    Role = defaultRole,
-                    RoleId = defaultRole.RoleId,
+                    //User = user,
+                    //Role = defaultRole,
+                    RoleId = defaultRoleId,
                     UserId = user.UserId
                 }
             };

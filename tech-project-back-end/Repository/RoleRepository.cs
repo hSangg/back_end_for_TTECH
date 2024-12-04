@@ -16,11 +16,11 @@ namespace tech_project_back_end.Repository
             _logger = logger;
         }
 
-        public async Task<Role> getUserDefaultRole() { 
+        public async Task<Role> getUserDefaultRole(string userRole) { 
             return await _appDbContext.Roles
                 .Include(r => r.RolePermissions)
                 .ThenInclude(rp => rp.Permission)
-                .FirstOrDefaultAsync(r => r.RoleName == "USER");
+                .FirstOrDefaultAsync(r => r.RoleName == userRole);
         }
     }
 }

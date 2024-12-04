@@ -2,7 +2,34 @@ version: '3.4'
 
 services:
   tech-project-back-end:
-    image: ${DOCKER_REGISTRY-}techprojectbackend
+    image: kietgia/techprojectbackend:latest
     build:
       context: .
       dockerfile: tech-project-back-end/Dockerfile
+    ports:
+    - "5000:80"
+    - "5001:443"
+    depends_on:
+     - db_data
+    environment:
+      - CLOUDINARY_URL=${CLOUDINARY_URL}
+      - ASPNETCORE_AUTHENTICATION_SCHEMES_BEARER_SIGNINGKEYS=${ASPNETCORE_AUTHENTICATION_SCHEMES_BEARER_SIGNINGKEYS}
+
+  db_data:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+        MYSQL_ROOT_PASSWORD: root     
+        MYSQL_DATABASE: mydb          
+        MYSQL_USER: user              
+        MYSQL_PASSWORD: password      
+    ports:
+        - "3307:3306"
+    volumes:
+        - db_data:/var/lib/mysql
+        - ./tech-project-back-end/project.sql:/docker-entrypoint-initdb.d/project.sql:ro
+
+volumes:
+  db_data:
+
+

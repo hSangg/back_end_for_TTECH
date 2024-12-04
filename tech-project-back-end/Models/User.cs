@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using tech_project_back_end.Models.Enum;
 
 namespace tech_project_back_end.Models
 {
@@ -35,7 +34,7 @@ namespace tech_project_back_end.Models
         [Required]
         [Column("Role", TypeName = "varchar(50)")]
         [StringLength(50)]
-        public string Role { get; set; } = Enum.Role.USER;
+        public string Role { get; set; }
 
         [Required]
         [Column("create_at")]
